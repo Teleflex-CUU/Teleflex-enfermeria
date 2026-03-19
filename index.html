@@ -625,7 +625,7 @@ tr:hover td{background:var(--surf2)}
 // CONSTANTS
 // ══════════════════════════════════════════════════════
 const GAS='https://script.google.com/macros/s/AKfycbwQbVvbIJJwpqrXopIUvoTP8w7nu6c6v2XdhtCqsxEtbq5IC8T9Qt9l__p1Pz1ujhsimw/exec';
-const SK={hc:'so_hc8',re:'so_re8',ci:'so_ci8',users:'so_users_enf_v1'};
+const SK={hc:'so_hc8',re:'so_re8',ci:'so_ci8',users:'so_users_med_v1'};
 const EMPRESA={nombre:'Teleflex',medico:'Dr. Jaime Iván Martínez Espinoza',cedula:'12021447'};
 const PLANTAS=['Américas','Barrancas','Cantera','Juventud'];
 const TURNOS=['Matutino','Vespertino','Nocturno'];
@@ -666,21 +666,42 @@ function initUsers(){
   if(!u.length){u=[{id:1,nombre:'Enfermería',user:'enf',pass:btoa('enfermeria123'),activo:true}];sv(SK.users,u);}
   return u;
 }
-function doLogin(){
+async function doLogin(){
   const u=document.getElementById('lu').value.trim();
   const p=document.getElementById('lp').value;
   const err=document.getElementById('lerr');
   err.style.display='none';
   if(!u||!p){showErr('Ingresa usuario y contraseña');return;}
-  const found=initUsers().find(x=>x.user===u&&x.pass===btoa(p)&&x.activo!==false);
-  if(!found){showErr('Usuario o contraseña incorrectos');document.getElementById('lp').value='';return;}
-  currentUser=found;
+
+  // 1. Buscar en usuarios locales (admin por defecto)
+  const localUsers=initUsers();
+  const localFound=localUsers.find(x=>x.user===u&&x.pass===btoa(p)&&x.activo!==false&&(x.app==='enfermeria'||x.app==='medico'));
+  if(localFound){currentUser=localFound;afterLogin(localFound);return;}
+
+  // 2. Consultar GAS (usuarios creados desde la app del médico)
+  err.style.display='block';err.textContent='Verificando credenciales...';
+  err.style.cssText='display:block;background:#FFFBEB;color:#92400E;border-radius:7px;padding:8px 12px;font-size:12px;margin-bottom:12px;text-align:center';
+  try{
+    const r=await gasGet({action:'getUsers'});
+    if(r.ok&&Array.isArray(r.data)){
+      const gasUsers=r.data.filter(x=>x.user&&x.pass);
+      // Merge y guardar localmente para login offline futuro
+      const merged=[...localUsers.filter(x=>!gasUsers.find(g=>g.user===x.user)),...gasUsers];
+      sv(SK.users,merged);
+      const found=gasUsers.find(x=>x.user===u&&x.pass===btoa(p)&&x.activo!==false&&(x.app==='enfermeria'||x.app==='medico'));
+      if(found){currentUser=found;afterLogin(found);return;}
+    }
+  }catch(e){}
+  showErr('Usuario o contraseña incorrectos');
+  document.getElementById('lp').value='';
+}
+function afterLogin(found){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app').style.display='block';
   document.getElementById('nav-user').textContent=found.nombre;
   init();
 }
-function showErr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.display='block';}
+function showErr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.cssText='display:block;background:#FEF2F2;color:#991B1B;border-radius:7px;padding:8px 12px;font-size:12px;margin-bottom:12px;text-align:center';}
 function doLogout(){currentUser=null;location.reload();}
 
 // ══════════════════════════════════════════════════════
