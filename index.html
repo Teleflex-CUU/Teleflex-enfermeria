@@ -271,7 +271,13 @@ tr:hover td{background:var(--surf2)}
      CONSULTA
 ════════════════════════════════════════ -->
 <div class="sc on" id="sc-cons">
-  <div class="sh"><div><h2>Nueva Consulta</h2><p id="cons-fecha-hoy"></p></div></div>
+  <div class="sh">
+    <div>
+      <h2>Nueva Consulta</h2>
+      <p id="cons-fecha-hoy"></p>
+    </div>
+    <span id="cons-planta-badge" style="display:none;background:var(--teal3);color:var(--teal);padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700"></span>
+  </div>
 
   <!-- Tipo trabajador -->
   <div class="tipo-sel">
@@ -698,7 +704,17 @@ async function doLogin(){
 function afterLogin(found){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app').style.display='block';
-  document.getElementById('nav-user').textContent=found.nombre;
+  // Mostrar nombre + planta/turno en el nav
+  var info = found.nombre;
+  if(found.planta && found.planta!=='Todas') info += ' · ' + found.planta;
+  if(found.turno  && found.turno !=='Todos') info += ' · ' + found.turno;
+  document.getElementById('nav-user').textContent = info;
+  // Mostrar badge de planta en la pantalla de consulta
+  var ph = document.getElementById('cons-planta-badge');
+  if(ph && found.planta && found.planta!=='Todas'){
+    ph.textContent = '🏭 ' + found.planta + ' · ' + (found.turno||'');
+    ph.style.display = 'inline-block';
+  }
   init();
 }
 function showErr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.cssText='display:block;background:#FEF2F2;color:#991B1B;border-radius:7px;padding:8px 12px;font-size:12px;margin-bottom:12px;text-align:center';}
@@ -713,6 +729,17 @@ function init(){
   updateBadges();
   buildRegMes();
   if(HC.length){document.getElementById('hc-upload').style.display='none';document.getElementById('hc-table').style.display='block';const bd=document.getElementById('btn-del-hc');if(bd)bd.style.display='';renderHC('');}
+  // Pre-filtrar reportes y registros a la planta/turno del usuario
+  if(currentUser && currentUser.planta && currentUser.planta!=='Todas'){
+    var fp=currentUser.planta, ft=currentUser.turno||'';
+    // Filtros en Registros
+    var rp=document.getElementById('reg-planta'); if(rp) rp.value=fp;
+    // Filtros en Reportes
+    var rpp=document.getElementById('rep-planta'); if(rpp) rpp.value=fp;
+    var rpt=document.getElementById('rep-turno');  if(rpt&&ft&&ft!=='Todos') rpt.value=ft;
+    // Filtros en Incapacidades
+    var ip=document.getElementById('inc-planta'); if(ip) ip.value=fp;
+  }
 }
 function updateBadges(){
   document.getElementById('bc-regs').textContent=RE.length;
@@ -745,7 +772,17 @@ async function gasGet(params){
   }catch(e){return{ok:false,error:e.message};}
 }
 function setSyncDot(s){const d=document.getElementById('sync-dot');if(d)d.className='dot '+(s==='ok'?'dok':s==='busy'?'dbusy':'derr');}
-async function syncRegs(){setSyncDot('busy');const r=await gasGet({action:'getRegistros'});if(r.ok&&Array.isArray(r.data)){RE=r.data;sv(SK.re,RE);updateBadges();buildRegMes();renderRegs();setSyncDot('ok');toast('Sync OK','ok');}else setSyncDot('err');}
+async function syncRegs(){
+  setSyncDot('busy');
+  // Si la enfermera tiene planta asignada, sync solo sus registros
+  var params={action:'getRegistros'};
+  // Pedimos todos y filtramos local — más simple y funciona offline
+  const r=await gasGet({action:'getRegistros'});
+  if(r.ok&&Array.isArray(r.data)){
+    RE=r.data;sv(SK.re,RE);updateBadges();buildRegMes();renderRegs();setSyncDot('ok');
+    toast('✅ '+RE.length+' registros sincronizados','ok');
+  } else setSyncDot('err');
+}
 async function syncCitas(){setSyncDot('busy');const r=await gasGet({action:'getCitas'});if(r.ok&&Array.isArray(r.data)){CI=r.data;sv(SK.ci,CI);updateBadges();renderCitas();setSyncDot('ok');toast('Citas sincronizadas','ok');}else setSyncDot('err');}
 
 // ══════════════════════════════════════════════════════
@@ -889,13 +926,21 @@ async function guardarConsulta(){
   };
   if(tipoActual==='int'){
     if(!empActual){toast('Busca un empleado primero','err');return;}
-    Object.assign(reg,{noEmp:empActual.noEmp,nombre:empActual.nombre,planta:empActual.planta,
-      turno:empActual.turno,depto:empActual.depto,puesto:empActual.puesto,
+    var enfPlanta2 = (currentUser&&currentUser.planta&&currentUser.planta!=='Todas') ? currentUser.planta : '';
+    var enfTurno2  = (currentUser&&currentUser.turno &&currentUser.turno !=='Todos')  ? currentUser.turno  : '';
+    Object.assign(reg,{noEmp:empActual.noEmp,nombre:empActual.nombre,
+      planta:empActual.planta||enfPlanta2,
+      turno:empActual.turno||enfTurno2,
+      depto:empActual.depto,puesto:empActual.puesto,
       nss:empActual.nss,genero:empActual.genero,categoria:empActual.categoria||''});
   } else {
     const nombre=g('ext-n'),empresa=g('ext-e');
     if(!nombre||!empresa){toast('Nombre y empresa son obligatorios','err');return;}
-    Object.assign(reg,{noEmp:'EXT',nombre,empresa,area:g('ext-a'),contacto:g('ext-c'),planta:'',turno:'',depto:'',puesto:'',nss:'',genero:''});
+    // Externos: tomar planta/turno de la enfermera logueada
+    var enfPlanta = (currentUser&&currentUser.planta&&currentUser.planta!=='Todas') ? currentUser.planta : '';
+    var enfTurno  = (currentUser&&currentUser.turno &&currentUser.turno !=='Todos')  ? currentUser.turno  : '';
+    Object.assign(reg,{noEmp:'EXT',nombre,empresa,area:g('ext-a'),contacto:g('ext-c'),
+      planta:enfPlanta, turno:enfTurno, depto:'',puesto:'',nss:'',genero:''});
   }
   RE.push(reg); sv(SK.re,RE); updateBadges();
   toast('⏳ Guardando...','inf'); setSyncDot('busy');
