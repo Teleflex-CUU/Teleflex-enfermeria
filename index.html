@@ -1647,12 +1647,9 @@ function exportInc(){
     .map(r=>({nombre:r.nombre,noEmp:r.noEmp,planta:r.planta,turno:r.turno,depto:r.depto,nss:r.nss,
       tipo:r.incapacidad,diagnostico:r.diagnostico,incInicio:r.incInicio,incFin:r.incFin,incDias:r.incDias,institucion:'—'}));
   const todas=[...INC,...deRE];
-  const rows=[['No.Emp','Nombre','Planta','Turno','Departamento','NSS','Tipo','Diagnóstico','Inicio','Fin','Días','Institución','Folio IMSS','Médico que expide','Estado']];
+  const rows=[['No.Emp','Nombre','Planta','Departamento','NSS','Tipo','Inicial/Subsecuente','Diagnóstico','Inicio','Fin','Días','Folio IMSS']];
   todas.forEach(r=>{
-    const activa=incActiva(r)?'Activa':'Finalizada';
-    rows.push([r.noEmp||'',r.nombre||'',r.planta||'',r.turno||'',r.depto||'',r.nss||'',
-      r.tipo||'',r.diagnostico||'',r.incInicio||'',r.incFin||'',r.incDias||0,
-      r.institucion||'',r.numImss||'',r.medicoExp||'',activa]);
+    rows.push([r.noEmp||'',r.nombre||'',r.planta||'',r.depto||'',r.nss||'',r.tipo||'',r.secuencia||'',r.diagnostico||'',r.incInicio||'',r.incFin||'',r.incDias||0,r.numImss||'']);
   });
   XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),'Incapacidades');
   XLSX.writeFile(wb,'Incapacidades_'+new Date().toLocaleDateString('es-MX').replace(/\//g,'-')+'.xlsx');
