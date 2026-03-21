@@ -763,7 +763,7 @@ const SIS={
 };
 
 // ── Data ──────────────────────────────────────────────
-let HC=[],RE=[],CI=[],INC=[];
+let HC=[],RE=[],CI=[],INC=[],EMBARAZADAS=[];
 let currentUser=null;
 let tipoActual=null,empActual=null;
 let _editCtx=null;
@@ -802,6 +802,7 @@ async function doLogin(){
       if(r.ok&&Array.isArray(r.data)&&r.data.length){
         sv(SK.users,r.data);
         poblarSelectUsuarios();
+  syncEmb();
         found=r.data.find(x=>x.user===u&&x.activo!==false&&(x.app==='enfermeria'||x.app==='medico'));
       }
     }catch(e){}
@@ -880,6 +881,9 @@ async function gasGet(params){
   }catch(e){return{ok:false,error:e.message};}
 }
 function setSyncDot(s){const d=document.getElementById('sync-dot');if(d)d.className='dot '+(s==='ok'?'dok':s==='busy'?'dbusy':'derr');}
+async function syncEmb(){
+  try{const r=await gasGet({action:'getEmbarazadas'});if(r.ok&&Array.isArray(r.data))EMBARAZADAS=r.data;}catch(e){}
+}
 async function syncRegs(){
   setSyncDot('busy');
   try{
@@ -993,6 +997,20 @@ function mostrarAnt(noEmp){
     html+=`<div class="ant ant-ht"><div class="ant-title" style="color:#0F766E">📅 Últimas ${ult.length} consultas</div>${ult.map(r=>{const s=SIS[r.sistema]||SIS.otro;return`<div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:12px"><span style="color:var(--tx3);white-space:nowrap;min-width:75px">${r.fecha||'—'}</span><span style="font-weight:600;flex:1">${r.diagnostico||'—'}</span><span class="pill" style="background:${s.bg};color:${s.c}">${s.n}</span></div>`;}).join('')}</div>`;
   }
   if(!html) html='<div style="font-size:11px;color:var(--tx3);padding:6px 0">Sin antecedentes registrados</div>';
+  // Banner embarazo — visible en todas las consultas
+  const emb=EMBARAZADAS.find(x=>String(x.noEmp||'').toLowerCase()===lc);
+  if(emb){
+    const semanas=emb.fum?Math.floor((new Date()-new Date(emb.fum.includes('/')?emb.fum.split('/').reverse().join('-'):emb.fum))/(1000*60*60*24*7)):'—';
+    html=`<div style="background:#FDF2F8;border:2px solid #F0ABFC;border-radius:9px;padding:10px 13px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:700;color:#A21CAF;margin-bottom:4px">🤰 TRABAJADORA EMBARAZADA${emb.altoRiesgo==='Sí'?' — ⚠️ ALTO RIESGO':''}</div>
+      <div style="font-size:12px;color:#86198F;display:flex;gap:10px;flex-wrap:wrap">
+        ${emb.fpp?`<span>FPP: <strong>${emb.fpp}</strong></span>`:''}
+        <span>SDG: <strong>${semanas} sem</strong></span>
+        ${emb.lactanciaActiva==='Sí'?'<span>🤱 Lactancia</span>':''}
+      </div>
+      ${emb.restricciones?`<div style="font-size:11px;color:#86198F;margin-top:3px">⚠️ ${emb.restricciones}</div>`:''}
+    </div>`+html;
+  }
   panel.innerHTML=html;
 }
 
@@ -1069,7 +1087,7 @@ async function guardarConsulta(){
   }
   RE.push(reg); sv(SK.re,RE); updateBadges();
   toast('⏳ Guardando...','inf'); setSyncDot('busy');
-  const r=await gasPost({action:'saveRecord',record:reg});
+  const r=await gasPost({action:'saveEnf',record:reg});
   setSyncDot(r.ok?'ok':'err');
   toast(r.ok?'✅ Guardado — '+reg.nombre:'⚠️ Guardado local, sin conexión','ok');
   resetConsulta();
@@ -1892,6 +1910,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     console.warn('No se pudo cargar usuarios del GAS, usando locales');
   }
   poblarSelectUsuarios();
+  syncEmb();
 });
 window.addEventListener('error',e=>{console.warn('[ENF]',e.message,e.lineno);});
 window.addEventListener('unhandledrejection',e=>{console.warn('[ENF]',e.reason);});
