@@ -961,6 +961,8 @@ function selEmp(noEmp){
   card.style.display='block';
   mostrarAnt(noEmp);
   document.getElementById('fc').style.display='block';
+  // Cargar datos de otras apps desde GAS
+  cargarAntDesdeGAS(noEmp);
 }
 
 // ══════════════════════════════════════════════════════
@@ -1014,6 +1016,43 @@ function mostrarAnt(noEmp){
   panel.innerHTML=html;
 }
 
+
+// Carga antecedentes de TODAS las apps desde GAS
+async function cargarAntDesdeGAS(noEmp){
+  const panel=document.getElementById('ant-panel');
+  try{
+    const r=await gasGet({action:'getExpCompleto',noEmp});
+    if(!r.ok||!r.data) return;
+    const data=r.data, res=data.resumen||{};
+    let extra='';
+    // Datos de médico que enfermería no tendría localmente
+    if(data.valoraciones&&data.valoraciones.length){
+      // Enfermedades crónicas del médico
+      const cron=data.valoraciones.filter(v=>v.dx2).map(v=>v.dx2).filter(Boolean);
+      if(cron.length){
+        extra+=`<div class="ant ant-cr"><div class="ant-title" style="color:#92400E">📋 Enf. crónicas (médico)</div>
+          ${[...new Set(cron.join(', ').split(/[,;]+/).map(x=>x.trim()).filter(Boolean))].map(c=>`<span class="ant-tag" style="background:#FEF3C7;color:#92400E">${c}</span>`).join('')}
+        </div>`;
+      }
+      // Tratamientos activos del médico
+      const trats=data.valoraciones.filter(v=>v.tratamiento).map(v=>v.tratamiento).slice(0,3);
+      if(trats.length){
+        extra+=`<div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:8px;padding:8px 11px;margin-bottom:8px">
+          <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px;text-transform:uppercase">💊 Tratamientos (médico)</div>
+          ${trats.map(t=>`<div style="font-size:11px;color:var(--tx2)">• ${t.slice(0,60)}</div>`).join('')}
+        </div>`;
+      }
+    }
+    // Diagnóstico nutricional
+    if(data.nutricion&&data.nutricion.length){
+      extra+=`<div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:8px;padding:8px 11px;margin-bottom:8px">
+        <div style="font-size:10px;font-weight:700;color:var(--green);margin-bottom:3px;text-transform:uppercase">🥗 Nutriología</div>
+        <div style="font-size:11px;color:var(--tx2)">${data.nutricion[0].diagnostico||'—'} · IMC: ${data.nutricion[0].imc||'—'}</div>
+      </div>`;
+    }
+    if(extra && panel) panel.innerHTML=panel.innerHTML+extra;
+  }catch(e){}
+}
 // ══════════════════════════════════════════════════════
 // QUICK ADD EMPLEADO
 // ══════════════════════════════════════════════════════
