@@ -257,6 +257,7 @@ tr:hover td{background:var(--surf2)}
   <button class="tb" id="tb-cit" onclick="go('cit')">📅 Citas <span class="bc" id="bc-cit">0</span></button>
   <button class="tb" id="tb-rep" onclick="go('rep')">📊 Reportes</button>
   <button class="tb" id="tb-emb" onclick="go('emb')">🤰 Embarazo</button>
+  <button class="tb" id="tb-exp" onclick="go('exp')">📁 Expediente</button>
   <button class="tb" id="tb-hc" onclick="go('hc')">👥 Head Count</button>
   <div class="nav-end">
     <span class="dot dok" id="sync-dot"></span>
@@ -591,6 +592,70 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      EMBARAZO — ENFERMERÍA
 ════════════════════════════════════════ -->
+
+<!-- ════════════════════════════════════════
+     EXPEDIENTE — ENFERMERÍA
+════════════════════════════════════════ -->
+<div class="sc" id="sc-exp">
+  <div class="sh">
+    <div><h2>📁 Expediente del trabajador</h2><p>Vista y captura de datos clínicos</p></div>
+  </div>
+  <!-- Búsqueda -->
+  <div class="card cp" style="margin-bottom:12px">
+    <div class="sw">
+      <span class="si">🔍</span>
+      <input type="text" id="exp-q" placeholder="No. empleado o nombre..."
+        oninput="buscarEmpExp(this.value)" autocomplete="off">
+      <div class="sr-drop" id="exp-drop"></div>
+    </div>
+  </div>
+  <div id="exp-content" style="display:none">
+    <!-- Card empleado -->
+    <div id="exp-emp-card" style="margin-bottom:12px"></div>
+    <!-- Alergias -->
+    <div class="card cp" style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">⚠️ Alergias</div>
+        <button class="btn btn-ghost btn-xs" onclick="editarCampoExp('alergias')">✏️ Editar</button>
+      </div>
+      <div id="exp-alergias-view"></div>
+      <div id="exp-alergias-edit" style="display:none">
+        <input type="text" id="exp-alergias-input" placeholder="Penicilina, látex, AINES..." style="width:100%;padding:8px;border:1.5px solid var(--bor);border-radius:7px;font-size:13px">
+        <button class="btn btn-teal btn-sm" style="margin-top:6px" onclick="guardarCampoExp('alergias')">Guardar</button>
+      </div>
+    </div>
+    <!-- Enfermedades crónicas -->
+    <div class="card cp" style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">📋 Enfermedades crónicas</div>
+        <button class="btn btn-ghost btn-xs" onclick="editarCampoExp('cronicos')">✏️ Editar</button>
+      </div>
+      <div id="exp-cronicos-view"></div>
+      <div id="exp-cronicos-edit" style="display:none">
+        <input type="text" id="exp-cronicos-input" placeholder="DM2, HAS, hipotiroidismo, asma..." style="width:100%;padding:8px;border:1.5px solid var(--bor);border-radius:7px;font-size:13px">
+        <button class="btn btn-teal btn-sm" style="margin-top:6px" onclick="guardarCampoExp('cronicos')">Guardar</button>
+      </div>
+    </div>
+    <!-- Tratamientos actuales -->
+    <div class="card cp" style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">💊 Tratamientos actuales</div>
+        <button class="btn btn-ghost btn-xs" onclick="editarCampoExp('tratamientos')">✏️ Editar</button>
+      </div>
+      <div id="exp-tratamientos-view"></div>
+      <div id="exp-tratamientos-edit" style="display:none">
+        <input type="text" id="exp-tratamientos-input" placeholder="Metformina 850mg c/12h, Enalapril 10mg..." style="width:100%;padding:8px;border:1.5px solid var(--bor);border-radius:7px;font-size:13px">
+        <button class="btn btn-teal btn-sm" style="margin-top:6px" onclick="guardarCampoExp('tratamientos')">Guardar</button>
+      </div>
+    </div>
+    <!-- Historial consultas -->
+    <div class="card cp">
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:10px">📅 Historial de consultas</div>
+      <div id="exp-historial"></div>
+    </div>
+  </div>
+</div>
+
 <div class="sc" id="sc-emb">
   <div class="sh">
     <div><h2>🤰 Embarazo y Prenatal</h2><p>Registro y seguimiento — requiere validación del médico</p></div>
@@ -945,6 +1010,7 @@ function go(id){
   if(id==='regs'){buildRegMes();renderRegs();}
   if(id==='inc') renderInc();
   if(id==='emb') renderEmbEnf();
+  if(id==='exp'){ document.getElementById('exp-content').style.display='none'; document.getElementById('exp-q').value=''; }
   if(id==='cit') renderCitas();
   if(id==='rep') renderReporte();
   if(id==='hc'&&HC.length) renderHC('');
@@ -1094,6 +1160,7 @@ function mostrarAnt(noEmp){
   if(alArr.length){
     html+=`<div class="ant ant-al"><div class="ant-title" style="color:#DC2626">⚠️ Alergias registradas</div>${alArr.map(a=>`<span class="ant-tag" style="background:#FEE2E2;color:#991B1B">${a}</span>`).join('')}</div>`;
     const af=document.getElementById('f-alergias');if(af&&!af.value)af.value=alArr.join(', ');
+  const cf=document.getElementById('f-cronicos');if(cf&&!cf.value&&cronicos.length)cf.value=cronicos.join(', ');
   }
   if(cronicos.length){
     html+=`<div class="ant ant-cr"><div class="ant-title" style="color:#92400E">📋 Enfermedades crónicas</div>${cronicos.map(c=>`<span class="ant-tag" style="background:#FEF3C7;color:#92400E">${c}</span>`).join('')}</div>`;
@@ -1211,6 +1278,7 @@ async function guardarConsulta(){
     ta:g('f-ta'), fc:g('f-fc'), temp:g('f-temp'), peso:g('f-peso'),
     spo2:g('f-spo2'), glucosa:g('f-gluc'), fr:g('f-fr'), talla:g('f-talla'),
     incInicio:g('f-inc-inicio'), incFin:g('f-inc-fin'), incDias:g('f-inc-dias'),
+    cronicos:g('f-cronicos')||'',
     registradoPor:currentUser?.nombre||'Enfermería'
   };
   if(tipoActual==='int'){
@@ -1538,6 +1606,128 @@ async function guardarEmbEnf(){
 }
 function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal('mo-emb-enf'); }
 
+
+// ══════════════════════════════════════════════════════
+// EXPEDIENTE — ENFERMERÍA
+// ══════════════════════════════════════════════════════
+let _expNoEmp = null, _expData = null;
+
+function buscarEmpExp(val){
+  val=(val||'').trim();
+  const drop=document.getElementById('exp-drop');
+  if(!val||val.length<2){drop.classList.remove('show');return;}
+  const lc=val.toLowerCase();
+  const lista=HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
+  if(!lista.length){drop.classList.remove('show');return;}
+  drop.innerHTML=lista.map(e=>`<div class="sr-item" onclick="selEmpExp('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.turno||'—'}</div></div>`).join('');
+  drop.classList.add('show');
+}
+
+async function selEmpExp(noEmp){
+  _expNoEmp = noEmp;
+  const emp = HC.find(x=>String(x.noEmp)===String(noEmp));
+  document.getElementById('exp-q').value = emp ? emp.nombre+' (No.'+noEmp+')' : noEmp;
+  document.getElementById('exp-drop').classList.remove('show');
+  document.getElementById('exp-content').style.display='none';
+  // Cargar desde GAS
+  try{
+    setSyncDot('busy');
+    const r = await gasGet({action:'getExpCompleto', noEmp});
+    if(r.ok&&r.data){
+      _expData = r.data;
+      renderExpEnf(emp, r.data);
+      setSyncDot('ok');
+    } else {
+      // Fallback local
+      renderExpEnf(emp, {expediente:null, enfermeria:RE.filter(x=>String(x.noEmp||'').toLowerCase()===String(noEmp||'').toLowerCase()), valoraciones:[], nutricion:[], incapacidades:[], resumen:{}});
+      setSyncDot('err');
+    }
+  }catch(e){ setSyncDot('err'); }
+  document.getElementById('exp-content').style.display='block';
+}
+
+function renderExpEnf(emp, data){
+  const exp = data.expediente || {};
+  const res = data.resumen || {};
+  // Card empleado
+  const card = document.getElementById('exp-emp-card');
+  if(emp && card){
+    card.innerHTML=`<div class="emp-card"><div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${emp.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${emp.turno||'—'}</div></div><div class="ec-field"><label>Depto</label><div>${emp.depto||'—'}</div></div><div class="ec-field"><label>NSS</label><div>${emp.nss||'—'}</div></div></div></div>`;
+  }
+  // Alergias
+  const alergias = [...new Set([
+    ...(res.alergias||[]),
+    ...(exp.Alergias||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+  ])];
+  const alvEl = document.getElementById('exp-alergias-view');
+  const aliEl = document.getElementById('exp-alergias-input');
+  if(alvEl) alvEl.innerHTML = alergias.length
+    ? alergias.map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>';
+  if(aliEl) aliEl.value = alergias.join(', ');
+  // Enfermedades crónicas
+  const cronicos = [...new Set([
+    ...(res.cronicosAntecedentes||[]),
+    ...(exp.AntPatologicos||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+  ])];
+  const crvEl = document.getElementById('exp-cronicos-view');
+  const criEl = document.getElementById('exp-cronicos-input');
+  if(crvEl) crvEl.innerHTML = cronicos.length
+    ? cronicos.map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>';
+  if(criEl) criEl.value = cronicos.join(', ');
+  // Tratamientos
+  const tratas = [...new Set((res.tratamientosActivos||[]).filter(Boolean))];
+  const trvEl = document.getElementById('exp-tratamientos-view');
+  const triEl = document.getElementById('exp-tratamientos-input');
+  if(trvEl) trvEl.innerHTML = tratas.length
+    ? tratas.map(t=>`<div style="font-size:12px;padding:3px 0;color:var(--tx2)">💊 ${t}</div>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>';
+  if(triEl) triEl.value = tratas.join('; ');
+  // Historial consultas
+  const todas = [...(data.enfermeria||[]), ...(data.valoraciones||[])].sort((a,b)=>(b.fecha||b.Fecha||'').localeCompare(a.fecha||a.Fecha||''));
+  const hEl = document.getElementById('exp-historial');
+  if(hEl) hEl.innerHTML = todas.length
+    ? todas.slice(0,10).map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--bor);font-size:12px">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px">
+          <span style="color:var(--tx3)">${r.fecha||r.Fecha||'—'}</span>
+          <span class="pill ${r.origen||r.Origen==='Médico'?'pblue':'pteal'}">${r.origen||r.Origen||'Enfermería'}</span>
+        </div>
+        <div style="font-weight:600;margin-top:2px">${r.diagnostico||r.Diagnostico||'—'}</div>
+        ${(r.cronicos||r.Cronicos)?`<div style="font-size:11px;color:var(--amber)">📋 Crónico: ${r.cronicos||r.Cronicos}</div>`:''}
+      </div>`).join('')
+    : '<div style="color:var(--tx3);font-size:12px;padding:10px 0;text-align:center">Sin consultas registradas</div>';
+}
+
+function editarCampoExp(campo){
+  document.getElementById('exp-'+campo+'-view').style.display='none';
+  document.getElementById('exp-'+campo+'-edit').style.display='block';
+  document.getElementById('exp-'+campo+'-input').focus();
+}
+
+async function guardarCampoExp(campo){
+  const val = document.getElementById('exp-'+campo+'-input').value.trim();
+  const noEmp = _expNoEmp; if(!noEmp) return;
+  const payload = {NoEmp: noEmp};
+  if(campo==='alergias') payload.Alergias = val;
+  if(campo==='cronicos') payload.AntPatologicos = val;
+  if(campo==='tratamientos') payload.TratamientosActuales = val;
+  setSyncDot('busy');
+  const r = await gasPost({action:'saveExpediente', exp:payload});
+  setSyncDot(r.ok?'ok':'err');
+  toast(r.ok?'✅ Expediente actualizado':'⚠️ Error al guardar','ok');
+  document.getElementById('exp-'+campo+'-edit').style.display='none';
+  document.getElementById('exp-'+campo+'-view').style.display='block';
+  // Update view
+  if(campo==='alergias'){
+    const el=document.getElementById('exp-alergias-view');
+    if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin alergias</span>';
+  }
+  if(campo==='cronicos'){
+    const el=document.getElementById('exp-cronicos-view');
+    if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>';
+  }
+}
 // ══════════════════════════════════════════════════════
 // INCAPACIDADES
 // ══════════════════════════════════════════════════════
@@ -1643,6 +1833,127 @@ async function guardarEmbEnf(){
 }
 function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal('mo-emb-enf'); }
 
+
+// ══════════════════════════════════════════════════════
+// EXPEDIENTE — ENFERMERÍA
+// ══════════════════════════════════════════════════════
+
+function buscarEmpExp(val){
+  val=(val||'').trim();
+  const drop=document.getElementById('exp-drop');
+  if(!val||val.length<2){drop.classList.remove('show');return;}
+  const lc=val.toLowerCase();
+  const lista=HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
+  if(!lista.length){drop.classList.remove('show');return;}
+  drop.innerHTML=lista.map(e=>`<div class="sr-item" onclick="selEmpExp('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.turno||'—'}</div></div>`).join('');
+  drop.classList.add('show');
+}
+
+async function selEmpExp(noEmp){
+  _expNoEmp = noEmp;
+  const emp = HC.find(x=>String(x.noEmp)===String(noEmp));
+  document.getElementById('exp-q').value = emp ? emp.nombre+' (No.'+noEmp+')' : noEmp;
+  document.getElementById('exp-drop').classList.remove('show');
+  document.getElementById('exp-content').style.display='none';
+  // Cargar desde GAS
+  try{
+    setSyncDot('busy');
+    const r = await gasGet({action:'getExpCompleto', noEmp});
+    if(r.ok&&r.data){
+      _expData = r.data;
+      renderExpEnf(emp, r.data);
+      setSyncDot('ok');
+    } else {
+      // Fallback local
+      renderExpEnf(emp, {expediente:null, enfermeria:RE.filter(x=>String(x.noEmp||'').toLowerCase()===String(noEmp||'').toLowerCase()), valoraciones:[], nutricion:[], incapacidades:[], resumen:{}});
+      setSyncDot('err');
+    }
+  }catch(e){ setSyncDot('err'); }
+  document.getElementById('exp-content').style.display='block';
+}
+
+function renderExpEnf(emp, data){
+  const exp = data.expediente || {};
+  const res = data.resumen || {};
+  // Card empleado
+  const card = document.getElementById('exp-emp-card');
+  if(emp && card){
+    card.innerHTML=`<div class="emp-card"><div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${emp.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${emp.turno||'—'}</div></div><div class="ec-field"><label>Depto</label><div>${emp.depto||'—'}</div></div><div class="ec-field"><label>NSS</label><div>${emp.nss||'—'}</div></div></div></div>`;
+  }
+  // Alergias
+  const alergias = [...new Set([
+    ...(res.alergias||[]),
+    ...(exp.Alergias||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+  ])];
+  const alvEl = document.getElementById('exp-alergias-view');
+  const aliEl = document.getElementById('exp-alergias-input');
+  if(alvEl) alvEl.innerHTML = alergias.length
+    ? alergias.map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>';
+  if(aliEl) aliEl.value = alergias.join(', ');
+  // Enfermedades crónicas
+  const cronicos = [...new Set([
+    ...(res.cronicosAntecedentes||[]),
+    ...(exp.AntPatologicos||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+  ])];
+  const crvEl = document.getElementById('exp-cronicos-view');
+  const criEl = document.getElementById('exp-cronicos-input');
+  if(crvEl) crvEl.innerHTML = cronicos.length
+    ? cronicos.map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>';
+  if(criEl) criEl.value = cronicos.join(', ');
+  // Tratamientos
+  const tratas = [...new Set((res.tratamientosActivos||[]).filter(Boolean))];
+  const trvEl = document.getElementById('exp-tratamientos-view');
+  const triEl = document.getElementById('exp-tratamientos-input');
+  if(trvEl) trvEl.innerHTML = tratas.length
+    ? tratas.map(t=>`<div style="font-size:12px;padding:3px 0;color:var(--tx2)">💊 ${t}</div>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>';
+  if(triEl) triEl.value = tratas.join('; ');
+  // Historial consultas
+  const todas = [...(data.enfermeria||[]), ...(data.valoraciones||[])].sort((a,b)=>(b.fecha||b.Fecha||'').localeCompare(a.fecha||a.Fecha||''));
+  const hEl = document.getElementById('exp-historial');
+  if(hEl) hEl.innerHTML = todas.length
+    ? todas.slice(0,10).map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--bor);font-size:12px">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px">
+          <span style="color:var(--tx3)">${r.fecha||r.Fecha||'—'}</span>
+          <span class="pill ${r.origen||r.Origen==='Médico'?'pblue':'pteal'}">${r.origen||r.Origen||'Enfermería'}</span>
+        </div>
+        <div style="font-weight:600;margin-top:2px">${r.diagnostico||r.Diagnostico||'—'}</div>
+        ${(r.cronicos||r.Cronicos)?`<div style="font-size:11px;color:var(--amber)">📋 Crónico: ${r.cronicos||r.Cronicos}</div>`:''}
+      </div>`).join('')
+    : '<div style="color:var(--tx3);font-size:12px;padding:10px 0;text-align:center">Sin consultas registradas</div>';
+}
+
+function editarCampoExp(campo){
+  document.getElementById('exp-'+campo+'-view').style.display='none';
+  document.getElementById('exp-'+campo+'-edit').style.display='block';
+  document.getElementById('exp-'+campo+'-input').focus();
+}
+
+async function guardarCampoExp(campo){
+  const val = document.getElementById('exp-'+campo+'-input').value.trim();
+  const noEmp = _expNoEmp; if(!noEmp) return;
+  const payload = {NoEmp: noEmp};
+  if(campo==='alergias') payload.Alergias = val;
+  if(campo==='cronicos') payload.AntPatologicos = val;
+  if(campo==='tratamientos') payload.TratamientosActuales = val;
+  setSyncDot('busy');
+  const r = await gasPost({action:'saveExpediente', exp:payload});
+  setSyncDot(r.ok?'ok':'err');
+  toast(r.ok?'✅ Expediente actualizado':'⚠️ Error al guardar','ok');
+  document.getElementById('exp-'+campo+'-edit').style.display='none';
+  document.getElementById('exp-'+campo+'-view').style.display='block';
+  // Update view
+  if(campo==='alergias'){
+    const el=document.getElementById('exp-alergias-view');
+    if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin alergias</span>';
+  }
+  if(campo==='cronicos'){
+    const el=document.getElementById('exp-cronicos-view');
+    if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>';
+  }
+}
 // ══════════════════════════════════════════════════════
 // INCAPACIDADES
 // ══════════════════════════════════════════════════════
@@ -1857,6 +2168,7 @@ async function guardarInc(){
     turno:g('inc-turno-h'), depto:g('inc-depto-h'),
     puesto:g('inc-puesto-h'), nss:g('inc-nss-h'),
     fecha:new Date().toLocaleDateString('es-MX'),
+    cronicos:g('f-cronicos')||'',
     registradoPor:currentUser?.nombre||'Enfermería',
     mes:MESES[new Date().getMonth()], anio:new Date().getFullYear()
   };
