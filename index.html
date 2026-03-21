@@ -349,6 +349,12 @@ tr:hover td{background:var(--surf2)}
       <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">📋 Datos clínicos</div>
       <!-- Tipo de consulta -->
       <div class="fi">
+        <label>CIE-10 (busca por código o descripción)</label>
+        <input type="text" id="f-cie10-input" placeholder="Ej: J06.9 o infección respiratoria..." autocomplete="off">
+        <input type="hidden" id="f-cie10">
+        <input type="hidden" id="f-sistema-cie">
+      </div>
+      <div class="fi">
         <label>Tipo de consulta</label>
         <select id="f-tipo" onchange="onTipoChange()">
           <option>Enfermedad general</option>
@@ -1039,6 +1045,29 @@ function selEmp(noEmp){
   card.style.display='block';
   mostrarAnt(noEmp);
   document.getElementById('fc').style.display='block';
+  setTimeout(()=>{
+    initCIE10Selector('f-cie10-input', (code, desc, sis) => {
+      document.getElementById('f-cie10').value = code;
+      document.getElementById('f-sistema-cie').value = sis;
+      const dxEl = document.getElementById('f-dx');
+      if(dxEl && !dxEl.value) dxEl.value = desc;
+      // Auto-set sistema
+      const sisEl = document.getElementById('f-sis');
+      if(sisEl) {
+        const map = {
+          'Musculoesquelético':'musculo','Traumatología':'musculo',
+          'Cardiovascular':'cardiovascular','Respiratorio':'respiratorio',
+          'Digestivo':'digestivo','Neurológico':'neurologico',
+          'Dermatológico':'dermato','Genitourinario':'genitourinario',
+          'Endocrino/Metabólico':'endocrino','Psiquiátrico/Mental':'psiquiatrico',
+          'Oftalmológico':'oftalmo','Auditivo':'auditivo',
+          'Ginecológico/Obstétrico':'gineco','Infeccioso':'otro'
+        };
+        const val = map[sis];
+        if(val) sisEl.value = val;
+      }
+    });
+  }, 100);
   // Cargar datos de otras apps desde GAS
   cargarAntDesdeGAS(noEmp);
 }
@@ -1176,7 +1205,7 @@ async function guardarConsulta(){
     id:Date.now(), tipoTrabajador:tipoActual==='int'?'interno':'externo',
     fecha:ahora.toLocaleDateString('es-MX'), hora:ahora.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}),
     mes:MESES[ahora.getMonth()], mesNum:ahora.getMonth()+1, anio:ahora.getFullYear(), semana,
-    diagnostico:dx, sistema:g('f-sis')||'otro', tratamiento:g('f-trat'),
+    diagnostico:dx, cie10:g('f-cie10')||'', sistema:g('f-sis')||g('f-sistema-cie')||'otro', tratamiento:g('f-trat'),
     tipo:g('f-tipo'), seguimiento:g('f-seg'), incapacidad:g('f-incap'),
     alergias:g('f-alergias'), notas:g('f-notas'),
     ta:g('f-ta'), fc:g('f-fc'), temp:g('f-temp'), peso:g('f-peso'),
@@ -2234,6 +2263,412 @@ document.addEventListener('DOMContentLoaded', async function(){
   syncEmb();
 });
 window.addEventListener('error',e=>{console.warn('[ENF]',e.message,e.lineno);});
+
+// ══ CIE-10 ══
+// ══════════════════════════════════════════════════════════════════════
+// CIE-10 — Módulo compartido Salud Ocupacional Teleflex
+// ~500 códigos priorizados para medicina del trabajo
+// Uso: window.CIE10 disponible en médico y enfermería
+// ══════════════════════════════════════════════════════════════════════
+const CIE10 = [
+  // ── MUSCULOESQUELÉTICO ──────────────────────────────────────────
+  {c:'M54.5',d:'Lumbago no especificado',s:'Musculoesquelético'},
+  {c:'M54.4',d:'Lumbociatalgia',s:'Musculoesquelético'},
+  {c:'M54.2',d:'Cervicalgia',s:'Musculoesquelético'},
+  {c:'M54.6',d:'Dolor en la columna dorsal',s:'Musculoesquelético'},
+  {c:'M54.3',d:'Ciática',s:'Musculoesquelético'},
+  {c:'M75.1',d:'Síndrome del manguito rotador',s:'Musculoesquelético'},
+  {c:'M75.0',d:'Capsulitis adhesiva del hombro',s:'Musculoesquelético'},
+  {c:'M77.1',d:'Epicondilitis lateral (codo de tenista)',s:'Musculoesquelético'},
+  {c:'M77.0',d:'Epicondilitis medial (codo de golfista)',s:'Musculoesquelético'},
+  {c:'M65.3',d:'Dedo en gatillo',s:'Musculoesquelético'},
+  {c:'G54.2',d:'Síndrome del túnel carpiano',s:'Musculoesquelético'},
+  {c:'M70.0',d:'Tenosinovitis del estiloides radial (De Quervain)',s:'Musculoesquelético'},
+  {c:'M79.3',d:'Paniculitis',s:'Musculoesquelético'},
+  {c:'M79.1',d:'Mialgia',s:'Musculoesquelético'},
+  {c:'M79.6',d:'Dolor en miembro',s:'Musculoesquelético'},
+  {c:'M25.5',d:'Dolor en articulación',s:'Musculoesquelético'},
+  {c:'M17.1',d:'Gonartrosis primaria',s:'Musculoesquelético'},
+  {c:'M16.1',d:'Coxartrosis primaria',s:'Musculoesquelético'},
+  {c:'M19.9',d:'Artrosis no especificada',s:'Musculoesquelético'},
+  {c:'M06.9',d:'Artritis reumatoide no especificada',s:'Musculoesquelético'},
+  {c:'M10.9',d:'Gota no especificada',s:'Musculoesquelético'},
+  {c:'M47.8',d:'Espondiloartrosis',s:'Musculoesquelético'},
+  {c:'M51.1',d:'Degeneración de disco intervertebral lumbar',s:'Musculoesquelético'},
+  {c:'M48.0',d:'Estenosis espinal',s:'Musculoesquelético'},
+  {c:'M62.8',d:'Espasmo muscular',s:'Musculoesquelético'},
+  {c:'M79.0',d:'Reumatismo no especificado',s:'Musculoesquelético'},
+  {c:'M76.6',d:'Tendinitis aquiliana',s:'Musculoesquelético'},
+  {c:'M72.2',d:'Fibromatosis plantar (fascitis plantar)',s:'Musculoesquelético'},
+  {c:'M67.4',d:'Quiste de Baker',s:'Musculoesquelético'},
+  {c:'M23.2',d:'Lesión de menisco',s:'Musculoesquelético'},
+
+  // ── TRAUMATOLOGÍA / ACCIDENTES ─────────────────────────────────
+  {c:'S00.9',d:'Traumatismo superficial de la cabeza, no especificado',s:'Traumatología'},
+  {c:'S09.9',d:'Traumatismo de la cabeza, no especificado',s:'Traumatología'},
+  {c:'S20.2',d:'Contusión del tórax',s:'Traumatología'},
+  {c:'S30.1',d:'Contusión de la pared abdominal',s:'Traumatología'},
+  {c:'S40.0',d:'Contusión del hombro',s:'Traumatología'},
+  {c:'S50.0',d:'Contusión del codo',s:'Traumatología'},
+  {c:'S60.0',d:'Contusión del dedo de la mano',s:'Traumatología'},
+  {c:'S60.2',d:'Contusión de la mano',s:'Traumatología'},
+  {c:'S70.0',d:'Contusión de la cadera',s:'Traumatología'},
+  {c:'S80.0',d:'Contusión de la rodilla',s:'Traumatología'},
+  {c:'S90.0',d:'Contusión del tobillo',s:'Traumatología'},
+  {c:'S90.3',d:'Contusión del dedo del pie',s:'Traumatología'},
+  {c:'S52.5',d:'Fractura de la extremidad distal del radio',s:'Traumatología'},
+  {c:'S62.5',d:'Fractura de metacarpiano',s:'Traumatología'},
+  {c:'S82.6',d:'Fractura del peroné',s:'Traumatología'},
+  {c:'S92.3',d:'Fractura del metatarsiano',s:'Traumatología'},
+  {c:'S93.4',d:'Esguince del tobillo',s:'Traumatología'},
+  {c:'S83.6',d:'Esguince y torcedura de la rodilla',s:'Traumatología'},
+  {c:'S43.4',d:'Esguince del hombro',s:'Traumatología'},
+  {c:'T14.0',d:'Herida de región no especificada del cuerpo',s:'Traumatología'},
+  {c:'T14.1',d:'Fractura de región no especificada',s:'Traumatología'},
+  {c:'T30.0',d:'Quemadura de grado no especificado',s:'Traumatología'},
+  {c:'T30.1',d:'Quemadura de primer grado',s:'Traumatología'},
+  {c:'T30.2',d:'Quemadura de segundo grado',s:'Traumatología'},
+  {c:'W19',d:'Caída no especificada',s:'Traumatología'},
+  {c:'W01',d:'Caída en el mismo nivel por resbalón o tropezón',s:'Traumatología'},
+  {c:'X50',d:'Esfuerzo y movimientos extenuantes (sobreesfuerzo)',s:'Traumatología'},
+  {c:'S61.0',d:'Herida del dedo de la mano sin daño de la uña',s:'Traumatología'},
+  {c:'T08',d:'Fractura de columna, nivel no especificado',s:'Traumatología'},
+  {c:'T75.4',d:'Efectos de la corriente eléctrica',s:'Traumatología'},
+
+  // ── CARDIOVASCULAR ─────────────────────────────────────────────
+  {c:'I10',d:'Hipertensión arterial esencial primaria',s:'Cardiovascular'},
+  {c:'I11.9',d:'Cardiopatía hipertensiva sin insuficiencia cardíaca',s:'Cardiovascular'},
+  {c:'I25.1',d:'Enfermedad coronaria aterosclerótica',s:'Cardiovascular'},
+  {c:'I20.9',d:'Angina de pecho no especificada',s:'Cardiovascular'},
+  {c:'I50.9',d:'Insuficiencia cardíaca no especificada',s:'Cardiovascular'},
+  {c:'I48',d:'Fibrilación y aleteo auricular',s:'Cardiovascular'},
+  {c:'I49.9',d:'Arritmia cardíaca no especificada',s:'Cardiovascular'},
+  {c:'I83.9',d:'Várices de los miembros inferiores sin úlcera ni inflamación',s:'Cardiovascular'},
+  {c:'I87.2',d:'Insuficiencia venosa (crónica)',s:'Cardiovascular'},
+  {c:'R00.0',d:'Taquicardia no especificada',s:'Cardiovascular'},
+  {c:'R00.1',d:'Bradicardia no especificada',s:'Cardiovascular'},
+  {c:'R01.1',d:'Soplo cardíaco',s:'Cardiovascular'},
+  {c:'R03.0',d:'Lectura de presión arterial alta sin diagnóstico de hipertensión',s:'Cardiovascular'},
+  {c:'I73.9',d:'Enfermedad vascular periférica no especificada',s:'Cardiovascular'},
+  {c:'I84.9',d:'Hemorroides sin complicación',s:'Cardiovascular'},
+
+  // ── RESPIRATORIO ───────────────────────────────────────────────
+  {c:'J06.9',d:'Infección aguda de las vías respiratorias superiores, no especificada',s:'Respiratorio'},
+  {c:'J00',d:'Rinofaringitis aguda (resfriado común)',s:'Respiratorio'},
+  {c:'J02.9',d:'Faringitis aguda no especificada',s:'Respiratorio'},
+  {c:'J03.9',d:'Amigdalitis aguda no especificada',s:'Respiratorio'},
+  {c:'J04.0',d:'Laringitis aguda',s:'Respiratorio'},
+  {c:'J20.9',d:'Bronquitis aguda no especificada',s:'Respiratorio'},
+  {c:'J18.9',d:'Neumonía no especificada',s:'Respiratorio'},
+  {c:'J45.9',d:'Asma no especificada',s:'Respiratorio'},
+  {c:'J45.0',d:'Asma predominantemente alérgica',s:'Respiratorio'},
+  {c:'J44.1',d:'EPOC con exacerbación aguda',s:'Respiratorio'},
+  {c:'J30.1',d:'Rinitis alérgica debida al polen',s:'Respiratorio'},
+  {c:'J30.4',d:'Rinitis alérgica crónica',s:'Respiratorio'},
+  {c:'J31.0',d:'Rinitis crónica',s:'Respiratorio'},
+  {c:'J32.9',d:'Sinusitis crónica no especificada',s:'Respiratorio'},
+  {c:'J01.9',d:'Sinusitis aguda no especificada',s:'Respiratorio'},
+  {c:'R05',d:'Tos',s:'Respiratorio'},
+  {c:'R06.0',d:'Disnea',s:'Respiratorio'},
+  {c:'J70.2',d:'Neumonitis por inhalación de polvo',s:'Respiratorio'},
+  {c:'J68.0',d:'Bronquitis y neumonitis por inhalación de gases',s:'Respiratorio'},
+  {c:'U07.1',d:'COVID-19 confirmado',s:'Respiratorio'},
+
+  // ── DIGESTIVO ──────────────────────────────────────────────────
+  {c:'K21.0',d:'Enfermedad por reflujo gastroesofágico con esofagitis',s:'Digestivo'},
+  {c:'K21.9',d:'Enfermedad por reflujo gastroesofágico sin esofagitis',s:'Digestivo'},
+  {c:'K25.9',d:'Úlcera gástrica no especificada',s:'Digestivo'},
+  {c:'K26.9',d:'Úlcera duodenal no especificada',s:'Digestivo'},
+  {c:'K29.7',d:'Gastritis no especificada',s:'Digestivo'},
+  {c:'K52.9',d:'Gastroenteritis y colitis no infecciosa no especificada',s:'Digestivo'},
+  {c:'A09',d:'Diarrea y gastroenteritis de presunto origen infeccioso',s:'Digestivo'},
+  {c:'K59.0',d:'Estreñimiento',s:'Digestivo'},
+  {c:'K58.9',d:'Síndrome del colon irritable sin diarrea',s:'Digestivo'},
+  {c:'K57.3',d:'Enfermedad diverticular del intestino grueso sin perforación',s:'Digestivo'},
+  {c:'K80.2',d:'Colelitiasis con colecistitis crónica',s:'Digestivo'},
+  {c:'K80.1',d:'Cálculo de la vesícula biliar con colecistitis aguda',s:'Digestivo'},
+  {c:'K92.1',d:'Melena',s:'Digestivo'},
+  {c:'R10.4',d:'Otros dolores abdominales y los no especificados',s:'Digestivo'},
+  {c:'R11',d:'Náusea y vómito',s:'Digestivo'},
+  {c:'K74.6',d:'Cirrosis hepática no especificada',s:'Digestivo'},
+  {c:'K76.0',d:'Hígado graso no alcohólico',s:'Digestivo'},
+  {c:'B19.9',d:'Hepatitis viral no especificada',s:'Digestivo'},
+  {c:'K62.5',d:'Hemorragia del ano y del recto',s:'Digestivo'},
+  {c:'K90.0',d:'Enfermedad celíaca',s:'Digestivo'},
+
+  // ── ENDOCRINO / METABÓLICO ─────────────────────────────────────
+  {c:'E11.9',d:'Diabetes mellitus tipo 2 sin complicaciones',s:'Endocrino/Metabólico'},
+  {c:'E11.6',d:'Diabetes mellitus tipo 2 con complicaciones no especificadas',s:'Endocrino/Metabólico'},
+  {c:'E10.9',d:'Diabetes mellitus tipo 1 sin complicaciones',s:'Endocrino/Metabólico'},
+  {c:'E78.0',d:'Hipercolesterolemia pura',s:'Endocrino/Metabólico'},
+  {c:'E78.1',d:'Hipertrigliceridemia pura',s:'Endocrino/Metabólico'},
+  {c:'E78.5',d:'Hiperlipidemia no especificada',s:'Endocrino/Metabólico'},
+  {c:'E03.9',d:'Hipotiroidismo no especificado',s:'Endocrino/Metabólico'},
+  {c:'E05.9',d:'Tirotoxicosis no especificada',s:'Endocrino/Metabólico'},
+  {c:'E04.9',d:'Bocio no tóxico no especificado',s:'Endocrino/Metabólico'},
+  {c:'E66.9',d:'Obesidad no especificada',s:'Endocrino/Metabólico'},
+  {c:'E66.0',d:'Obesidad debida a exceso de calorías',s:'Endocrino/Metabólico'},
+  {c:'E63.9',d:'Deficiencia nutricional no especificada',s:'Endocrino/Metabólico'},
+  {c:'E55.9',d:'Deficiencia de vitamina D no especificada',s:'Endocrino/Metabólico'},
+  {c:'E50.9',d:'Deficiencia de vitamina A no especificada',s:'Endocrino/Metabólico'},
+  {c:'E61.1',d:'Deficiencia de hierro',s:'Endocrino/Metabólico'},
+  {c:'E83.5',d:'Trastornos del metabolismo del calcio',s:'Endocrino/Metabólico'},
+  {c:'E16.2',d:'Hipoglucemia no especificada',s:'Endocrino/Metabólico'},
+  {c:'E87.1',d:'Hiponatremia',s:'Endocrino/Metabólico'},
+  {c:'E87.6',d:'Hipocalemia',s:'Endocrino/Metabólico'},
+  {c:'E88.0',d:'Trastorno del metabolismo de proteínas plasmáticas',s:'Endocrino/Metabólico'},
+
+  // ── NEUROLÓGICO ────────────────────────────────────────────────
+  {c:'G43.9',d:'Migraña no especificada',s:'Neurológico'},
+  {c:'G43.0',d:'Migraña sin aura (migraña común)',s:'Neurológico'},
+  {c:'G44.2',d:'Cefalea tensional',s:'Neurológico'},
+  {c:'R51',d:'Cefalea',s:'Neurológico'},
+  {c:'G40.9',d:'Epilepsia no especificada',s:'Neurológico'},
+  {c:'G45.9',d:'Ataque isquémico transitorio no especificado',s:'Neurológico'},
+  {c:'G63.2',d:'Polineuropatía diabética',s:'Neurológico'},
+  {c:'G62.9',d:'Polineuropatía no especificada',s:'Neurológico'},
+  {c:'G54.2',d:'Síndrome del túnel carpiano',s:'Neurológico'},
+  {c:'G51.0',d:'Parálisis de Bell',s:'Neurológico'},
+  {c:'G35',d:'Esclerosis múltiple',s:'Neurológico'},
+  {c:'R42',d:'Mareo y desvanecimiento',s:'Neurológico'},
+  {c:'R55',d:'Síncope y colapso',s:'Neurológico'},
+  {c:'R25.2',d:'Calambre y espasmo',s:'Neurológico'},
+  {c:'G89.2',d:'Dolor crónico',s:'Neurológico'},
+  {c:'G47.0',d:'Insomnio',s:'Neurológico'},
+  {c:'G47.3',d:'Apnea del sueño',s:'Neurológico'},
+  {c:'H81.1',d:'Vértigo paroxístico benigno',s:'Neurológico'},
+  {c:'H81.3',d:'Otras alteraciones del equilibrio (vértigo)',s:'Neurológico'},
+  {c:'G20',d:'Enfermedad de Parkinson',s:'Neurológico'},
+
+  // ── PSIQUIÁTRICO / MENTAL ──────────────────────────────────────
+  {c:'F41.1',d:'Trastorno de ansiedad generalizada',s:'Psiquiátrico/Mental'},
+  {c:'F41.0',d:'Trastorno de pánico',s:'Psiquiátrico/Mental'},
+  {c:'F32.9',d:'Episodio depresivo no especificado',s:'Psiquiátrico/Mental'},
+  {c:'F33.9',d:'Trastorno depresivo recurrente no especificado',s:'Psiquiátrico/Mental'},
+  {c:'F43.1',d:'Trastorno de estrés postraumático',s:'Psiquiátrico/Mental'},
+  {c:'F43.2',d:'Trastornos de adaptación',s:'Psiquiátrico/Mental'},
+  {c:'F43.0',d:'Reacción al estrés agudo',s:'Psiquiátrico/Mental'},
+  {c:'Z73.0',d:'Síndrome de agotamiento (burnout)',s:'Psiquiátrico/Mental'},
+  {c:'F10.1',d:'Trastorno mental por uso de alcohol — uso nocivo',s:'Psiquiátrico/Mental'},
+  {c:'F17.2',d:'Trastornos mentales por nicotina — dependencia',s:'Psiquiátrico/Mental'},
+  {c:'F51.0',d:'Insomnio no orgánico',s:'Psiquiátrico/Mental'},
+  {c:'F45.0',d:'Trastorno de somatización',s:'Psiquiátrico/Mental'},
+  {c:'F45.1',d:'Trastorno somatomorfo indiferenciado',s:'Psiquiátrico/Mental'},
+  {c:'F20.9',d:'Esquizofrenia no especificada',s:'Psiquiátrico/Mental'},
+  {c:'F31.9',d:'Trastorno bipolar no especificado',s:'Psiquiátrico/Mental'},
+  {c:'F90.0',d:'TDAH predominantemente inatento',s:'Psiquiátrico/Mental'},
+  {c:'F40.1',d:'Fobias sociales',s:'Psiquiátrico/Mental'},
+  {c:'Z56.0',d:'Desempleo',s:'Psiquiátrico/Mental'},
+  {c:'Z56.6',d:'Otras dificultades físicas y mentales relacionadas con el trabajo',s:'Psiquiátrico/Mental'},
+  {c:'Z60.0',d:'Problemas de ajuste a las transiciones en el ciclo vital',s:'Psiquiátrico/Mental'},
+
+  // ── DERMATOLÓGICO ─────────────────────────────────────────────
+  {c:'L23.9',d:'Dermatitis alérgica de contacto no especificada',s:'Dermatológico'},
+  {c:'L24.9',d:'Dermatitis irritativa de contacto no especificada',s:'Dermatológico'},
+  {c:'L25.9',d:'Dermatitis de contacto no especificada',s:'Dermatológico'},
+  {c:'L20.9',d:'Dermatitis atópica no especificada',s:'Dermatológico'},
+  {c:'L30.9',d:'Dermatitis no especificada',s:'Dermatológico'},
+  {c:'L50.9',d:'Urticaria no especificada',s:'Dermatológico'},
+  {c:'L40.0',d:'Psoriasis vulgar',s:'Dermatológico'},
+  {c:'B35.1',d:'Tiña de la mano',s:'Dermatológico'},
+  {c:'B35.3',d:'Tiña del pie (pie de atleta)',s:'Dermatológico'},
+  {c:'B35.4',d:'Tiña del cuerpo',s:'Dermatológico'},
+  {c:'B02.9',d:'Zóster sin complicaciones (herpes zóster)',s:'Dermatológico'},
+  {c:'L60.0',d:'Uña encarnada',s:'Dermatológico'},
+  {c:'L70.0',d:'Acné vulgar',s:'Dermatológico'},
+  {c:'L72.0',d:'Quiste epidérmico',s:'Dermatológico'},
+  {c:'L08.0',d:'Piodermia',s:'Dermatológico'},
+  {c:'L03.9',d:'Celulitis no especificada',s:'Dermatológico'},
+  {c:'L02.9',d:'Absceso cutáneo, forúnculo y ántrax no especificados',s:'Dermatológico'},
+  {c:'T78.4',d:'Alergia no especificada',s:'Dermatológico'},
+  {c:'R21',d:'Erupción y otras erupciones cutáneas inespecíficas',s:'Dermatológico'},
+  {c:'L57.0',d:'Queratosis actínica',s:'Dermatológico'},
+
+  // ── GENITOURINARIO ─────────────────────────────────────────────
+  {c:'N39.0',d:'Infección de las vías urinarias de sitio no especificado',s:'Genitourinario'},
+  {c:'N30.0',d:'Cistitis aguda',s:'Genitourinario'},
+  {c:'N10',d:'Nefritis tubulointersticial aguda',s:'Genitourinario'},
+  {c:'N20.0',d:'Cálculo del riñón',s:'Genitourinario'},
+  {c:'N20.1',d:'Cálculo del uréter',s:'Genitourinario'},
+  {c:'N40',d:'Hiperplasia de la próstata',s:'Genitourinario'},
+  {c:'N42.1',d:'Prostatitis crónica',s:'Genitourinario'},
+  {c:'R31',d:'Hematuria no especificada',s:'Genitourinario'},
+  {c:'R32',d:'Incontinencia urinaria no especificada',s:'Genitourinario'},
+  {c:'R33',d:'Retención de orina',s:'Genitourinario'},
+  {c:'N18.9',d:'Enfermedad renal crónica no especificada',s:'Genitourinario'},
+  {c:'N04.9',d:'Síndrome nefrótico no especificado',s:'Genitourinario'},
+
+  // ── GINECOLÓGICO / OBSTÉTRICO ──────────────────────────────────
+  {c:'N94.6',d:'Dismenorrea no especificada',s:'Ginecológico/Obstétrico'},
+  {c:'N94.3',d:'Síndrome de tensión premenstrual',s:'Ginecológico/Obstétrico'},
+  {c:'N92.0',d:'Menstruación excesiva y frecuente con ciclo regular',s:'Ginecológico/Obstétrico'},
+  {c:'N92.6',d:'Menstruación irregular no especificada',s:'Ginecológico/Obstétrico'},
+  {c:'N91.2',d:'Amenorrea no especificada',s:'Ginecológico/Obstétrico'},
+  {c:'N76.0',d:'Vaginitis aguda',s:'Ginecológico/Obstétrico'},
+  {c:'N72',d:'Enfermedad inflamatoria del cuello del útero (cervicitis)',s:'Ginecológico/Obstétrico'},
+  {c:'N80.0',d:'Endometriosis del útero',s:'Ginecológico/Obstétrico'},
+  {c:'N83.2',d:'Quiste ovárico no especificado',s:'Ginecológico/Obstétrico'},
+  {c:'Z34.0',d:'Supervisión de embarazo normal primigesta',s:'Ginecológico/Obstétrico'},
+  {c:'Z34.9',d:'Supervisión de embarazo normal no especificado',s:'Ginecológico/Obstétrico'},
+  {c:'O21.0',d:'Hiperemesis gravídica leve',s:'Ginecológico/Obstétrico'},
+  {c:'O13',d:'Hipertensión gestacional',s:'Ginecológico/Obstétrico'},
+  {c:'O24.4',d:'Diabetes mellitus que se origina en el embarazo',s:'Ginecológico/Obstétrico'},
+  {c:'N60.1',d:'Mastopatía fibroquística difusa',s:'Ginecológico/Obstétrico'},
+  {c:'Z30.0',d:'Asesoramiento general sobre anticoncepción',s:'Ginecológico/Obstétrico'},
+  {c:'N95.1',d:'Menopausia y climaterio femenino',s:'Ginecológico/Obstétrico'},
+  {c:'B37.3',d:'Candidiasis de la vulva y de la vagina',s:'Ginecológico/Obstétrico'},
+  {c:'A59.0',d:'Tricomoniasis urogenital',s:'Ginecológico/Obstétrico'},
+  {c:'N41.1',d:'Enfermedad inflamatoria pélvica crónica',s:'Ginecológico/Obstétrico'},
+
+  // ── OFTALMOLÓGICO ─────────────────────────────────────────────
+  {c:'H52.1',d:'Miopía',s:'Oftalmológico'},
+  {c:'H52.0',d:'Hipermetropía',s:'Oftalmológico'},
+  {c:'H52.2',d:'Astigmatismo',s:'Oftalmológico'},
+  {c:'H40.9',d:'Glaucoma no especificado',s:'Oftalmológico'},
+  {c:'H26.9',d:'Catarata no especificada',s:'Oftalmológico'},
+  {c:'H10.9',d:'Conjuntivitis no especificada',s:'Oftalmológico'},
+  {c:'H10.1',d:'Conjuntivitis atópica aguda',s:'Oftalmológico'},
+  {c:'H11.3',d:'Hemorragia conjuntival',s:'Oftalmológico'},
+  {c:'H57.1',d:'Alteraciones del ojo, no especificadas (dolor ocular)',s:'Oftalmológico'},
+  {c:'H53.1',d:'Alteraciones visuales subjetivas',s:'Oftalmológico'},
+  {c:'H04.1',d:'Otros trastornos de la glándula lagrimal (ojo seco)',s:'Oftalmológico'},
+  {c:'H00.0',d:'Orzuelo y otras inflamaciones profundas del párpado',s:'Oftalmológico'},
+  {c:'T15.9',d:'Cuerpo extraño en parte externa del ojo no especificada',s:'Oftalmológico'},
+  {c:'H36.0',d:'Retinopatía diabética',s:'Oftalmológico'},
+  {c:'H35.3',d:'Degeneración macular',s:'Oftalmológico'},
+
+  // ── AUDITIVO ──────────────────────────────────────────────────
+  {c:'H91.9',d:'Pérdida de audición no especificada',s:'Auditivo'},
+  {c:'H83.3',d:'Efectos del ruido en el oído interno (hipoacusia por ruido)',s:'Auditivo'},
+  {c:'H72.9',d:'Perforación de la membrana timpánica no especificada',s:'Auditivo'},
+  {c:'H65.9',d:'Otitis media no supurativa no especificada',s:'Auditivo'},
+  {c:'H66.9',d:'Otitis media no especificada',s:'Auditivo'},
+  {c:'H60.9',d:'Otitis externa no especificada',s:'Auditivo'},
+  {c:'H61.2',d:'Tapón de cerumen (cerumen impactado)',s:'Auditivo'},
+  {c:'H93.1',d:'Tinnitus',s:'Auditivo'},
+  {c:'H81.0',d:'Enfermedad de Ménière',s:'Auditivo'},
+  {c:'H90.2',d:'Hipoacusia conductiva bilateral',s:'Auditivo'},
+  {c:'H90.6',d:'Hipoacusia mixta bilateral',s:'Auditivo'},
+  {c:'J34.0',d:'Absceso y furúnculo de la nariz',s:'Auditivo'},
+  {c:'J34.2',d:'Desviación del tabique nasal',s:'Auditivo'},
+
+  // ── INFECCIOSO ────────────────────────────────────────────────
+  {c:'A90',d:'Dengue (fiebre hemorrágica)',s:'Infeccioso'},
+  {c:'A97.9',d:'Dengue sin signos de alarma',s:'Infeccioso'},
+  {c:'A08.0',d:'Enteritis por rotavirus',s:'Infeccioso'},
+  {c:'A01.0',d:'Fiebre tifoidea',s:'Infeccioso'},
+  {c:'B19.2',d:'Hepatitis C viral no especificada',s:'Infeccioso'},
+  {c:'B34.9',d:'Infección viral de tipo no especificado',s:'Infeccioso'},
+  {c:'J10.1',d:'Influenza con otras manifestaciones respiratorias (influenza estacional)',s:'Infeccioso'},
+  {c:'J11.1',d:'Influenza con otras manifestaciones respiratorias, virus no identificado',s:'Infeccioso'},
+  {c:'A09',d:'Gastroenteritis infecciosa',s:'Infeccioso'},
+  {c:'L01.0',d:'Impétigo',s:'Infeccioso'},
+  {c:'B00.9',d:'Infección por herpes simple no especificada',s:'Infeccioso'},
+  {c:'A56.0',d:'Infección clamidial del tracto genitourinario inferior',s:'Infeccioso'},
+  {c:'Z22.9',d:'Portador de enfermedad infecciosa no especificada',s:'Infeccioso'},
+  {c:'T78.1',d:'Otras reacciones adversas a alimentos (intoxicación alimentaria)',s:'Infeccioso'},
+  {c:'R50.9',d:'Fiebre no especificada',s:'Infeccioso'},
+  {c:'B49',d:'Micosis no especificada',s:'Infeccioso'},
+  {c:'A63.0',d:'Condiloma acuminado',s:'Infeccioso'},
+  {c:'Z11.5',d:'Examen para otras enfermedades virales (incluye VIH)',s:'Infeccioso'},
+
+  // ── GENERAL / SÍNTOMAS COMUNES SO ─────────────────────────────
+  {c:'R73.0',d:'Prueba de glucosa anormal (prediabetes / hiperglucemia)',s:'Endocrino/Metabólico'},
+  {c:'Z00.0',d:'Examen médico general (chequeo de salud)',s:'Preventivo'},
+  {c:'Z10.0',d:'Examen de salud ocupacional',s:'Preventivo'},
+  {c:'Z13.6',d:'Examen especial de detección de enfermedades cardiovasculares',s:'Preventivo'},
+  {c:'Z23',d:'Necesidad de inmunización contra enfermedad bacteriana única',s:'Preventivo'},
+  {c:'Z27',d:'Necesidad de inmunización combinada',s:'Preventivo'},
+  {c:'R53',d:'Malestar y fatiga',s:'General'},
+  {c:'R68.8',d:'Otros síntomas y signos generales especificados',s:'General'},
+  {c:'R73.9',d:'Hiperglucemia no especificada',s:'General'},
+  {c:'D50.9',d:'Anemia por deficiencia de hierro no especificada',s:'General'},
+  {c:'D64.9',d:'Anemia no especificada',s:'General'},
+  {c:'Z57.0',d:'Exposición al ruido ocupacional',s:'Riesgo Ocupacional'},
+  {c:'Z57.5',d:'Exposición a contaminantes químicos tóxicos en el trabajo',s:'Riesgo Ocupacional'},
+  {c:'Z57.1',d:'Exposición a la radiación en el trabajo',s:'Riesgo Ocupacional'},
+  {c:'Z57.7',d:'Exposición a calor y frío extremos en el trabajo',s:'Riesgo Ocupacional'},
+  {c:'Z57.6',d:'Exposición a radiación solar extrema',s:'Riesgo Ocupacional'},
+];
+
+// Mapa sistema → aparatos afectados (para UI y Sheets)
+const CIE10_SISTEMA_APARATO = {
+  'Musculoesquelético': 'Musculoesquelético',
+  'Traumatología':      'Musculoesquelético',
+  'Cardiovascular':     'Cardiovascular',
+  'Respiratorio':       'Respiratorio',
+  'Digestivo':          'Digestivo',
+  'Endocrino/Metabólico': 'Endocrino',
+  'Neurológico':        'Neurológico',
+  'Psiquiátrico/Mental': 'Psiquiátrico',
+  'Dermatológico':      'Dermatológico',
+  'Genitourinario':     'Genitourinario',
+  'Ginecológico/Obstétrico': 'Ginecológico',
+  'Oftalmológico':      'Oftalmológico',
+  'Auditivo':           'Auditivo',
+  'Infeccioso':         'General',
+  'Preventivo':         'General',
+  'Riesgo Ocupacional': 'General',
+  'General':            'General',
+};
+
+// ── Búsqueda ──────────────────────────────────────────────────────────
+function buscarCIE10(q, maxResultados = 8) {
+  if(!q || q.length < 2) return [];
+  const lc = q.toLowerCase().trim();
+  const exactos = CIE10.filter(x => x.c.toLowerCase().startsWith(lc));
+  const parciales = CIE10.filter(x =>
+    !x.c.toLowerCase().startsWith(lc) &&
+    (x.d.toLowerCase().includes(lc) || x.c.toLowerCase().includes(lc))
+  );
+  return [...exactos, ...parciales].slice(0, maxResultados);
+}
+
+// ── Selector CIE-10 UI (inyectar donde se necesite) ─────────────────
+function initCIE10Selector(inputId, onSelect) {
+  const input = document.getElementById(inputId);
+  if(!input) return;
+  // Crear dropdown
+  let drop = document.getElementById(inputId + '-cie10-drop');
+  if(!drop){
+    drop = document.createElement('div');
+    drop.id = inputId + '-cie10-drop';
+    drop.className = 'cie10-drop';
+    drop.style.cssText = 'position:absolute;top:calc(100% + 3px);left:0;right:0;background:#fff;border:1.5px solid #E2E8F0;border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:200;max-height:260px;overflow-y:auto;display:none';
+    input.parentElement.style.position='relative';
+    input.parentElement.appendChild(drop);
+  }
+  input.addEventListener('input', () => {
+    const resultados = buscarCIE10(input.value);
+    if(!resultados.length){ drop.style.display='none'; return; }
+    drop.innerHTML = resultados.map(r =>
+      `<div class="cie10-item" data-code="${r.c}" data-desc="${r.d}" data-sis="${r.s}"
+        style="padding:9px 13px;cursor:pointer;border-bottom:1px solid #F1F5F9;font-size:12px;transition:.1s"
+        onmouseover="this.style.background='#F0FDF4'" onmouseout="this.style.background=''"
+        onclick="selCIE10Item(this,'${inputId}')">
+        <span style="font-family:monospace;font-weight:700;color:#0D9488;font-size:11px">${r.c}</span>
+        <span style="color:#0F172A;margin-left:6px">${r.d}</span>
+        <span style="float:right;font-size:10px;color:#94A3B8;background:#F1F5F9;padding:1px 6px;border-radius:5px;margin-top:1px">${r.s}</span>
+      </div>`
+    ).join('');
+    drop.style.display='block';
+  });
+  input.addEventListener('blur', () => setTimeout(()=>drop.style.display='none', 200));
+  input._cie10OnSelect = onSelect;
+}
+
+function selCIE10Item(el, inputId) {
+  const code = el.dataset.code;
+  const desc = el.dataset.desc;
+  const sis  = el.dataset.sis;
+  const input = document.getElementById(inputId);
+  if(input) input.value = code + ' — ' + desc;
+  const drop = document.getElementById(inputId + '-cie10-drop');
+  if(drop) drop.style.display='none';
+  if(input && input._cie10OnSelect) input._cie10OnSelect(code, desc, sis);
+}
+
+
 window.addEventListener('unhandledrejection',e=>{console.warn('[ENF]',e.reason);});
 </script>
 </body>
