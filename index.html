@@ -886,7 +886,7 @@ tr:hover td{background:var(--surf2)}
 // ══════════════════════════════════════════════════════
 // CONSTANTS
 // ══════════════════════════════════════════════════════
-const GAS='https://script.google.com/macros/s/AKfycbwQbVvbIJJwpqrXopIUvoTP8w7nu6c6v2XdhtCqsxEtbq5IC8T9Qt9l__p1Pz1ujhsimw/exec';
+const GAS='https://script.google.com/macros/s/AKfycbxSixRi3KWxifMg1GjM1m3CTPJyYdIoeenFTvddohzaIGqwHARl9Nq9UE4NmHwhQm1ukg/exec';
 const SK={hc:'so_hc8',re:'so_re8',ci:'so_ci8',inc:'so_inc_v1',users:'so_users_med_v1'};
 const EMPRESA={nombre:'Teleflex',medico:'Dr. Jaime Iván Martínez Espinoza',cedula:'12021447'};
 const PLANTAS=['Américas','Barrancas','Cantera','Juventud'];
@@ -1872,106 +1872,6 @@ async function guardarCampoExp(campo){
 // INCAPACIDADES
 // ══════════════════════════════════════════════════════
 
-// ══════════════════════════════════════════════════════
-// EMBARAZO — ENFERMERÍA
-// ══════════════════════════════════════════════════════
-async function syncEmbEnf(){
-  try{const r=await gasGet({action:'getEmbarazadas'});if(r.ok&&Array.isArray(r.data)){EMBARAZADAS=r.data;renderEmbEnf();toast('✅ '+EMBARAZADAS.length+' embarazadas','ok');}}catch(e){}
-}
-function renderEmbEnf(){
-  const el=document.getElementById('emb-enf-lista');
-  if(!EMBARAZADAS.length){el.innerHTML='<div class="empty"><div class="empty-i">🤰</div><div>Sin embarazos activos. Usa 🔄 Sync o registra uno nuevo.</div></div>';return;}
-  el.innerHTML=EMBARAZADAS.map(e=>{
-    const semanas=e.fum?Math.floor((new Date()-new Date(e.fum.includes('/')?e.fum.split('/').reverse().join('-'):e.fum))/(1000*60*60*24*7)):'—';
-    return`<div class="card cp" style="margin-bottom:8px;border-left:3px solid ${e.altoRiesgo==='Sí'?'var(--red)':'#F0ABFC'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
-        <div>
-          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
-            <span style="font-weight:700">🤰 ${e.nombre||'—'}</span>
-            ${e.altoRiesgo==='Sí'?'<span class="pill pred">⚠️ Alto riesgo</span>':''}
-            ${e.lactanciaActiva==='Sí'?'<span class="pill pblue">🤱 Lactancia</span>':''}
-          </div>
-          <div style="font-size:12px;color:var(--tx2)">No.${e.noEmp||'—'} · ${e.planta||'—'} · ${e.turno||'—'}</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap">
-            ${e.fum?`<span>FUM: ${e.fum}</span>`:''}
-            ${e.fpp?`<span>FPP: <strong>${e.fpp}</strong></span>`:''}
-            <span>SDG: <strong>${semanas} semanas</strong></span>
-          </div>
-          ${e.restricciones?`<div style="font-size:11px;color:#86198F;margin-top:3px">⚠️ ${e.restricciones}</div>`:''}
-        </div>
-        <button class="btn btn-ghost btn-xs" onclick="editarEmbEnf('${esc(e.noEmp)}')">✏️ Editar</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-function buscarEmpEmbEnf(val){
-  val=(val||'').trim();const drop=document.getElementById('emb-enf-drop');
-  if(!val||val.length<2){drop.classList.remove('show');return;}
-  const lc=val.toLowerCase();
-  const lista=HC.filter(e=>(String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc))&&(e.genero||'').toLowerCase().includes('fem')).slice(0,6);
-  const todos=lista.length?lista:HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
-  if(!todos.length){drop.classList.remove('show');return;}
-  drop.innerHTML=todos.map(e=>`<div class="sr-item" onclick="selEmpEmbEnf('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'}</div></div>`).join('');
-  drop.classList.add('show');
-}
-function selEmpEmbEnf(noEmp){
-  const e=HC.find(x=>String(x.noEmp)===String(noEmp));if(!e)return;
-  document.getElementById('emb-enf-noEmp').value=e.noEmp;
-  document.getElementById('emb-enf-nombre').value=e.nombre;
-  document.getElementById('emb-enf-planta').value=e.planta||'';
-  document.getElementById('emb-enf-turno').value=e.turno||'';
-  document.getElementById('emb-enf-q').value=e.nombre+' (No.'+e.noEmp+')';
-  document.getElementById('emb-enf-drop').classList.remove('show');
-  // Pre-cargar si ya tiene embarazo
-  const existing=EMBARAZADAS.find(x=>String(x.noEmp)===String(noEmp));
-  if(existing){
-    const toISO=s=>s&&s.includes('/')?s.split('/').reverse().join('-'):s||'';
-    document.getElementById('emb-enf-fum').value=toISO(existing.fum);
-    document.getElementById('emb-enf-fpp').value=toISO(existing.fpp);
-    document.getElementById('emb-enf-semanas').value=existing.semanasGestacion||'';
-    document.getElementById('emb-enf-riesgo').value=existing.altoRiesgo||'No';
-    document.getElementById('emb-enf-lactancia').value=existing.lactanciaActiva||'No';
-    document.getElementById('emb-enf-restricciones').value=existing.restricciones||'';
-    if(existing.fum) calcFPPEnf();
-  }
-  const card=document.getElementById('emb-enf-card');
-  card.innerHTML=`<div class="emp-card"><div class="ec-name">🤰 ${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div></div></div>`;
-  card.style.display='block';
-}
-function calcFPPEnf(){
-  const fum=document.getElementById('emb-enf-fum').value; if(!fum)return;
-  const d=new Date(fum+'T12:00'); d.setDate(d.getDate()+280);
-  document.getElementById('emb-enf-fpp').value=d.toISOString().split('T')[0];
-  const semanas=Math.floor((new Date()-new Date(fum+'T12:00'))/(1000*60*60*24*7));
-  document.getElementById('emb-enf-semanas').value=semanas;
-  const tri=semanas<=13?'1er trimestre':semanas<=26?'2do trimestre':'3er trimestre';
-  const res=document.getElementById('emb-enf-resumen');
-  res.innerHTML=`📅 ${semanas} semanas · ${tri} · FPP: ${d.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})}`;
-  res.style.display='block';
-}
-async function guardarEmbEnf(){
-  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const noEmp=g('emb-enf-noEmp');if(!noEmp){toast('Selecciona una empleada','err');return;}
-  const fum=g('emb-enf-fum');if(!fum){toast('La FUM es obligatoria','err');return;}
-  const exp={
-    noEmp, nombre:g('emb-enf-nombre'), planta:g('emb-enf-planta'), turno:g('emb-enf-turno'),
-    fum:new Date(fum+'T12:00').toLocaleDateString('es-MX'),
-    fpp:g('emb-enf-fpp')?new Date(g('emb-enf-fpp')+'T12:00').toLocaleDateString('es-MX'):'',
-    semanasGestacion:g('emb-enf-semanas'),
-    altoRiesgo:g('emb-enf-riesgo'), lactanciaActiva:g('emb-enf-lactancia'),
-    restricciones:g('emb-enf-restricciones'),
-    estado:'Activo', registradoPor:currentUser?.nombre||'Enfermería',
-    validadoPor:'Pendiente'
-  };
-  const idx=EMBARAZADAS.findIndex(x=>String(x.noEmp)===String(noEmp));
-  if(idx>=0) EMBARAZADAS[idx]={...EMBARAZADAS[idx],...exp}; else EMBARAZADAS.push(exp);
-  setSyncDot('busy');
-  const r=await gasPost({action:'saveEmbarazada',exp});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Embarazo registrado — pendiente validación del médico':'⚠️ Guardado local','ok');
-  closeModal('mo-emb-enf'); renderEmbEnf();
-}
-function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal('mo-emb-enf'); }
 
 
 // ══════════════════════════════════════════════════════
