@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -29,68 +30,68 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--surf2
 
 /* ── LOGIN ───────────────────────────────────── */
 #login-screen{
-  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(145deg,#0F2942 0%,#0D5A4A 40%,#0D9488 100%);
+position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(145deg,#0F2942 0%,#0D5A4A 40%,#0D9488 100%);
 }
 .lc{background:#fff;border-radius:18px;padding:40px;width:100%;max-width:380px;box-shadow:0 30px 60px rgba(0,0,0,.3)}
 .lc-brand{text-align:center;margin-bottom:28px}
-.lc-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--teal),#0F766E);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 10px}
-.lc-brand h1{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.4px}
-.lc-brand p{font-size:11px;color:var(--tx3);margin-top:2px}
+.lc-icon{width:56px;height:56px;background:linear-gradient(135deg,var(–teal),#0F766E);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 10px}
+.lc-brand h1{font-size:20px;font-weight:800;color:var(–navy);letter-spacing:-.4px}
+.lc-brand p{font-size:11px;color:var(–tx3);margin-top:2px}
 .lf{margin-bottom:14px}
-.lf label{display:block;font-size:10px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.lf input{width:100%;padding:10px 13px;border:1.5px solid var(--bor);border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:.15s}
-.lf input:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal3)}
-#lerr{display:none;background:var(--red2);color:var(--red);border-radius:7px;padding:8px 12px;font-size:12px;margin-bottom:12px;text-align:center}
-.lbtn{width:100%;background:linear-gradient(135deg,var(--teal),#0F766E);color:#fff;border:none;padding:12px;border-radius:9px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;letter-spacing:.2px}
+.lf label{display:block;font-size:10px;font-weight:700;color:var(–tx2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.lf input{width:100%;padding:10px 13px;border:1.5px solid var(–bor);border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:.15s}
+.lf input:focus{border-color:var(–teal);box-shadow:0 0 0 3px var(–teal3)}
+#lerr{display:none;background:var(–red2);color:var(–red);border-radius:7px;padding:8px 12px;font-size:12px;margin-bottom:12px;text-align:center}
+.lbtn{width:100%;background:linear-gradient(135deg,var(–teal),#0F766E);color:#fff;border:none;padding:12px;border-radius:9px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s;letter-spacing:.2px}
 .lbtn:hover{opacity:.92;transform:translateY(-1px)}
 .lbtn:active{transform:none}
 
 /* ── NAV ─────────────────────────────────────── */
 #app{display:none}
 .nav{
-  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
-  background:var(--navy);display:flex;align-items:center;padding:0 14px;gap:2px;
-  box-shadow:0 2px 10px rgba(0,0,0,.25);overflow-x:auto;
+position:fixed;top:0;left:0;right:0;height:var(–nav-h);z-index:100;
+background:var(–navy);display:flex;align-items:center;padding:0 14px;gap:2px;
+box-shadow:0 2px 10px rgba(0,0,0,.25);overflow-x:auto;
 }
 .nav::-webkit-scrollbar{height:2px}
 .nav-brand{font-size:12px;font-weight:800;color:#fff;white-space:nowrap;margin-right:10px;display:flex;align-items:center;gap:7px;letter-spacing:-.2px}
-.nav-brand .badge{background:var(--teal2);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px}
+.nav-brand .badge{background:var(–teal2);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;letter-spacing:.3px}
 .tb{background:none;border:none;color:rgba(255,255,255,.55);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:6px 10px;border-radius:7px;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
 .tb:hover{color:#fff;background:rgba(255,255,255,.08)}
 .tb.on{color:#fff;background:rgba(13,148,136,.35)}
-.bc{background:var(--teal2);color:#fff;font-size:9px;padding:1px 5px;border-radius:8px;font-weight:700}
+.bc{background:var(–teal2);color:#fff;font-size:9px;padding:1px 5px;border-radius:8px;font-weight:700}
 .nav-end{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .user-pill{font-size:11px;color:rgba(255,255,255,.7);white-space:nowrap}
 .nav-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit;transition:.15s}
 .nav-btn:hover{background:rgba(255,255,255,.18)}
 
 /* ── SCREENS ─────────────────────────────────── */
-.sc{display:none;padding:calc(var(--nav-h) + 16px) 16px 28px;min-height:100vh;max-width:1060px;margin:0 auto}
+.sc{display:none;padding:calc(var(–nav-h) + 16px) 16px 28px;min-height:100vh;max-width:1060px;margin:0 auto}
 .sc.on{display:block}
 
 /* ── CARDS ───────────────────────────────────── */
-.card{background:var(--surf);border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--bor)}
+.card{background:var(–surf);border-radius:var(–r);box-shadow:var(–sh);border:1px solid var(–bor)}
 .cp{padding:16px}
 
 /* ── BUTTONS ─────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;gap:5px;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;padding:8px 14px;transition:.15s}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:#0F766E}
-.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:#1a3a5c}
-.btn-ghost{background:transparent;color:var(--tx2);border:1.5px solid var(--bor)}.btn-ghost:hover{border-color:var(--bor2);background:var(--surf3)}
-.btn-red{background:var(--red);color:#fff}
-.btn-amber{background:var(--amber);color:#fff}
+.btn-teal{background:var(–teal);color:#fff}.btn-teal:hover{background:#0F766E}
+.btn-navy{background:var(–navy);color:#fff}.btn-navy:hover{background:#1a3a5c}
+.btn-ghost{background:transparent;color:var(–tx2);border:1.5px solid var(–bor)}.btn-ghost:hover{border-color:var(–bor2);background:var(–surf3)}
+.btn-red{background:var(–red);color:#fff}
+.btn-amber{background:var(–amber);color:#fff}
 .btn-sm{padding:5px 10px;font-size:12px;border-radius:6px}
 .btn-xs{padding:3px 8px;font-size:11px;border-radius:5px}
 
 /* ── FORM ────────────────────────────────────── */
 .fi{margin-bottom:12px}
-.fi label{display:block;font-size:10px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.fi input,.fi select,.fi textarea{width:100%;padding:9px 12px;border:1.5px solid var(--bor);border-radius:8px;font-size:13px;font-family:inherit;outline:none;background:var(--surf);color:var(--tx);transition:.15s}
-.fi input:focus,.fi select:focus,.fi textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal3)}
+.fi label{display:block;font-size:10px;font-weight:700;color:var(–tx2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.fi input,.fi select,.fi textarea{width:100%;padding:9px 12px;border:1.5px solid var(–bor);border-radius:8px;font-size:13px;font-family:inherit;outline:none;background:var(–surf);color:var(–tx);transition:.15s}
+.fi input:focus,.fi select:focus,.fi textarea:focus{border-color:var(–teal);box-shadow:0 0 0 3px var(–teal3)}
 .fi textarea{resize:vertical;min-height:70px}
-.fi input[readonly]{background:var(--surf3);color:var(--tx2)}
+.fi input[readonly]{background:var(–surf3);color:var(–tx2)}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -100,17 +101,17 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--surf2
 /* ── MODALS ──────────────────────────────────── */
 .ov{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);padding:16px;align-items:flex-start;justify-content:center;overflow-y:auto}
 .ov.open{display:flex}
-.mo{background:var(--surf);border-radius:16px;width:100%;max-width:680px;box-shadow:var(--sh-lg);margin:auto;animation:up .2s ease}
+.mo{background:var(–surf);border-radius:16px;width:100%;max-width:680px;box-shadow:var(–sh-lg);margin:auto;animation:up .2s ease}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.mh{padding:16px 20px;border-bottom:1px solid var(--bor);display:flex;align-items:center;justify-content:space-between}
-.mt-modal{font-size:15px;font-weight:800;color:var(--navy)}
-.mc{background:none;border:none;font-size:20px;cursor:pointer;color:var(--tx3);width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;transition:.15s}
-.mc:hover{background:var(--surf3);color:var(--tx)}
+.mh{padding:16px 20px;border-bottom:1px solid var(–bor);display:flex;align-items:center;justify-content:space-between}
+.mt-modal{font-size:15px;font-weight:800;color:var(–navy)}
+.mc{background:none;border:none;font-size:20px;cursor:pointer;color:var(–tx3);width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;transition:.15s}
+.mc:hover{background:var(–surf3);color:var(–tx)}
 .mb{padding:20px;max-height:78vh;overflow-y:auto}
-.mf{padding:12px 20px 16px;border-top:1px solid var(--bor);display:flex;gap:8px;justify-content:flex-end}
+.mf{padding:12px 20px 16px;border-top:1px solid var(–bor);display:flex;gap:8px;justify-content:flex-end}
 
 /* ── EMPLOYEE CARD ───────────────────────────── */
-.emp-card{background:linear-gradient(135deg,var(--navy) 0%,#0D5A4A 60%,var(--teal) 100%);border-radius:12px;padding:14px 16px;color:#fff;margin-bottom:12px}
+.emp-card{background:linear-gradient(135deg,var(–navy) 0%,#0D5A4A 60%,var(–teal) 100%);border-radius:12px;padding:14px 16px;color:#fff;margin-bottom:12px}
 .ec-name{font-size:15px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .ec-tag{font-size:10px;font-weight:600;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:8px}
 .ec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-top:6px}
@@ -121,85 +122,85 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--surf2
 .ant{border-radius:9px;padding:11px 13px;margin-bottom:10px}
 .ant-al{background:#FEF2F2;border:1.5px solid #FCA5A5}
 .ant-cr{background:#FFFBEB;border:1.5px solid #FCD34D}
-.ant-ht{background:var(--teal3);border:1.5px solid #99F6E4}
+.ant-ht{background:var(–teal3);border:1.5px solid #99F6E4}
 .ant-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
 .ant-tag{display:inline-flex;padding:2px 9px;border-radius:8px;font-size:11px;font-weight:700;margin:2px 3px 2px 0}
 
 /* ── KPIs ────────────────────────────────────── */
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
-.kpi{background:var(--surf);border:1px solid var(--bor);border-radius:var(--r);padding:14px;box-shadow:var(--sh)}
-.kv{font-size:26px;font-weight:800;color:var(--navy);line-height:1;font-family:'JetBrains Mono',monospace}
-.kl{font-size:10px;color:var(--tx3);margin-top:3px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
-.kpi.teal .kv{color:var(--teal)}.kpi.amber .kv{color:var(--amber)}.kpi.red .kv{color:var(--red)}.kpi.green .kv{color:var(--green)}
+.kpi{background:var(–surf);border:1px solid var(–bor);border-radius:var(–r);padding:14px;box-shadow:var(–sh)}
+.kv{font-size:26px;font-weight:800;color:var(–navy);line-height:1;font-family:‘JetBrains Mono’,monospace}
+.kl{font-size:10px;color:var(–tx3);margin-top:3px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.kpi.teal .kv{color:var(–teal)}.kpi.amber .kv{color:var(–amber)}.kpi.red .kv{color:var(–red)}.kpi.green .kv{color:var(–green)}
 
 /* ── PILLS ───────────────────────────────────── */
 .pill{display:inline-flex;align-items:center;padding:2px 7px;border-radius:9px;font-size:10px;font-weight:700;white-space:nowrap}
-.pteal{background:var(--teal3);color:var(--teal)}.pamber{background:var(--amber2);color:var(--amber)}
-.pred{background:var(--red2);color:var(--red)}.pgreen{background:var(--green2);color:var(--green)}
-.pgray{background:var(--surf3);color:var(--tx2)}.pblue{background:var(--blue3);color:var(--blue)}
-.pnavy{background:rgba(15,41,66,.1);color:var(--navy)}
+.pteal{background:var(–teal3);color:var(–teal)}.pamber{background:var(–amber2);color:var(–amber)}
+.pred{background:var(–red2);color:var(–red)}.pgreen{background:var(–green2);color:var(–green)}
+.pgray{background:var(–surf3);color:var(–tx2)}.pblue{background:var(–blue3);color:var(–blue)}
+.pnavy{background:rgba(15,41,66,.1);color:var(–navy)}
 
 /* ── TIPO CARDS (selector trabajador) ─────────── */
 .tipo-sel{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.tipo-card{border:2px solid var(--bor);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:.18s;background:var(--surf)}
-.tipo-card:hover{border-color:var(--teal);background:var(--teal4)}
-.tipo-card.int.on{border-color:var(--teal);background:var(--teal4)}
-.tipo-card.ext.on{border-color:var(--purple);background:var(--purple2)}
+.tipo-card{border:2px solid var(–bor);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:.18s;background:var(–surf)}
+.tipo-card:hover{border-color:var(–teal);background:var(–teal4)}
+.tipo-card.int.on{border-color:var(–teal);background:var(–teal4)}
+.tipo-card.ext.on{border-color:var(–purple);background:var(–purple2)}
 .tipo-icon{font-size:26px;margin-bottom:5px}
 .tipo-title{font-size:13px;font-weight:700}
-.tipo-sub{font-size:11px;color:var(--tx3);margin-top:1px}
+.tipo-sub{font-size:11px;color:var(–tx3);margin-top:1px}
 
 /* ── SEARCH ──────────────────────────────────── */
 .sw{position:relative}
 .sw input{padding-left:35px}
-.si{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--tx3);pointer-events:none}
-.sr-drop{position:absolute;top:calc(100%+4px);left:0;right:0;background:var(--surf);border:1px solid var(--bor);border-radius:10px;box-shadow:var(--sh-lg);z-index:50;max-height:260px;overflow-y:auto;display:none}
+.si{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(–tx3);pointer-events:none}
+.sr-drop{position:absolute;top:calc(100%+4px);left:0;right:0;background:var(–surf);border:1px solid var(–bor);border-radius:10px;box-shadow:var(–sh-lg);z-index:50;max-height:260px;overflow-y:auto;display:none}
 .sr-drop.show{display:block}
-.sr-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--bor);transition:.12s}
+.sr-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid var(–bor);transition:.12s}
 .sr-item:last-child{border-bottom:none}
-.sr-item:hover{background:var(--surf3)}
+.sr-item:hover{background:var(–surf3)}
 .sr-name{font-weight:700;font-size:13px}
-.sr-meta{font-size:11px;color:var(--tx3)}
+.sr-meta{font-size:11px;color:var(–tx3)}
 
 /* ── CHART ───────────────────────────────────── */
 .cw{position:relative;height:200px}
 
 /* ── FILTERS ─────────────────────────────────── */
-.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--surf);border:1px solid var(--bor);border-radius:var(--r);padding:10px 13px;margin-bottom:13px}
-.filters select,.filters input[type=text]{padding:6px 10px;border:1.5px solid var(--bor);border-radius:7px;font-size:12px;font-family:inherit;outline:none;background:var(--surf);color:var(--tx);transition:.15s}
-.filters select:focus,.filters input:focus{border-color:var(--teal)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(–surf);border:1px solid var(–bor);border-radius:var(–r);padding:10px 13px;margin-bottom:13px}
+.filters select,.filters input[type=text]{padding:6px 10px;border:1.5px solid var(–bor);border-radius:7px;font-size:12px;font-family:inherit;outline:none;background:var(–surf);color:var(–tx);transition:.15s}
+.filters select:focus,.filters input:focus{border-color:var(–teal)}
 
 /* ── REGISTROS ───────────────────────────────── */
-.reg-card{background:var(--surf);border:1px solid var(--bor);border-radius:var(--r);padding:13px 15px;margin-bottom:7px;box-shadow:var(--sh);transition:.15s}
-.reg-card:hover{border-color:var(--bor2)}
-.reg-card.rt{border-left:3px solid var(--amber)}
-.reg-card.at{border-left:3px solid var(--red)}
+.reg-card{background:var(–surf);border:1px solid var(–bor);border-radius:var(–r);padding:13px 15px;margin-bottom:7px;box-shadow:var(–sh);transition:.15s}
+.reg-card:hover{border-color:var(–bor2)}
+.reg-card.rt{border-left:3px solid var(–amber)}
+.reg-card.at{border-left:3px solid var(–red)}
 
 /* ── INCAPACIDADES ───────────────────────────── */
-.inc-card{background:var(--surf);border:1px solid var(--bor);border-radius:var(--r);padding:13px 15px;margin-bottom:7px;box-shadow:var(--sh)}
+.inc-card{background:var(–surf);border:1px solid var(–bor);border-radius:var(–r);padding:13px 15px;margin-bottom:7px;box-shadow:var(–sh)}
 
 /* ── TABLES ──────────────────────────────────── */
-.tw{overflow-x:auto;border-radius:var(--r);border:1px solid var(--bor)}
+.tw{overflow-x:auto;border-radius:var(–r);border:1px solid var(–bor)}
 table{width:100%;border-collapse:collapse;font-size:12px}
-th{background:var(--surf3);padding:8px 11px;text-align:left;font-size:10px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--bor);white-space:nowrap}
-td{padding:9px 11px;border-bottom:1px solid var(--bor);vertical-align:top}
+th{background:var(–surf3);padding:8px 11px;text-align:left;font-size:10px;font-weight:700;color:var(–tx2);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(–bor);white-space:nowrap}
+td{padding:9px 11px;border-bottom:1px solid var(–bor);vertical-align:top}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--surf2)}
+tr:hover td{background:var(–surf2)}
 
 /* ── SEC HEADER ──────────────────────────────── */
 .sh{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.sh h2{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-.3px}
-.sh p{font-size:11px;color:var(--tx3);margin-top:1px}
+.sh h2{font-size:17px;font-weight:800;color:var(–navy);letter-spacing:-.3px}
+.sh p{font-size:11px;color:var(–tx3);margin-top:1px}
 
 /* ── TOAST ───────────────────────────────────── */
 #toast{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:7px}
-.ti{padding:9px 15px;border-radius:9px;font-size:13px;font-weight:600;box-shadow:var(--sh-lg);animation:up .2s ease;max-width:300px}
+.ti{padding:9px 15px;border-radius:9px;font-size:13px;font-weight:600;box-shadow:var(–sh-lg);animation:up .2s ease;max-width:300px}
 .tok{background:#F0FDF4;color:#14532D;border:1px solid #86EFAC}
-.terr{background:var(--red2);color:#991B1B;border:1px solid #FCA5A5}
-.tinf{background:var(--teal4);color:#134E4A;border:1px solid #99F6E4}
+.terr{background:var(–red2);color:#991B1B;border:1px solid #FCA5A5}
+.tinf{background:var(–teal4);color:#134E4A;border:1px solid #99F6E4}
 
 /* ── EMPTY ───────────────────────────────────── */
-.empty{text-align:center;padding:36px 20px;color:var(--tx3)}
+.empty{text-align:center;padding:36px 20px;color:var(–tx3)}
 .empty-i{font-size:34px;margin-bottom:8px}
 
 /* ── QUICK ADD ───────────────────────────────── */
@@ -208,27 +209,29 @@ tr:hover td{background:var(--surf2)}
 
 /* ── SYNC DOT ────────────────────────────────── */
 .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
-.dok{background:var(--teal)}.derr{background:var(--red)}.dbusy{background:var(--amber);animation:pulse 1s infinite}
+.dok{background:var(–teal)}.derr{background:var(–red)}.dbusy{background:var(–amber);animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 /* ── PROGRESS ────────────────────────────────── */
 .pr-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.pr-lbl{font-size:11px;font-weight:600;min-width:110px;color:var(--tx)}
-.pr-wrap{flex:1;background:var(--surf3);border-radius:4px;height:8px;overflow:hidden}
+.pr-lbl{font-size:11px;font-weight:600;min-width:110px;color:var(–tx)}
+.pr-wrap{flex:1;background:var(–surf3);border-radius:4px;height:8px;overflow:hidden}
 .pr-bar{height:100%;border-radius:4px;transition:.4s}
-.pr-n{font-size:11px;font-weight:700;color:var(--tx2);min-width:24px;text-align:right}
+.pr-n{font-size:11px;font-weight:700;color:var(–tx2);min-width:24px;text-align:right}
 
 /* ── MISC ────────────────────────────────────── */
-.folio{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--tx2);background:var(--surf3);padding:2px 7px;border-radius:4px}
-.divider{border:none;border-top:1px solid var(--bor);margin:12px 0}
-.tabs{display:flex;gap:4px;border-bottom:2px solid var(--bor);margin-bottom:14px;overflow-x:auto}
-.tab{background:none;border:none;font-family:inherit;font-size:12px;font-weight:600;color:var(--tx2);padding:8px 13px;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:.15s;white-space:nowrap}
-.tab.active{color:var(--teal);border-bottom-color:var(--teal)}
+.folio{font-family:‘JetBrains Mono’,monospace;font-size:11px;color:var(–tx2);background:var(–surf3);padding:2px 7px;border-radius:4px}
+.divider{border:none;border-top:1px solid var(–bor);margin:12px 0}
+.tabs{display:flex;gap:4px;border-bottom:2px solid var(–bor);margin-bottom:14px;overflow-x:auto}
+.tab{background:none;border:none;font-family:inherit;font-size:12px;font-weight:600;color:var(–tx2);padding:8px 13px;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:.15s;white-space:nowrap}
+.tab.active{color:var(–teal);border-bottom-color:var(–teal)}
 </style>
+
 </head>
 <body>
 
 <!-- LOGIN -->
+
 <div id="login-screen">
   <div class="lc">
     <div class="lc-brand">
@@ -249,6 +252,7 @@ tr:hover td{background:var(--surf2)}
 <div id="app">
 
 <!-- NAV -->
+
 <nav class="nav">
   <div class="nav-brand">🩺 <span class="badge">ENF</span></div>
   <button class="tb on" id="tb-cons" onclick="go('cons')">📋 Consulta</button>
@@ -269,6 +273,7 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      CONSULTA
 ════════════════════════════════════════ -->
+
 <div class="sc on" id="sc-cons">
   <div class="sh">
     <div>
@@ -279,6 +284,7 @@ tr:hover td{background:var(--surf2)}
   </div>
 
   <!-- Tipo trabajador -->
+
   <div class="tipo-sel">
     <div class="tipo-card int" id="tc-int" onclick="selTipo('int')">
       <div class="tipo-icon">🏢</div>
@@ -293,6 +299,7 @@ tr:hover td{background:var(--surf2)}
   </div>
 
   <!-- Zona INTERNO -->
+
   <div id="z-int" style="display:none">
     <div class="sw" style="margin-bottom:10px">
       <span class="si">🔍</span>
@@ -328,6 +335,7 @@ tr:hover td{background:var(--surf2)}
   </div>
 
   <!-- Zona EXTERNO -->
+
   <div id="z-ext" style="display:none">
     <div class="emp-card" style="margin-bottom:10px">
       <div class="ec-name">Externo <span class="ec-tag">PROVEEDOR</span></div>
@@ -345,6 +353,7 @@ tr:hover td{background:var(--surf2)}
   </div>
 
   <!-- Formulario clínico -->
+
   <div id="fc" style="display:none">
     <div class="card cp" style="margin-bottom:10px">
       <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">📋 Datos clínicos</div>
@@ -438,6 +447,7 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      REGISTROS
 ════════════════════════════════════════ -->
+
 <div class="sc" id="sc-regs">
   <div class="sh">
     <div><h2>Registros de Enfermería</h2><p id="regs-count">0 registros</p></div>
@@ -468,6 +478,7 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      INCAPACIDADES
 ════════════════════════════════════════ -->
+
 <div class="sc" id="sc-inc">
   <div class="sh">
     <div><h2>Incapacidades</h2><p>Captura, seguimiento y reporte</p></div>
@@ -475,6 +486,7 @@ tr:hover td{background:var(--surf2)}
   </div>
 
   <!-- KPIs rápidos -->
+
   <div class="kpis" id="inc-kpis" style="margin-bottom:12px">
     <div class="kpi red"><div class="kv" id="ik-activas">0</div><div class="kl">Activas hoy</div></div>
     <div class="kpi amber"><div class="kv" id="ik-mes">0</div><div class="kl">Este mes</div></div>
@@ -483,6 +495,7 @@ tr:hover td{background:var(--surf2)}
   </div>
 
   <!-- Tabs: activas / historial -->
+
   <div class="tabs">
     <button class="tab active" onclick="incTab('activas',this)">🟢 Activas</button>
     <button class="tab" onclick="incTab('proximas',this)">⏰ Próxima reincorporación</button>
@@ -513,6 +526,7 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      CITAS
 ════════════════════════════════════════ -->
+
 <div class="sc" id="sc-cit">
   <div class="sh">
     <div><h2>Citas</h2><p>Agenda de enfermería</p></div>
@@ -531,6 +545,7 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      REPORTES
 ════════════════════════════════════════ -->
+
 <div class="sc" id="sc-rep">
   <div class="sh">
     <div><h2>Reportes</h2><p>NOM-030-STPS · Estadísticas de enfermería</p></div>
@@ -596,6 +611,7 @@ tr:hover td{background:var(--surf2)}
 <!-- ════════════════════════════════════════
      EXPEDIENTE — ENFERMERÍA
 ════════════════════════════════════════ -->
+
 <div class="sc" id="sc-exp">
   <div class="sh">
     <div><h2>📁 Expediente del trabajador</h2><p>Vista y captura de datos clínicos</p></div>
@@ -669,6 +685,7 @@ tr:hover td{background:var(--surf2)}
 </div>
 
 <!-- MODAL EMBARAZO ENFERMERÍA -->
+
 <div class="ov" id="mo-emb-enf">
   <div class="mo" style="max-width:540px">
     <div class="mh"><div class="mt-modal">🤰 Registrar embarazo</div><button class="mc" onclick="closeModal('mo-emb-enf')">✕</button></div>
@@ -751,6 +768,7 @@ tr:hover td{background:var(--surf2)}
 </div>
 
 <!-- ══ MODAL EDITAR REGISTRO ══ -->
+
 <div class="ov" id="mo-edit">
   <div class="mo" style="max-width:500px">
     <div class="mh"><div class="mt-modal" id="edit-title">Editar registro</div><button class="mc" onclick="closeModal('mo-edit')">✕</button></div>
@@ -763,6 +781,7 @@ tr:hover td{background:var(--surf2)}
 </div>
 
 <!-- ══ MODAL CITA ══ -->
+
 <div class="ov" id="mo-cita">
   <div class="mo" style="max-width:500px">
     <div class="mh"><div class="mt-modal">Nueva Cita</div><button class="mc" onclick="closeModal('mo-cita')">✕</button></div>
@@ -793,6 +812,7 @@ tr:hover td{background:var(--surf2)}
 </div>
 
 <!-- ══ MODAL INCAPACIDAD ══ -->
+
 <div class="ov" id="mo-inc">
   <div class="mo" style="max-width:540px">
     <div class="mh"><div class="mt-modal" id="inc-mo-title">Nueva Incapacidad</div><button class="mc" onclick="closeModal('mo-inc')">✕</button></div>
@@ -878,6 +898,7 @@ tr:hover td{background:var(--surf2)}
 </div>
 
 <!-- TOAST -->
+
 <div id="toast"></div>
 </div><!-- /app -->
 
@@ -1457,32 +1478,37 @@ function editarReg(id){
   document.getElementById('edit-body').innerHTML=`
     <div class="fi"><label>Diagnóstico *</label><input id="ed-dx" value="${esc(r.diagnostico)}"></div>
     <div class="fi"><label>Tratamiento</label><textarea id="ed-trat" rows="2">${esc(r.tratamiento)}</textarea></div>
-    <div class="fi"><label>Alergias</label><input id="ed-al" value="${esc(r.alergias)}"></div>
-    <div class="fi"><label>Notas</label><textarea id="ed-notas" rows="2">${esc(r.notas)}</textarea></div>
-    <div class="fi"><label>Seguimiento</label>
-      <select id="ed-seg">${['Alta','Seguimiento 24h','Seguimiento 48h','Referencia IMSS','Reposo en casa','Pendiente estudio'].map(o=>`<option${o===r.seguimiento?' selected':''}>${o}</option>`).join('')}</select>
-    </div>`;
-  openModal('mo-edit');
+
+```
+<div class="fi"><label>Alergias</label><input id="ed-al" value="${esc(r.alergias)}"></div>
+<div class="fi"><label>Notas</label><textarea id="ed-notas" rows="2">${esc(r.notas)}</textarea></div>
+<div class="fi"><label>Seguimiento</label>
+  <select id="ed-seg">${['Alta','Seguimiento 24h','Seguimiento 48h','Referencia IMSS','Reposo en casa','Pendiente estudio'].map(o=>`<option${o===r.seguimiento?' selected':''}>${o}</option>`).join('')}</select>
+</div>`;
+```
+
+openModal(‘mo-edit’);
 }
 async function guardarEdicion(){
-  if(!_editCtx)return;
-  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const dx=g('ed-dx');if(!dx){toast('Diagnóstico obligatorio','err');return;}
-  const idx=RE.findIndex(x=>String(x.id)===String(_editCtx.id));
-  if(idx>=0){RE[idx]={...RE[idx],diagnostico:dx,tratamiento:g('ed-trat'),alergias:g('ed-al'),notas:g('ed-notas'),seguimiento:g('ed-seg'),editado:new Date().toLocaleDateString('es-MX')};
-    sv(SK.re,RE); renderRegs(); toast('✅ Registro actualizado','ok');}
-  closeModal('mo-edit'); _editCtx=null;
+if(!_editCtx)return;
+const g=id=>{const e=document.getElementById(id);return e?e.value.trim():’’;};
+const dx=g(‘ed-dx’);if(!dx){toast(‘Diagnóstico obligatorio’,‘err’);return;}
+const idx=RE.findIndex(x=>String(x.id)===String(_editCtx.id));
+if(idx>=0){RE[idx]={…RE[idx],diagnostico:dx,tratamiento:g(‘ed-trat’),alergias:g(‘ed-al’),notas:g(‘ed-notas’),seguimiento:g(‘ed-seg’),editado:new Date().toLocaleDateString(‘es-MX’)};
+sv(SK.re,RE); renderRegs(); toast(‘✅ Registro actualizado’,‘ok’);}
+closeModal(‘mo-edit’); _editCtx=null;
 }
 
 // ══════════════════════════════════════════════════════
 // IMPRIMIR NOTA ENFERMERÍA
 // ══════════════════════════════════════════════════════
 function imprimirReg(id){
-  const r=RE.find(x=>String(x.id)===String(id));if(!r)return;
-  const s=SIS[r.sistema]||SIS.otro;
-  const w=window.open('','_blank','width=800,height=900');
-  if(!w){toast('Popup bloqueado','err');return;}
-  w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Nota Enfermería</title>
+const r=RE.find(x=>String(x.id)===String(id));if(!r)return;
+const s=SIS[r.sistema]||SIS.otro;
+const w=window.open(’’,’_blank’,‘width=800,height=900’);
+if(!w){toast(‘Popup bloqueado’,‘err’);return;}
+w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Nota Enfermería</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-size:11.5px;color:#1a1a1a;padding:0}
@@ -1516,6 +1542,7 @@ function imprimirReg(id){
     .sig-box small{font-size:9px;color:#64748B}
     .print-btn{position:fixed;bottom:16px;right:16px;background:#0D9488;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit}
   </style></head><body>
+
   <div class="page">
     <div class="hdr">
       <div>
@@ -1581,108 +1608,88 @@ function imprimirReg(id){
   w.document.close();
 }
 
-
 // ══════════════════════════════════════════════════════
 // EMBARAZO — ENFERMERÍA
 // ══════════════════════════════════════════════════════
 async function syncEmbEnf(){
-  try{const r=await gasGet({action:'getEmbarazadas'});if(r.ok&&Array.isArray(r.data)){EMBARAZADAS=r.data;renderEmbEnf();toast('✅ '+EMBARAZADAS.length+' embarazadas','ok');}}catch(e){}
+try{const r=await gasGet({action:‘getEmbarazadas’});if(r.ok&&Array.isArray(r.data)){EMBARAZADAS=r.data;renderEmbEnf();toast(‘✅ ‘+EMBARAZADAS.length+’ embarazadas’,‘ok’);}}catch(e){}
 }
 function renderEmbEnf(){
-  const el=document.getElementById('emb-enf-lista');
-  if(!EMBARAZADAS.length){el.innerHTML='<div class="empty"><div class="empty-i">🤰</div><div>Sin embarazos activos. Usa 🔄 Sync o registra uno nuevo.</div></div>';return;}
-  el.innerHTML=EMBARAZADAS.map(e=>{
-    const semanas=e.fum?Math.floor((new Date()-new Date(e.fum.includes('/')?e.fum.split('/').reverse().join('-'):e.fum))/(1000*60*60*24*7)):'—';
-    return`<div class="card cp" style="margin-bottom:8px;border-left:3px solid ${e.altoRiesgo==='Sí'?'var(--red)':'#F0ABFC'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
-        <div>
-          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
-            <span style="font-weight:700">🤰 ${e.nombre||'—'}</span>
-            ${e.altoRiesgo==='Sí'?'<span class="pill pred">⚠️ Alto riesgo</span>':''}
-            ${e.lactanciaActiva==='Sí'?'<span class="pill pblue">🤱 Lactancia</span>':''}
-          </div>
-          <div style="font-size:12px;color:var(--tx2)">No.${e.noEmp||'—'} · ${e.planta||'—'} · ${e.turno||'—'}</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap">
-            ${e.fum?`<span>FUM: ${e.fum}</span>`:''}
-            ${e.fpp?`<span>FPP: <strong>${e.fpp}</strong></span>`:''}
-            <span>SDG: <strong>${semanas} semanas</strong></span>
-          </div>
-          ${e.restricciones?`<div style="font-size:11px;color:#86198F;margin-top:3px">⚠️ ${e.restricciones}</div>`:''}
-        </div>
-        <button class="btn btn-ghost btn-xs" onclick="editarEmbEnf('${esc(e.noEmp)}')">✏️ Editar</button>
-      </div>
-    </div>`;
-  }).join('');
+const el=document.getElementById(‘emb-enf-lista’);
+if(!EMBARAZADAS.length){el.innerHTML=’<div class="empty"><div class="empty-i">🤰</div><div>Sin embarazos activos. Usa 🔄 Sync o registra uno nuevo.</div></div>’;return;}
+el.innerHTML=EMBARAZADAS.map(e=>{
+const semanas=e.fum?Math.floor((new Date()-new Date(e.fum.includes(’/’)?e.fum.split(’/’).reverse().join(’-’):e.fum))/(1000*60*60*24*7)):’—’;
+return`<div class="card cp" style="margin-bottom:8px;border-left:3px solid ${e.altoRiesgo==='Sí'?'var(--red)':'#F0ABFC'}"> <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px"> <div> <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px"> <span style="font-weight:700">🤰 ${e.nombre||'—'}</span> ${e.altoRiesgo==='Sí'?'<span class="pill pred">⚠️ Alto riesgo</span>':''} ${e.lactanciaActiva==='Sí'?'<span class="pill pblue">🤱 Lactancia</span>':''} </div> <div style="font-size:12px;color:var(--tx2)">No.${e.noEmp||'—'} · ${e.planta||'—'} · ${e.turno||'—'}</div> <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap"> ${e.fum?`<span>FUM: ${e.fum}</span>`:''} ${e.fpp?`<span>FPP: <strong>${e.fpp}</strong></span>`:''} <span>SDG: <strong>${semanas} semanas</strong></span> </div> ${e.restricciones?`<div style="font-size:11px;color:#86198F;margin-top:3px">⚠️ ${e.restricciones}</div>`:''} </div> <button class="btn btn-ghost btn-xs" onclick="editarEmbEnf('${esc(e.noEmp)}')">✏️ Editar</button> </div> </div>`;
+}).join(’’);
 }
 function buscarEmpEmbEnf(val){
-  val=(val||'').trim();const drop=document.getElementById('emb-enf-drop');
-  if(!val||val.length<2){drop.classList.remove('show');return;}
-  const lc=val.toLowerCase();
-  const lista=HC.filter(e=>(String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc))&&(e.genero||'').toLowerCase().includes('fem')).slice(0,6);
-  const todos=lista.length?lista:HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
-  if(!todos.length){drop.classList.remove('show');return;}
-  drop.innerHTML=todos.map(e=>`<div class="sr-item" onclick="selEmpEmbEnf('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'}</div></div>`).join('');
-  drop.classList.add('show');
+val=(val||’’).trim();const drop=document.getElementById(‘emb-enf-drop’);
+if(!val||val.length<2){drop.classList.remove(‘show’);return;}
+const lc=val.toLowerCase();
+const lista=HC.filter(e=>(String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc))&&(e.genero||’’).toLowerCase().includes(‘fem’)).slice(0,6);
+const todos=lista.length?lista:HC.filter(e=>String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc)).slice(0,6);
+if(!todos.length){drop.classList.remove(‘show’);return;}
+drop.innerHTML=todos.map(e=>`<div class="sr-item" onclick="selEmpEmbEnf('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'}</div></div>`).join(’’);
+drop.classList.add(‘show’);
 }
 function selEmpEmbEnf(noEmp){
-  const e=HC.find(x=>String(x.noEmp)===String(noEmp));if(!e)return;
-  document.getElementById('emb-enf-noEmp').value=e.noEmp;
-  document.getElementById('emb-enf-nombre').value=e.nombre;
-  document.getElementById('emb-enf-planta').value=e.planta||'';
-  document.getElementById('emb-enf-turno').value=e.turno||'';
-  document.getElementById('emb-enf-q').value=e.nombre+' (No.'+e.noEmp+')';
-  document.getElementById('emb-enf-drop').classList.remove('show');
-  // Pre-cargar si ya tiene embarazo
-  const existing=EMBARAZADAS.find(x=>String(x.noEmp)===String(noEmp));
-  if(existing){
-    const toISO=s=>s&&s.includes('/')?s.split('/').reverse().join('-'):s||'';
-    document.getElementById('emb-enf-fum').value=toISO(existing.fum);
-    document.getElementById('emb-enf-fpp').value=toISO(existing.fpp);
-    document.getElementById('emb-enf-semanas').value=existing.semanasGestacion||'';
-    document.getElementById('emb-enf-riesgo').value=existing.altoRiesgo||'No';
-    document.getElementById('emb-enf-lactancia').value=existing.lactanciaActiva||'No';
-    document.getElementById('emb-enf-restricciones').value=existing.restricciones||'';
-    if(existing.fum) calcFPPEnf();
-  }
-  const card=document.getElementById('emb-enf-card');
-  card.innerHTML=`<div class="emp-card"><div class="ec-name">🤰 ${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div></div></div>`;
-  card.style.display='block';
+const e=HC.find(x=>String(x.noEmp)===String(noEmp));if(!e)return;
+document.getElementById(‘emb-enf-noEmp’).value=e.noEmp;
+document.getElementById(‘emb-enf-nombre’).value=e.nombre;
+document.getElementById(‘emb-enf-planta’).value=e.planta||’’;
+document.getElementById(‘emb-enf-turno’).value=e.turno||’’;
+document.getElementById(‘emb-enf-q’).value=e.nombre+’ (No.’+e.noEmp+’)’;
+document.getElementById(‘emb-enf-drop’).classList.remove(‘show’);
+// Pre-cargar si ya tiene embarazo
+const existing=EMBARAZADAS.find(x=>String(x.noEmp)===String(noEmp));
+if(existing){
+const toISO=s=>s&&s.includes(’/’)?s.split(’/’).reverse().join(’-’):s||’’;
+document.getElementById(‘emb-enf-fum’).value=toISO(existing.fum);
+document.getElementById(‘emb-enf-fpp’).value=toISO(existing.fpp);
+document.getElementById(‘emb-enf-semanas’).value=existing.semanasGestacion||’’;
+document.getElementById(‘emb-enf-riesgo’).value=existing.altoRiesgo||‘No’;
+document.getElementById(‘emb-enf-lactancia’).value=existing.lactanciaActiva||‘No’;
+document.getElementById(‘emb-enf-restricciones’).value=existing.restricciones||’’;
+if(existing.fum) calcFPPEnf();
+}
+const card=document.getElementById(‘emb-enf-card’);
+card.innerHTML=`<div class="emp-card"><div class="ec-name">🤰 ${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div></div></div>`;
+card.style.display=‘block’;
 }
 function calcFPPEnf(){
-  const fum=document.getElementById('emb-enf-fum').value; if(!fum)return;
-  const d=new Date(fum+'T12:00'); d.setDate(d.getDate()+280);
-  document.getElementById('emb-enf-fpp').value=d.toISOString().split('T')[0];
-  const semanas=Math.floor((new Date()-new Date(fum+'T12:00'))/(1000*60*60*24*7));
-  document.getElementById('emb-enf-semanas').value=semanas;
-  const tri=semanas<=13?'1er trimestre':semanas<=26?'2do trimestre':'3er trimestre';
-  const res=document.getElementById('emb-enf-resumen');
-  res.innerHTML=`📅 ${semanas} semanas · ${tri} · FPP: ${d.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})}`;
-  res.style.display='block';
+const fum=document.getElementById(‘emb-enf-fum’).value; if(!fum)return;
+const d=new Date(fum+‘T12:00’); d.setDate(d.getDate()+280);
+document.getElementById(‘emb-enf-fpp’).value=d.toISOString().split(‘T’)[0];
+const semanas=Math.floor((new Date()-new Date(fum+‘T12:00’))/(1000*60*60*24*7));
+document.getElementById(‘emb-enf-semanas’).value=semanas;
+const tri=semanas<=13?‘1er trimestre’:semanas<=26?‘2do trimestre’:‘3er trimestre’;
+const res=document.getElementById(‘emb-enf-resumen’);
+res.innerHTML=`📅 ${semanas} semanas · ${tri} · FPP: ${d.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})}`;
+res.style.display=‘block’;
 }
 async function guardarEmbEnf(){
-  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const noEmp=g('emb-enf-noEmp');if(!noEmp){toast('Selecciona una empleada','err');return;}
-  const fum=g('emb-enf-fum');if(!fum){toast('La FUM es obligatoria','err');return;}
-  const exp={
-    noEmp, nombre:g('emb-enf-nombre'), planta:g('emb-enf-planta'), turno:g('emb-enf-turno'),
-    fum:new Date(fum+'T12:00').toLocaleDateString('es-MX'),
-    fpp:g('emb-enf-fpp')?new Date(g('emb-enf-fpp')+'T12:00').toLocaleDateString('es-MX'):'',
-    semanasGestacion:g('emb-enf-semanas'),
-    altoRiesgo:g('emb-enf-riesgo'), lactanciaActiva:g('emb-enf-lactancia'),
-    restricciones:g('emb-enf-restricciones'),
-    estado:'Activo', registradoPor:currentUser?.nombre||'Enfermería',
-    validadoPor:'Pendiente'
-  };
-  const idx=EMBARAZADAS.findIndex(x=>String(x.noEmp)===String(noEmp));
-  if(idx>=0) EMBARAZADAS[idx]={...EMBARAZADAS[idx],...exp}; else EMBARAZADAS.push(exp);
-  setSyncDot('busy');
-  const r=await gasPost({action:'saveEmbarazada',exp});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Embarazo registrado — pendiente validación del médico':'⚠️ Guardado local','ok');
-  closeModal('mo-emb-enf'); renderEmbEnf();
+const g=id=>{const e=document.getElementById(id);return e?e.value.trim():’’;};
+const noEmp=g(‘emb-enf-noEmp’);if(!noEmp){toast(‘Selecciona una empleada’,‘err’);return;}
+const fum=g(‘emb-enf-fum’);if(!fum){toast(‘La FUM es obligatoria’,‘err’);return;}
+const exp={
+noEmp, nombre:g(‘emb-enf-nombre’), planta:g(‘emb-enf-planta’), turno:g(‘emb-enf-turno’),
+fum:new Date(fum+‘T12:00’).toLocaleDateString(‘es-MX’),
+fpp:g(‘emb-enf-fpp’)?new Date(g(‘emb-enf-fpp’)+‘T12:00’).toLocaleDateString(‘es-MX’):’’,
+semanasGestacion:g(‘emb-enf-semanas’),
+altoRiesgo:g(‘emb-enf-riesgo’), lactanciaActiva:g(‘emb-enf-lactancia’),
+restricciones:g(‘emb-enf-restricciones’),
+estado:‘Activo’, registradoPor:currentUser?.nombre||‘Enfermería’,
+validadoPor:‘Pendiente’
+};
+const idx=EMBARAZADAS.findIndex(x=>String(x.noEmp)===String(noEmp));
+if(idx>=0) EMBARAZADAS[idx]={…EMBARAZADAS[idx],…exp}; else EMBARAZADAS.push(exp);
+setSyncDot(‘busy’);
+const r=await gasPost({action:‘saveEmbarazada’,exp});
+setSyncDot(r.ok?‘ok’:‘err’);
+toast(r.ok?‘✅ Embarazo registrado — pendiente validación del médico’:‘⚠️ Guardado local’,‘ok’);
+closeModal(‘mo-emb-enf’); renderEmbEnf();
 }
-function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal('mo-emb-enf'); }
-
+function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal(‘mo-emb-enf’); }
 
 // ══════════════════════════════════════════════════════
 // EXPEDIENTE — ENFERMERÍA
@@ -1690,120 +1697,113 @@ function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal('mo-emb-enf'); }
 let _expNoEmp = null, _expData = null;
 
 function buscarEmpExp(val){
-  val=(val||'').trim();
-  const drop=document.getElementById('exp-drop');
-  if(!val||val.length<2){drop.classList.remove('show');return;}
-  const lc=val.toLowerCase();
-  const lista=HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
-  if(!lista.length){drop.classList.remove('show');return;}
-  drop.innerHTML=lista.map(e=>`<div class="sr-item" onclick="selEmpExp('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.puesto||'—'}</div></div>`).join('');
-  drop.classList.add('show');
+val=(val||’’).trim();
+const drop=document.getElementById(‘exp-drop’);
+if(!val||val.length<2){drop.classList.remove(‘show’);return;}
+const lc=val.toLowerCase();
+const lista=HC.filter(e=>String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc)).slice(0,6);
+if(!lista.length){drop.classList.remove(‘show’);return;}
+drop.innerHTML=lista.map(e=>`<div class="sr-item" onclick="selEmpExp('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.puesto||'—'}</div></div>`).join(’’);
+drop.classList.add(‘show’);
 }
 
 async function selEmpExp(noEmp){
-  _expNoEmp = noEmp;
-  const emp = HC.find(x=>String(x.noEmp)===String(noEmp));
-  document.getElementById('exp-q').value = emp ? emp.nombre+' (No.'+noEmp+')' : noEmp;
-  document.getElementById('exp-drop').classList.remove('show');
-  document.getElementById('exp-content').style.display='none';
-  // Cargar desde GAS
-  try{
-    setSyncDot('busy');
-    const r = await gasGet({action:'getExpCompleto', noEmp});
-    if(r.ok&&r.data){
-      _expData = r.data;
-      renderExpEnf(emp, r.data);
-      setSyncDot('ok');
-    } else {
-      // Fallback local
-      renderExpEnf(emp, {expediente:null, enfermeria:RE.filter(x=>String(x.noEmp||'').toLowerCase()===String(noEmp||'').toLowerCase()), valoraciones:[], nutricion:[], incapacidades:[], resumen:{}});
-      setSyncDot('err');
-    }
-  }catch(e){ setSyncDot('err'); }
-  document.getElementById('exp-content').style.display='block';
+_expNoEmp = noEmp;
+const emp = HC.find(x=>String(x.noEmp)===String(noEmp));
+document.getElementById(‘exp-q’).value = emp ? emp.nombre+’ (No.’+noEmp+’)’ : noEmp;
+document.getElementById(‘exp-drop’).classList.remove(‘show’);
+document.getElementById(‘exp-content’).style.display=‘none’;
+// Cargar desde GAS
+try{
+setSyncDot(‘busy’);
+const r = await gasGet({action:‘getExpCompleto’, noEmp});
+if(r.ok&&r.data){
+_expData = r.data;
+renderExpEnf(emp, r.data);
+setSyncDot(‘ok’);
+} else {
+// Fallback local
+renderExpEnf(emp, {expediente:null, enfermeria:RE.filter(x=>String(x.noEmp||’’).toLowerCase()===String(noEmp||’’).toLowerCase()), valoraciones:[], nutricion:[], incapacidades:[], resumen:{}});
+setSyncDot(‘err’);
+}
+}catch(e){ setSyncDot(‘err’); }
+document.getElementById(‘exp-content’).style.display=‘block’;
 }
 
 function renderExpEnf(emp, data){
-  const exp = data.expediente || {};
-  const res = data.resumen || {};
-  // Card empleado
-  const card = document.getElementById('exp-emp-card');
-  if(emp && card){
-    card.innerHTML=`<div class="emp-card"><div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${emp.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${emp.turno||'—'}</div></div><div class="ec-field"><label>Depto</label><div>${emp.depto||'—'}</div></div><div class="ec-field"><label>NSS</label><div>${emp.nss||'—'}</div></div></div></div>`;
-  }
-  // Alergias
-  const alergias = [...new Set([
-    ...(res.alergias||[]),
-    ...(exp.Alergias||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
-  ])];
-  const alvEl = document.getElementById('exp-alergias-view');
-  const aliEl = document.getElementById('exp-alergias-input');
-  if(alvEl) alvEl.innerHTML = alergias.length
-    ? alergias.map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join('')
-    : '<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>';
-  if(aliEl) aliEl.value = alergias.join(', ');
-  // Enfermedades crónicas
-  const cronicos = [...new Set([
-    ...(res.cronicosAntecedentes||[]),
-    ...(exp.AntPatologicos||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
-  ])];
-  const crvEl = document.getElementById('exp-cronicos-view');
-  const criEl = document.getElementById('exp-cronicos-input');
-  if(crvEl) crvEl.innerHTML = cronicos.length
-    ? cronicos.map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join('')
-    : '<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>';
-  if(criEl) criEl.value = cronicos.join(', ');
-  // Tratamientos
-  const tratas = [...new Set((res.tratamientosActivos||[]).filter(Boolean))];
-  const trvEl = document.getElementById('exp-tratamientos-view');
-  const triEl = document.getElementById('exp-tratamientos-input');
-  if(trvEl) trvEl.innerHTML = tratas.length
-    ? tratas.map(t=>`<div style="font-size:12px;padding:3px 0;color:var(--tx2)">💊 ${t}</div>`).join('')
-    : '<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>';
-  if(triEl) triEl.value = tratas.join('; ');
-  // Historial consultas
-  const todas = [...(data.enfermeria||[]), ...(data.valoraciones||[])].sort((a,b)=>(b.fecha||b.Fecha||'').localeCompare(a.fecha||a.Fecha||''));
-  const hEl = document.getElementById('exp-historial');
-  if(hEl) hEl.innerHTML = todas.length
-    ? todas.slice(0,10).map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--bor);font-size:12px">
-        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px">
-          <span style="color:var(--tx3)">${r.fecha||r.Fecha||'—'}</span>
-          <span class="pill ${r.origen||r.Origen==='Médico'?'pblue':'pteal'}">${r.origen||r.Origen||'Enfermería'}</span>
-        </div>
-        <div style="font-weight:600;margin-top:2px">${r.diagnostico||r.Diagnostico||'—'}</div>
-        ${(r.cronicos||r.Cronicos)?`<div style="font-size:11px;color:var(--amber)">📋 Crónico: ${r.cronicos||r.Cronicos}</div>`:''}
-      </div>`).join('')
-    : '<div style="color:var(--tx3);font-size:12px;padding:10px 0;text-align:center">Sin consultas registradas</div>';
+const exp = data.expediente || {};
+const res = data.resumen || {};
+// Card empleado
+const card = document.getElementById(‘exp-emp-card’);
+if(emp && card){
+card.innerHTML=`<div class="emp-card"><div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${emp.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${emp.turno||'—'}</div></div><div class="ec-field"><label>Depto</label><div>${emp.depto||'—'}</div></div><div class="ec-field"><label>NSS</label><div>${emp.nss||'—'}</div></div></div></div>`;
+}
+// Alergias
+const alergias = […new Set([
+…(res.alergias||[]),
+…(exp.Alergias||’’).split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+])];
+const alvEl = document.getElementById(‘exp-alergias-view’);
+const aliEl = document.getElementById(‘exp-alergias-input’);
+if(alvEl) alvEl.innerHTML = alergias.length
+? alergias.map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join(’’)
+: ‘<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>’;
+if(aliEl) aliEl.value = alergias.join(’, ‘);
+// Enfermedades crónicas
+const cronicos = […new Set([
+…(res.cronicosAntecedentes||[]),
+…(exp.AntPatologicos||’’).split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+])];
+const crvEl = document.getElementById(‘exp-cronicos-view’);
+const criEl = document.getElementById(‘exp-cronicos-input’);
+if(crvEl) crvEl.innerHTML = cronicos.length
+? cronicos.map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join(’’)
+: ‘<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>’;
+if(criEl) criEl.value = cronicos.join(’, ‘);
+// Tratamientos
+const tratas = […new Set((res.tratamientosActivos||[]).filter(Boolean))];
+const trvEl = document.getElementById(‘exp-tratamientos-view’);
+const triEl = document.getElementById(‘exp-tratamientos-input’);
+if(trvEl) trvEl.innerHTML = tratas.length
+? tratas.map(t=>`<div style="font-size:12px;padding:3px 0;color:var(--tx2)">💊 ${t}</div>`).join(’’)
+: ‘<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>’;
+if(triEl) triEl.value = tratas.join(’; ‘);
+// Historial consultas
+const todas = […(data.enfermeria||[]), …(data.valoraciones||[])].sort((a,b)=>(b.fecha||b.Fecha||’’).localeCompare(a.fecha||a.Fecha||’’));
+const hEl = document.getElementById(‘exp-historial’);
+if(hEl) hEl.innerHTML = todas.length
+? todas.slice(0,10).map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--bor);font-size:12px"> <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px"> <span style="color:var(--tx3)">${r.fecha||r.Fecha||'—'}</span> <span class="pill ${r.origen||r.Origen==='Médico'?'pblue':'pteal'}">${r.origen||r.Origen||'Enfermería'}</span> </div> <div style="font-weight:600;margin-top:2px">${r.diagnostico||r.Diagnostico||'—'}</div> ${(r.cronicos||r.Cronicos)?`<div style="font-size:11px;color:var(--amber)">📋 Crónico: ${r.cronicos||r.Cronicos}</div>`:''} </div>`).join(’’)
+: ‘<div style="color:var(--tx3);font-size:12px;padding:10px 0;text-align:center">Sin consultas registradas</div>’;
 }
 
 function editarCampoExp(campo){
-  document.getElementById('exp-'+campo+'-view').style.display='none';
-  document.getElementById('exp-'+campo+'-edit').style.display='block';
-  document.getElementById('exp-'+campo+'-input').focus();
+document.getElementById(‘exp-’+campo+’-view’).style.display=‘none’;
+document.getElementById(‘exp-’+campo+’-edit’).style.display=‘block’;
+document.getElementById(‘exp-’+campo+’-input’).focus();
 }
 
 async function guardarCampoExp(campo){
-  const val = document.getElementById('exp-'+campo+'-input').value.trim();
-  const noEmp = _expNoEmp; if(!noEmp) return;
-  const payload = {NoEmp: noEmp};
-  if(campo==='alergias') payload.Alergias = val;
-  if(campo==='cronicos') payload.AntPatologicos = val;
-  if(campo==='tratamientos') payload.TratamientosActuales = val;
-  setSyncDot('busy');
-  const r = await gasPost({action:'saveExpediente', exp:payload});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Expediente actualizado':'⚠️ Error al guardar','ok');
-  document.getElementById('exp-'+campo+'-edit').style.display='none';
-  document.getElementById('exp-'+campo+'-view').style.display='block';
-  // Update view
-  if(campo==='alergias'){
-    const el=document.getElementById('exp-alergias-view');
-    if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin alergias</span>';
-  }
-  if(campo==='cronicos'){
-    const el=document.getElementById('exp-cronicos-view');
-    if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>';
-  }
+const val = document.getElementById(‘exp-’+campo+’-input’).value.trim();
+const noEmp = _expNoEmp; if(!noEmp) return;
+const payload = {NoEmp: noEmp};
+if(campo===‘alergias’) payload.Alergias = val;
+if(campo===‘cronicos’) payload.AntPatologicos = val;
+if(campo===‘tratamientos’) payload.TratamientosActuales = val;
+setSyncDot(‘busy’);
+const r = await gasPost({action:‘saveExpediente’, exp:payload});
+setSyncDot(r.ok?‘ok’:‘err’);
+toast(r.ok?‘✅ Expediente actualizado’:‘⚠️ Error al guardar’,‘ok’);
+document.getElementById(‘exp-’+campo+’-edit’).style.display=‘none’;
+document.getElementById(‘exp-’+campo+’-view’).style.display=‘block’;
+// Update view
+if(campo===‘alergias’){
+const el=document.getElementById(‘exp-alergias-view’);
+if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(’’):’<span style="color:var(--tx3);font-size:12px">Sin alergias</span>’;
+}
+if(campo===‘cronicos’){
+const el=document.getElementById(‘exp-cronicos-view’);
+if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(’’):’<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>’;
+}
 }
 // ══════════════════════════════════════════════════════
 // INCAPACIDADES
@@ -1813,372 +1813,322 @@ async function guardarCampoExp(campo){
 // EMBARAZO — ENFERMERÍA
 // ══════════════════════════════════════════════════════
 async function syncEmbEnf(){
-  try{const r=await gasGet({action:'getEmbarazadas'});if(r.ok&&Array.isArray(r.data)){EMBARAZADAS=r.data;renderEmbEnf();toast('✅ '+EMBARAZADAS.length+' embarazadas','ok');}}catch(e){}
+try{const r=await gasGet({action:‘getEmbarazadas’});if(r.ok&&Array.isArray(r.data)){EMBARAZADAS=r.data;renderEmbEnf();toast(‘✅ ‘+EMBARAZADAS.length+’ embarazadas’,‘ok’);}}catch(e){}
 }
 function renderEmbEnf(){
-  const el=document.getElementById('emb-enf-lista');
-  if(!EMBARAZADAS.length){el.innerHTML='<div class="empty"><div class="empty-i">🤰</div><div>Sin embarazos activos. Usa 🔄 Sync o registra uno nuevo.</div></div>';return;}
-  el.innerHTML=EMBARAZADAS.map(e=>{
-    const semanas=e.fum?Math.floor((new Date()-new Date(e.fum.includes('/')?e.fum.split('/').reverse().join('-'):e.fum))/(1000*60*60*24*7)):'—';
-    return`<div class="card cp" style="margin-bottom:8px;border-left:3px solid ${e.altoRiesgo==='Sí'?'var(--red)':'#F0ABFC'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
-        <div>
-          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
-            <span style="font-weight:700">🤰 ${e.nombre||'—'}</span>
-            ${e.altoRiesgo==='Sí'?'<span class="pill pred">⚠️ Alto riesgo</span>':''}
-            ${e.lactanciaActiva==='Sí'?'<span class="pill pblue">🤱 Lactancia</span>':''}
-          </div>
-          <div style="font-size:12px;color:var(--tx2)">No.${e.noEmp||'—'} · ${e.planta||'—'} · ${e.turno||'—'}</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap">
-            ${e.fum?`<span>FUM: ${e.fum}</span>`:''}
-            ${e.fpp?`<span>FPP: <strong>${e.fpp}</strong></span>`:''}
-            <span>SDG: <strong>${semanas} semanas</strong></span>
-          </div>
-          ${e.restricciones?`<div style="font-size:11px;color:#86198F;margin-top:3px">⚠️ ${e.restricciones}</div>`:''}
-        </div>
-        <button class="btn btn-ghost btn-xs" onclick="editarEmbEnf('${esc(e.noEmp)}')">✏️ Editar</button>
-      </div>
-    </div>`;
-  }).join('');
+const el=document.getElementById(‘emb-enf-lista’);
+if(!EMBARAZADAS.length){el.innerHTML=’<div class="empty"><div class="empty-i">🤰</div><div>Sin embarazos activos. Usa 🔄 Sync o registra uno nuevo.</div></div>’;return;}
+el.innerHTML=EMBARAZADAS.map(e=>{
+const semanas=e.fum?Math.floor((new Date()-new Date(e.fum.includes(’/’)?e.fum.split(’/’).reverse().join(’-’):e.fum))/(1000*60*60*24*7)):’—’;
+return`<div class="card cp" style="margin-bottom:8px;border-left:3px solid ${e.altoRiesgo==='Sí'?'var(--red)':'#F0ABFC'}"> <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px"> <div> <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px"> <span style="font-weight:700">🤰 ${e.nombre||'—'}</span> ${e.altoRiesgo==='Sí'?'<span class="pill pred">⚠️ Alto riesgo</span>':''} ${e.lactanciaActiva==='Sí'?'<span class="pill pblue">🤱 Lactancia</span>':''} </div> <div style="font-size:12px;color:var(--tx2)">No.${e.noEmp||'—'} · ${e.planta||'—'} · ${e.turno||'—'}</div> <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap"> ${e.fum?`<span>FUM: ${e.fum}</span>`:''} ${e.fpp?`<span>FPP: <strong>${e.fpp}</strong></span>`:''} <span>SDG: <strong>${semanas} semanas</strong></span> </div> ${e.restricciones?`<div style="font-size:11px;color:#86198F;margin-top:3px">⚠️ ${e.restricciones}</div>`:''} </div> <button class="btn btn-ghost btn-xs" onclick="editarEmbEnf('${esc(e.noEmp)}')">✏️ Editar</button> </div> </div>`;
+}).join(’’);
 }
 function buscarEmpEmbEnf(val){
-  val=(val||'').trim();const drop=document.getElementById('emb-enf-drop');
-  if(!val||val.length<2){drop.classList.remove('show');return;}
-  const lc=val.toLowerCase();
-  const lista=HC.filter(e=>(String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc))&&(e.genero||'').toLowerCase().includes('fem')).slice(0,6);
-  const todos=lista.length?lista:HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
-  if(!todos.length){drop.classList.remove('show');return;}
-  drop.innerHTML=todos.map(e=>`<div class="sr-item" onclick="selEmpEmbEnf('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'}</div></div>`).join('');
-  drop.classList.add('show');
+val=(val||’’).trim();const drop=document.getElementById(‘emb-enf-drop’);
+if(!val||val.length<2){drop.classList.remove(‘show’);return;}
+const lc=val.toLowerCase();
+const lista=HC.filter(e=>(String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc))&&(e.genero||’’).toLowerCase().includes(‘fem’)).slice(0,6);
+const todos=lista.length?lista:HC.filter(e=>String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc)).slice(0,6);
+if(!todos.length){drop.classList.remove(‘show’);return;}
+drop.innerHTML=todos.map(e=>`<div class="sr-item" onclick="selEmpEmbEnf('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'}</div></div>`).join(’’);
+drop.classList.add(‘show’);
 }
 function selEmpEmbEnf(noEmp){
-  const e=HC.find(x=>String(x.noEmp)===String(noEmp));if(!e)return;
-  document.getElementById('emb-enf-noEmp').value=e.noEmp;
-  document.getElementById('emb-enf-nombre').value=e.nombre;
-  document.getElementById('emb-enf-planta').value=e.planta||'';
-  document.getElementById('emb-enf-turno').value=e.turno||'';
-  document.getElementById('emb-enf-q').value=e.nombre+' (No.'+e.noEmp+')';
-  document.getElementById('emb-enf-drop').classList.remove('show');
-  // Pre-cargar si ya tiene embarazo
-  const existing=EMBARAZADAS.find(x=>String(x.noEmp)===String(noEmp));
-  if(existing){
-    const toISO=s=>s&&s.includes('/')?s.split('/').reverse().join('-'):s||'';
-    document.getElementById('emb-enf-fum').value=toISO(existing.fum);
-    document.getElementById('emb-enf-fpp').value=toISO(existing.fpp);
-    document.getElementById('emb-enf-semanas').value=existing.semanasGestacion||'';
-    document.getElementById('emb-enf-riesgo').value=existing.altoRiesgo||'No';
-    document.getElementById('emb-enf-lactancia').value=existing.lactanciaActiva||'No';
-    document.getElementById('emb-enf-restricciones').value=existing.restricciones||'';
-    if(existing.fum) calcFPPEnf();
-  }
-  const card=document.getElementById('emb-enf-card');
-  card.innerHTML=`<div class="emp-card"><div class="ec-name">🤰 ${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div></div></div>`;
-  card.style.display='block';
+const e=HC.find(x=>String(x.noEmp)===String(noEmp));if(!e)return;
+document.getElementById(‘emb-enf-noEmp’).value=e.noEmp;
+document.getElementById(‘emb-enf-nombre’).value=e.nombre;
+document.getElementById(‘emb-enf-planta’).value=e.planta||’’;
+document.getElementById(‘emb-enf-turno’).value=e.turno||’’;
+document.getElementById(‘emb-enf-q’).value=e.nombre+’ (No.’+e.noEmp+’)’;
+document.getElementById(‘emb-enf-drop’).classList.remove(‘show’);
+// Pre-cargar si ya tiene embarazo
+const existing=EMBARAZADAS.find(x=>String(x.noEmp)===String(noEmp));
+if(existing){
+const toISO=s=>s&&s.includes(’/’)?s.split(’/’).reverse().join(’-’):s||’’;
+document.getElementById(‘emb-enf-fum’).value=toISO(existing.fum);
+document.getElementById(‘emb-enf-fpp’).value=toISO(existing.fpp);
+document.getElementById(‘emb-enf-semanas’).value=existing.semanasGestacion||’’;
+document.getElementById(‘emb-enf-riesgo’).value=existing.altoRiesgo||‘No’;
+document.getElementById(‘emb-enf-lactancia’).value=existing.lactanciaActiva||‘No’;
+document.getElementById(‘emb-enf-restricciones’).value=existing.restricciones||’’;
+if(existing.fum) calcFPPEnf();
+}
+const card=document.getElementById(‘emb-enf-card’);
+card.innerHTML=`<div class="emp-card"><div class="ec-name">🤰 ${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div></div></div>`;
+card.style.display=‘block’;
 }
 function calcFPPEnf(){
-  const fum=document.getElementById('emb-enf-fum').value; if(!fum)return;
-  const d=new Date(fum+'T12:00'); d.setDate(d.getDate()+280);
-  document.getElementById('emb-enf-fpp').value=d.toISOString().split('T')[0];
-  const semanas=Math.floor((new Date()-new Date(fum+'T12:00'))/(1000*60*60*24*7));
-  document.getElementById('emb-enf-semanas').value=semanas;
-  const tri=semanas<=13?'1er trimestre':semanas<=26?'2do trimestre':'3er trimestre';
-  const res=document.getElementById('emb-enf-resumen');
-  res.innerHTML=`📅 ${semanas} semanas · ${tri} · FPP: ${d.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})}`;
-  res.style.display='block';
+const fum=document.getElementById(‘emb-enf-fum’).value; if(!fum)return;
+const d=new Date(fum+‘T12:00’); d.setDate(d.getDate()+280);
+document.getElementById(‘emb-enf-fpp’).value=d.toISOString().split(‘T’)[0];
+const semanas=Math.floor((new Date()-new Date(fum+‘T12:00’))/(1000*60*60*24*7));
+document.getElementById(‘emb-enf-semanas’).value=semanas;
+const tri=semanas<=13?‘1er trimestre’:semanas<=26?‘2do trimestre’:‘3er trimestre’;
+const res=document.getElementById(‘emb-enf-resumen’);
+res.innerHTML=`📅 ${semanas} semanas · ${tri} · FPP: ${d.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})}`;
+res.style.display=‘block’;
 }
 async function guardarEmbEnf(){
-  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const noEmp=g('emb-enf-noEmp');if(!noEmp){toast('Selecciona una empleada','err');return;}
-  const fum=g('emb-enf-fum');if(!fum){toast('La FUM es obligatoria','err');return;}
-  const exp={
-    noEmp, nombre:g('emb-enf-nombre'), planta:g('emb-enf-planta'), turno:g('emb-enf-turno'),
-    fum:new Date(fum+'T12:00').toLocaleDateString('es-MX'),
-    fpp:g('emb-enf-fpp')?new Date(g('emb-enf-fpp')+'T12:00').toLocaleDateString('es-MX'):'',
-    semanasGestacion:g('emb-enf-semanas'),
-    altoRiesgo:g('emb-enf-riesgo'), lactanciaActiva:g('emb-enf-lactancia'),
-    restricciones:g('emb-enf-restricciones'),
-    estado:'Activo', registradoPor:currentUser?.nombre||'Enfermería',
-    validadoPor:'Pendiente'
-  };
-  const idx=EMBARAZADAS.findIndex(x=>String(x.noEmp)===String(noEmp));
-  if(idx>=0) EMBARAZADAS[idx]={...EMBARAZADAS[idx],...exp}; else EMBARAZADAS.push(exp);
-  setSyncDot('busy');
-  const r=await gasPost({action:'saveEmbarazada',exp});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Embarazo registrado — pendiente validación del médico':'⚠️ Guardado local','ok');
-  closeModal('mo-emb-enf'); renderEmbEnf();
+const g=id=>{const e=document.getElementById(id);return e?e.value.trim():’’;};
+const noEmp=g(‘emb-enf-noEmp’);if(!noEmp){toast(‘Selecciona una empleada’,‘err’);return;}
+const fum=g(‘emb-enf-fum’);if(!fum){toast(‘La FUM es obligatoria’,‘err’);return;}
+const exp={
+noEmp, nombre:g(‘emb-enf-nombre’), planta:g(‘emb-enf-planta’), turno:g(‘emb-enf-turno’),
+fum:new Date(fum+‘T12:00’).toLocaleDateString(‘es-MX’),
+fpp:g(‘emb-enf-fpp’)?new Date(g(‘emb-enf-fpp’)+‘T12:00’).toLocaleDateString(‘es-MX’):’’,
+semanasGestacion:g(‘emb-enf-semanas’),
+altoRiesgo:g(‘emb-enf-riesgo’), lactanciaActiva:g(‘emb-enf-lactancia’),
+restricciones:g(‘emb-enf-restricciones’),
+estado:‘Activo’, registradoPor:currentUser?.nombre||‘Enfermería’,
+validadoPor:‘Pendiente’
+};
+const idx=EMBARAZADAS.findIndex(x=>String(x.noEmp)===String(noEmp));
+if(idx>=0) EMBARAZADAS[idx]={…EMBARAZADAS[idx],…exp}; else EMBARAZADAS.push(exp);
+setSyncDot(‘busy’);
+const r=await gasPost({action:‘saveEmbarazada’,exp});
+setSyncDot(r.ok?‘ok’:‘err’);
+toast(r.ok?‘✅ Embarazo registrado — pendiente validación del médico’:‘⚠️ Guardado local’,‘ok’);
+closeModal(‘mo-emb-enf’); renderEmbEnf();
 }
-function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal('mo-emb-enf'); }
-
+function editarEmbEnf(noEmp){ selEmpEmbEnf(noEmp); openModal(‘mo-emb-enf’); }
 
 // ══════════════════════════════════════════════════════
 // EXPEDIENTE — ENFERMERÍA
 // ══════════════════════════════════════════════════════
 
 function buscarEmpExp(val){
-  val=(val||'').trim();
-  const drop=document.getElementById('exp-drop');
-  if(!val||val.length<2){drop.classList.remove('show');return;}
-  const lc=val.toLowerCase();
-  const lista=HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
-  if(!lista.length){drop.classList.remove('show');return;}
-  drop.innerHTML=lista.map(e=>`<div class="sr-item" onclick="selEmpExp('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.puesto||'—'}</div></div>`).join('');
-  drop.classList.add('show');
+val=(val||’’).trim();
+const drop=document.getElementById(‘exp-drop’);
+if(!val||val.length<2){drop.classList.remove(‘show’);return;}
+const lc=val.toLowerCase();
+const lista=HC.filter(e=>String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc)).slice(0,6);
+if(!lista.length){drop.classList.remove(‘show’);return;}
+drop.innerHTML=lista.map(e=>`<div class="sr-item" onclick="selEmpExp('${esc(e.noEmp)}')"><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.puesto||'—'}</div></div>`).join(’’);
+drop.classList.add(‘show’);
 }
 
 async function selEmpExp(noEmp){
-  _expNoEmp = noEmp;
-  const emp = HC.find(x=>String(x.noEmp)===String(noEmp));
-  document.getElementById('exp-q').value = emp ? emp.nombre+' (No.'+noEmp+')' : noEmp;
-  document.getElementById('exp-drop').classList.remove('show');
-  document.getElementById('exp-content').style.display='none';
-  // Cargar desde GAS
-  try{
-    setSyncDot('busy');
-    const r = await gasGet({action:'getExpCompleto', noEmp});
-    if(r.ok&&r.data){
-      _expData = r.data;
-      renderExpEnf(emp, r.data);
-      setSyncDot('ok');
-    } else {
-      // Fallback local
-      renderExpEnf(emp, {expediente:null, enfermeria:RE.filter(x=>String(x.noEmp||'').toLowerCase()===String(noEmp||'').toLowerCase()), valoraciones:[], nutricion:[], incapacidades:[], resumen:{}});
-      setSyncDot('err');
-    }
-  }catch(e){ setSyncDot('err'); }
-  document.getElementById('exp-content').style.display='block';
+_expNoEmp = noEmp;
+const emp = HC.find(x=>String(x.noEmp)===String(noEmp));
+document.getElementById(‘exp-q’).value = emp ? emp.nombre+’ (No.’+noEmp+’)’ : noEmp;
+document.getElementById(‘exp-drop’).classList.remove(‘show’);
+document.getElementById(‘exp-content’).style.display=‘none’;
+// Cargar desde GAS
+try{
+setSyncDot(‘busy’);
+const r = await gasGet({action:‘getExpCompleto’, noEmp});
+if(r.ok&&r.data){
+_expData = r.data;
+renderExpEnf(emp, r.data);
+setSyncDot(‘ok’);
+} else {
+// Fallback local
+renderExpEnf(emp, {expediente:null, enfermeria:RE.filter(x=>String(x.noEmp||’’).toLowerCase()===String(noEmp||’’).toLowerCase()), valoraciones:[], nutricion:[], incapacidades:[], resumen:{}});
+setSyncDot(‘err’);
+}
+}catch(e){ setSyncDot(‘err’); }
+document.getElementById(‘exp-content’).style.display=‘block’;
 }
 
 function renderExpEnf(emp, data){
-  const exp = data.expediente || {};
-  const res = data.resumen || {};
-  // Card empleado
-  const card = document.getElementById('exp-emp-card');
-  if(emp && card){
-    card.innerHTML=`<div class="emp-card"><div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${emp.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${emp.turno||'—'}</div></div><div class="ec-field"><label>Depto</label><div>${emp.depto||'—'}</div></div><div class="ec-field"><label>NSS</label><div>${emp.nss||'—'}</div></div></div></div>`;
-  }
-  // Alergias
-  const alergias = [...new Set([
-    ...(res.alergias||[]),
-    ...(exp.Alergias||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
-  ])];
-  const alvEl = document.getElementById('exp-alergias-view');
-  const aliEl = document.getElementById('exp-alergias-input');
-  if(alvEl) alvEl.innerHTML = alergias.length
-    ? alergias.map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join('')
-    : '<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>';
-  if(aliEl) aliEl.value = alergias.join(', ');
-  // Enfermedades crónicas
-  const cronicos = [...new Set([
-    ...(res.cronicosAntecedentes||[]),
-    ...(exp.AntPatologicos||'').split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
-  ])];
-  const crvEl = document.getElementById('exp-cronicos-view');
-  const criEl = document.getElementById('exp-cronicos-input');
-  if(crvEl) crvEl.innerHTML = cronicos.length
-    ? cronicos.map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join('')
-    : '<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>';
-  if(criEl) criEl.value = cronicos.join(', ');
-  // Tratamientos
-  const tratas = [...new Set((res.tratamientosActivos||[]).filter(Boolean))];
-  const trvEl = document.getElementById('exp-tratamientos-view');
-  const triEl = document.getElementById('exp-tratamientos-input');
-  if(trvEl) trvEl.innerHTML = tratas.length
-    ? tratas.map(t=>`<div style="font-size:12px;padding:3px 0;color:var(--tx2)">💊 ${t}</div>`).join('')
-    : '<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>';
-  if(triEl) triEl.value = tratas.join('; ');
-  // Historial consultas
-  const todas = [...(data.enfermeria||[]), ...(data.valoraciones||[])].sort((a,b)=>(b.fecha||b.Fecha||'').localeCompare(a.fecha||a.Fecha||''));
-  const hEl = document.getElementById('exp-historial');
-  if(hEl) hEl.innerHTML = todas.length
-    ? todas.slice(0,10).map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--bor);font-size:12px">
-        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px">
-          <span style="color:var(--tx3)">${r.fecha||r.Fecha||'—'}</span>
-          <span class="pill ${r.origen||r.Origen==='Médico'?'pblue':'pteal'}">${r.origen||r.Origen||'Enfermería'}</span>
-        </div>
-        <div style="font-weight:600;margin-top:2px">${r.diagnostico||r.Diagnostico||'—'}</div>
-        ${(r.cronicos||r.Cronicos)?`<div style="font-size:11px;color:var(--amber)">📋 Crónico: ${r.cronicos||r.Cronicos}</div>`:''}
-      </div>`).join('')
-    : '<div style="color:var(--tx3);font-size:12px;padding:10px 0;text-align:center">Sin consultas registradas</div>';
+const exp = data.expediente || {};
+const res = data.resumen || {};
+// Card empleado
+const card = document.getElementById(‘exp-emp-card’);
+if(emp && card){
+card.innerHTML=`<div class="emp-card"><div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${emp.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${emp.turno||'—'}</div></div><div class="ec-field"><label>Depto</label><div>${emp.depto||'—'}</div></div><div class="ec-field"><label>NSS</label><div>${emp.nss||'—'}</div></div></div></div>`;
+}
+// Alergias
+const alergias = […new Set([
+…(res.alergias||[]),
+…(exp.Alergias||’’).split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+])];
+const alvEl = document.getElementById(‘exp-alergias-view’);
+const aliEl = document.getElementById(‘exp-alergias-input’);
+if(alvEl) alvEl.innerHTML = alergias.length
+? alergias.map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join(’’)
+: ‘<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>’;
+if(aliEl) aliEl.value = alergias.join(’, ‘);
+// Enfermedades crónicas
+const cronicos = […new Set([
+…(res.cronicosAntecedentes||[]),
+…(exp.AntPatologicos||’’).split(/[,;]+/).map(x=>x.trim()).filter(Boolean)
+])];
+const crvEl = document.getElementById(‘exp-cronicos-view’);
+const criEl = document.getElementById(‘exp-cronicos-input’);
+if(crvEl) crvEl.innerHTML = cronicos.length
+? cronicos.map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join(’’)
+: ‘<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>’;
+if(criEl) criEl.value = cronicos.join(’, ‘);
+// Tratamientos
+const tratas = […new Set((res.tratamientosActivos||[]).filter(Boolean))];
+const trvEl = document.getElementById(‘exp-tratamientos-view’);
+const triEl = document.getElementById(‘exp-tratamientos-input’);
+if(trvEl) trvEl.innerHTML = tratas.length
+? tratas.map(t=>`<div style="font-size:12px;padding:3px 0;color:var(--tx2)">💊 ${t}</div>`).join(’’)
+: ‘<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>’;
+if(triEl) triEl.value = tratas.join(’; ‘);
+// Historial consultas
+const todas = […(data.enfermeria||[]), …(data.valoraciones||[])].sort((a,b)=>(b.fecha||b.Fecha||’’).localeCompare(a.fecha||a.Fecha||’’));
+const hEl = document.getElementById(‘exp-historial’);
+if(hEl) hEl.innerHTML = todas.length
+? todas.slice(0,10).map(r=>`<div style="padding:7px 0;border-bottom:1px solid var(--bor);font-size:12px"> <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px"> <span style="color:var(--tx3)">${r.fecha||r.Fecha||'—'}</span> <span class="pill ${r.origen||r.Origen==='Médico'?'pblue':'pteal'}">${r.origen||r.Origen||'Enfermería'}</span> </div> <div style="font-weight:600;margin-top:2px">${r.diagnostico||r.Diagnostico||'—'}</div> ${(r.cronicos||r.Cronicos)?`<div style="font-size:11px;color:var(--amber)">📋 Crónico: ${r.cronicos||r.Cronicos}</div>`:''} </div>`).join(’’)
+: ‘<div style="color:var(--tx3);font-size:12px;padding:10px 0;text-align:center">Sin consultas registradas</div>’;
 }
 
 function editarCampoExp(campo){
-  document.getElementById('exp-'+campo+'-view').style.display='none';
-  document.getElementById('exp-'+campo+'-edit').style.display='block';
-  document.getElementById('exp-'+campo+'-input').focus();
+document.getElementById(‘exp-’+campo+’-view’).style.display=‘none’;
+document.getElementById(‘exp-’+campo+’-edit’).style.display=‘block’;
+document.getElementById(‘exp-’+campo+’-input’).focus();
 }
 
 async function guardarCampoExp(campo){
-  const val = document.getElementById('exp-'+campo+'-input').value.trim();
-  const noEmp = _expNoEmp; if(!noEmp) return;
-  const payload = {NoEmp: noEmp};
-  if(campo==='alergias') payload.Alergias = val;
-  if(campo==='cronicos') payload.AntPatologicos = val;
-  if(campo==='tratamientos') payload.TratamientosActuales = val;
-  setSyncDot('busy');
-  const r = await gasPost({action:'saveExpediente', exp:payload});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Expediente actualizado':'⚠️ Error al guardar','ok');
-  document.getElementById('exp-'+campo+'-edit').style.display='none';
-  document.getElementById('exp-'+campo+'-view').style.display='block';
-  // Update view
-  if(campo==='alergias'){
-    const el=document.getElementById('exp-alergias-view');
-    if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin alergias</span>';
-  }
-  if(campo==='cronicos'){
-    const el=document.getElementById('exp-cronicos-view');
-    if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>';
-  }
+const val = document.getElementById(‘exp-’+campo+’-input’).value.trim();
+const noEmp = _expNoEmp; if(!noEmp) return;
+const payload = {NoEmp: noEmp};
+if(campo===‘alergias’) payload.Alergias = val;
+if(campo===‘cronicos’) payload.AntPatologicos = val;
+if(campo===‘tratamientos’) payload.TratamientosActuales = val;
+setSyncDot(‘busy’);
+const r = await gasPost({action:‘saveExpediente’, exp:payload});
+setSyncDot(r.ok?‘ok’:‘err’);
+toast(r.ok?‘✅ Expediente actualizado’:‘⚠️ Error al guardar’,‘ok’);
+document.getElementById(‘exp-’+campo+’-edit’).style.display=‘none’;
+document.getElementById(‘exp-’+campo+’-view’).style.display=‘block’;
+// Update view
+if(campo===‘alergias’){
+const el=document.getElementById(‘exp-alergias-view’);
+if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(’’):’<span style="color:var(--tx3);font-size:12px">Sin alergias</span>’;
+}
+if(campo===‘cronicos’){
+const el=document.getElementById(‘exp-cronicos-view’);
+if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(’’):’<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>’;
+}
 }
 // ══════════════════════════════════════════════════════
 // INCAPACIDADES
 // ══════════════════════════════════════════════════════
-var _incTab = 'activas';
+var _incTab = ‘activas’;
 
 function incTab(tab, el){
-  _incTab=tab;
-  document.querySelectorAll('#sc-inc .tab').forEach(b=>b.classList.remove('active'));
-  if(el) el.classList.add('active');
-  renderInc();
+_incTab=tab;
+document.querySelectorAll(’#sc-inc .tab’).forEach(b=>b.classList.remove(‘active’));
+if(el) el.classList.add(‘active’);
+renderInc();
 }
 
 function parseDate(str){
-  if(!str) return null;
-  // Acepta DD/MM/YYYY o YYYY-MM-DD
-  if(str.includes('/')){const p=str.split('/');return new Date(p[2],p[1]-1,p[0]);}
-  return new Date(str+'T12:00');
+if(!str) return null;
+// Acepta DD/MM/YYYY o YYYY-MM-DD
+if(str.includes(’/’)){const p=str.split(’/’);return new Date(p[2],p[1]-1,p[0]);}
+return new Date(str+‘T12:00’);
 }
 
 function incActiva(r){
-  if(!r.incInicio) return false;
-  const hoy=new Date(); hoy.setHours(0,0,0,0);
-  const ini=parseDate(r.incInicio); if(!ini||isNaN(ini)) return false;
-  if(r.incFin){const fin=parseDate(r.incFin);return fin&&!isNaN(fin)&&fin>=hoy;}
-  if(r.incDias){const fin=new Date(ini);fin.setDate(ini.getDate()+(parseInt(r.incDias)||1)-1);return fin>=hoy;}
-  return false;
+if(!r.incInicio) return false;
+const hoy=new Date(); hoy.setHours(0,0,0,0);
+const ini=parseDate(r.incInicio); if(!ini||isNaN(ini)) return false;
+if(r.incFin){const fin=parseDate(r.incFin);return fin&&!isNaN(fin)&&fin>=hoy;}
+if(r.incDias){const fin=new Date(ini);fin.setDate(ini.getDate()+(parseInt(r.incDias)||1)-1);return fin>=hoy;}
+return false;
 }
 
 function diasRestantes(r){
-  const hoy=new Date(); hoy.setHours(0,0,0,0);
-  const ini=parseDate(r.incInicio); if(!ini) return 0;
-  let fin=null;
-  if(r.incFin) fin=parseDate(r.incFin);
-  else if(r.incDias){fin=new Date(ini);fin.setDate(ini.getDate()+(parseInt(r.incDias)||1)-1);}
-  if(!fin) return 0;
-  return Math.max(0,Math.round((fin-hoy)/(1000*60*60*24)));
+const hoy=new Date(); hoy.setHours(0,0,0,0);
+const ini=parseDate(r.incInicio); if(!ini) return 0;
+let fin=null;
+if(r.incFin) fin=parseDate(r.incFin);
+else if(r.incDias){fin=new Date(ini);fin.setDate(ini.getDate()+(parseInt(r.incDias)||1)-1);}
+if(!fin) return 0;
+return Math.max(0,Math.round((fin-hoy)/(1000*60*60*24)));
 }
 
 function updateIncKpis(lista){
-  const hoy=new Date(); hoy.setHours(0,0,0,0);
-  const mes=hoy.getMonth(), anio=hoy.getFullYear();
-  const activas=lista.filter(r=>incActiva(r));
-  const esteMes=lista.filter(r=>{const d=parseDate(r.incInicio);return d&&d.getMonth()===mes&&d.getFullYear()===anio;});
-  const totalDias=lista.reduce((s,r)=>s+(parseInt(r.incDias)||0),0);
-  const prox7=activas.filter(r=>diasRestantes(r)<=7);
-  const sv2=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  sv2('ik-activas',activas.length);
-  sv2('ik-mes',esteMes.length);
-  sv2('ik-dias',totalDias);
-  sv2('ik-reincorp',prox7.length);
+const hoy=new Date(); hoy.setHours(0,0,0,0);
+const mes=hoy.getMonth(), anio=hoy.getFullYear();
+const activas=lista.filter(r=>incActiva(r));
+const esteMes=lista.filter(r=>{const d=parseDate(r.incInicio);return d&&d.getMonth()===mes&&d.getFullYear()===anio;});
+const totalDias=lista.reduce((s,r)=>s+(parseInt(r.incDias)||0),0);
+const prox7=activas.filter(r=>diasRestantes(r)<=7);
+const sv2=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+sv2(‘ik-activas’,activas.length);
+sv2(‘ik-mes’,esteMes.length);
+sv2(‘ik-dias’,totalDias);
+sv2(‘ik-reincorp’,prox7.length);
 }
 
 function renderInc(){
-  const q=(document.getElementById('inc-q')||{}).value.toLowerCase()||'';
-  const fp=(document.getElementById('inc-planta')||{}).value||'';
-  const ft=(document.getElementById('inc-tipo-f')||{}).value||'';
-  // Combinar INC propias + las que vienen de registros de enfermería
-  const deRE=RE.filter(r=>r.incapacidad&&r.incapacidad!=='No'&&r.incInicio)
-    .map(r=>({
-      id:'RE-'+r.id, noEmp:r.noEmp, nombre:r.nombre, planta:r.planta, turno:r.turno,
-      depto:r.depto, puesto:r.puesto, nss:r.nss,
-      tipo:r.incapacidad, diagnostico:r.diagnostico,
-      incInicio:r.incInicio, incFin:r.incFin, incDias:r.incDias,
-      fecha:r.fecha, institucion:'—', fuente:'consulta'
-    }));
-  const todas=[...INC.map(r=>({...r,fuente:'directa'})),...deRE];
-  updateIncKpis(todas);
-  let lista=todas;
-  if(_incTab==='activas') lista=lista.filter(r=>incActiva(r));
-  else if(_incTab==='proximas') lista=lista.filter(r=>incActiva(r)&&diasRestantes(r)<=7).sort((a,b)=>diasRestantes(a)-diasRestantes(b));
-  // historial: todas
-  if(q) lista=lista.filter(r=>(r.nombre+r.noEmp+r.diagnostico).toLowerCase().includes(q));
-  if(fp) lista=lista.filter(r=>r.planta===fp);
-  if(ft) lista=lista.filter(r=>(r.tipo||'').toLowerCase().includes(ft.toLowerCase()));
-  lista=[...lista].sort((a,b)=>(b.incInicio||b.fecha||'').localeCompare(a.incInicio||a.fecha||''));
-  const el=document.getElementById('inc-list');
-  if(!lista.length){
-    el.innerHTML=`<div class="empty"><div class="empty-i">🏥</div><div>${_incTab==='activas'?'Sin incapacidades activas':'Sin registros'}</div></div>`;
-    return;
-  }
-  const hoy=new Date(); hoy.setHours(0,0,0,0);
-  el.innerHTML=lista.map(r=>{
-    const activa=incActiva(r);
-    const dias=diasRestantes(r);
-    const tipoCls=r.tipo==='Riesgo de trabajo'?'pred':r.tipo==='Maternidad'?'ppurple':r.tipo==='Riesgo de trayecto'?'pamber':'pteal';
-    const estadoBadge=activa
-      ?`<span class="pill pgreen">🟢 Activa${dias>0?' · '+dias+' días restantes':''}</span>`
-      :`<span class="pill pgray">Finalizada</span>`;
-    return `<div class="inc-card" style="border-left:3px solid ${activa?'var(--teal)':'var(--bor2)'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
-            <span style="font-weight:700;font-size:13px">${r.nombre||'—'}</span>
-            <span class="pill ${tipoCls}">${r.tipo||'—'}</span>
-            ${r.secuencia?`<span class="pill pgray">${r.secuencia}</span>`:''}
-            ${estadoBadge}
-          </div>
-          <div style="font-size:12px;color:var(--tx2)">No.${r.noEmp||'—'} · ${r.planta||'—'} · ${r.turno||'—'}${r.depto?' · '+r.depto:''}</div>
-          <div style="font-size:12px;color:var(--navy);font-weight:600;margin-top:3px">${r.diagnostico||'—'}</div>
-          <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap">
-            ${r.incInicio?`<span>📅 Inicio: <strong>${r.incInicio}</strong></span>`:''}
-            ${r.incFin?`<span>🏁 Fin: <strong>${r.incFin}</strong></span>`:''}
-            ${r.incDias?`<span>⏱ <strong>${r.incDias} días</strong></span>`:''}
-            ${r.institucion&&r.institucion!=='—'?`<span>🏥 ${r.institucion}</span>`:''}
-            ${r.numImss?`<span>Folio IMSS: ${r.numImss}</span>`:''}
-          </div>
-          ${r.fuente==='consulta'?`<div style="font-size:10px;color:var(--tx3);margin-top:2px">Origen: consulta del ${r.fecha||'—'}</div>`:''}
-        </div>
-        <div style="display:flex;flex-direction:column;gap:4px">
-          ${r.fuente!=='consulta'?`<button class="btn btn-ghost btn-xs" onclick="editarInc('${r.id}')">✏️ Editar</button>`:''}
-          <button class="btn btn-ghost btn-xs" onclick="imprimirInc('${r.id||'RE-'+r.id}')">🖨️</button>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+const q=(document.getElementById(‘inc-q’)||{}).value.toLowerCase()||’’;
+const fp=(document.getElementById(‘inc-planta’)||{}).value||’’;
+const ft=(document.getElementById(‘inc-tipo-f’)||{}).value||’’;
+// Combinar INC propias + las que vienen de registros de enfermería
+const deRE=RE.filter(r=>r.incapacidad&&r.incapacidad!==‘No’&&r.incInicio)
+.map(r=>({
+id:‘RE-’+r.id, noEmp:r.noEmp, nombre:r.nombre, planta:r.planta, turno:r.turno,
+depto:r.depto, puesto:r.puesto, nss:r.nss,
+tipo:r.incapacidad, diagnostico:r.diagnostico,
+incInicio:r.incInicio, incFin:r.incFin, incDias:r.incDias,
+fecha:r.fecha, institucion:’—’, fuente:‘consulta’
+}));
+const todas=[…INC.map(r=>({…r,fuente:‘directa’})),…deRE];
+updateIncKpis(todas);
+let lista=todas;
+if(_incTab===‘activas’) lista=lista.filter(r=>incActiva(r));
+else if(_incTab===‘proximas’) lista=lista.filter(r=>incActiva(r)&&diasRestantes(r)<=7).sort((a,b)=>diasRestantes(a)-diasRestantes(b));
+// historial: todas
+if(q) lista=lista.filter(r=>(r.nombre+r.noEmp+r.diagnostico).toLowerCase().includes(q));
+if(fp) lista=lista.filter(r=>r.planta===fp);
+if(ft) lista=lista.filter(r=>(r.tipo||’’).toLowerCase().includes(ft.toLowerCase()));
+lista=[…lista].sort((a,b)=>(b.incInicio||b.fecha||’’).localeCompare(a.incInicio||a.fecha||’’));
+const el=document.getElementById(‘inc-list’);
+if(!lista.length){
+el.innerHTML=`<div class="empty"><div class="empty-i">🏥</div><div>${_incTab==='activas'?'Sin incapacidades activas':'Sin registros'}</div></div>`;
+return;
+}
+const hoy=new Date(); hoy.setHours(0,0,0,0);
+el.innerHTML=lista.map(r=>{
+const activa=incActiva(r);
+const dias=diasRestantes(r);
+const tipoCls=r.tipo===‘Riesgo de trabajo’?‘pred’:r.tipo===‘Maternidad’?‘ppurple’:r.tipo===‘Riesgo de trayecto’?‘pamber’:‘pteal’;
+const estadoBadge=activa
+?`<span class="pill pgreen">🟢 Activa${dias>0?' · '+dias+' días restantes':''}</span>`
+:`<span class="pill pgray">Finalizada</span>`;
+return `<div class="inc-card" style="border-left:3px solid ${activa?'var(--teal)':'var(--bor2)'}"> <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px"> <div style="flex:1"> <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px"> <span style="font-weight:700;font-size:13px">${r.nombre||'—'}</span> <span class="pill ${tipoCls}">${r.tipo||'—'}</span> ${r.secuencia?`<span class="pill pgray">${r.secuencia}</span>`:''} ${estadoBadge} </div> <div style="font-size:12px;color:var(--tx2)">No.${r.noEmp||'—'} · ${r.planta||'—'} · ${r.turno||'—'}${r.depto?' · '+r.depto:''}</div> <div style="font-size:12px;color:var(--navy);font-weight:600;margin-top:3px">${r.diagnostico||'—'}</div> <div style="font-size:11px;color:var(--tx3);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap"> ${r.incInicio?`<span>📅 Inicio: <strong>${r.incInicio}</strong></span>`:''} ${r.incFin?`<span>🏁 Fin: <strong>${r.incFin}</strong></span>`:''} ${r.incDias?`<span>⏱ <strong>${r.incDias} días</strong></span>`:''} ${r.institucion&&r.institucion!=='—'?`<span>🏥 ${r.institucion}</span>`:''} ${r.numImss?`<span>Folio IMSS: ${r.numImss}</span>`:''} </div> ${r.fuente==='consulta'?`<div style="font-size:10px;color:var(--tx3);margin-top:2px">Origen: consulta del ${r.fecha||’—’}</div>`:''} </div> <div style="display:flex;flex-direction:column;gap:4px"> ${r.fuente!=='consulta'?`<button class="btn btn-ghost btn-xs" onclick="editarInc('${r.id}')">✏️ Editar</button>`:''} <button class="btn btn-ghost btn-xs" onclick="imprimirInc('${r.id||'RE-'+r.id}')">🖨️</button> </div> </div> </div>`;
+}).join(’’);
 }
 
 // ── Búsqueda de empleado en modal inc ────────────────
 function buscarEmpInc(val){
-  val=(val||'').trim();
-  const drop=document.getElementById('inc-emp-drop');
-  if(!val||val.length<2){drop.classList.remove('show');return;}
-  const lc=val.toLowerCase();
-  const matches=HC.filter(e=>String(e.noEmp||'').toLowerCase().includes(lc)||String(e.nombre||'').toLowerCase().includes(lc)).slice(0,6);
-  if(!matches.length){drop.classList.remove('show');return;}
-  drop.innerHTML=matches.map(e=>`<div class="sr-item" onclick="selEmpInc('${esc(e.noEmp)}')" ><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.puesto||'—'}</div></div>`).join('');
-  drop.classList.add('show');
+val=(val||’’).trim();
+const drop=document.getElementById(‘inc-emp-drop’);
+if(!val||val.length<2){drop.classList.remove(‘show’);return;}
+const lc=val.toLowerCase();
+const matches=HC.filter(e=>String(e.noEmp||’’).toLowerCase().includes(lc)||String(e.nombre||’’).toLowerCase().includes(lc)).slice(0,6);
+if(!matches.length){drop.classList.remove(‘show’);return;}
+drop.innerHTML=matches.map(e=>`<div class="sr-item" onclick="selEmpInc('${esc(e.noEmp)}')" ><div class="sr-name">${e.nombre}</div><div class="sr-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.puesto||'—'}</div></div>`).join(’’);
+drop.classList.add(‘show’);
 }
 
 function selEmpInc(noEmp){
-  const e=HC.find(x=>String(x.noEmp)===String(noEmp)); if(!e) return;
-  document.getElementById('inc-noemp').value=e.noEmp;
-  document.getElementById('inc-nombre-h').value=e.nombre;
-  document.getElementById('inc-planta-h').value=e.planta||'';
-  document.getElementById('inc-turno-h').value=e.turno||'';
-  document.getElementById('inc-depto-h').value=e.depto||'';
-  document.getElementById('inc-puesto-h').value=e.puesto||'';
-  document.getElementById('inc-nss-h').value=e.nss||'';
-  document.getElementById('inc-emp-drop').classList.remove('show');
-  const card=document.getElementById('inc-emp-card');
-  card.innerHTML=`<div class="emp-card">
-    <div class="ec-name">${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div>
-    <div class="ec-grid">
-      <div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div>
-      <div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div>
-      <div class="ec-field"><label>Depto</label><div>${e.depto||'—'}</div></div>
-      <div class="ec-field"><label>NSS</label><div>${e.nss||'—'}</div></div>
-    </div>
+const e=HC.find(x=>String(x.noEmp)===String(noEmp)); if(!e) return;
+document.getElementById(‘inc-noemp’).value=e.noEmp;
+document.getElementById(‘inc-nombre-h’).value=e.nombre;
+document.getElementById(‘inc-planta-h’).value=e.planta||’’;
+document.getElementById(‘inc-turno-h’).value=e.turno||’’;
+document.getElementById(‘inc-depto-h’).value=e.depto||’’;
+document.getElementById(‘inc-puesto-h’).value=e.puesto||’’;
+document.getElementById(‘inc-nss-h’).value=e.nss||’’;
+document.getElementById(‘inc-emp-drop’).classList.remove(‘show’);
+const card=document.getElementById(‘inc-emp-card’);
+card.innerHTML=`<div class="emp-card">
+<div class="ec-name">${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div>
+<div class="ec-grid">
+<div class="ec-field"><label>Planta</label><div>${e.planta||’—’}</div></div>
+<div class="ec-field"><label>Turno</label><div>${e.turno||’—’}</div></div>
+<div class="ec-field"><label>Depto</label><div>${e.depto||’—’}</div></div>
+<div class="ec-field"><label>NSS</label><div>${e.nss||’—’}</div></div>
+</div>
+
   </div>`;
   card.style.display='block';
   // Precargar fecha de hoy
@@ -2188,154 +2138,155 @@ function selEmpInc(noEmp){
 
 // ── Cálculo automático de fechas ──────────────────────
 function calcDiasInc(){
-  const ini=document.getElementById('inc-inicio').value;
-  const fin=document.getElementById('inc-fin').value;
-  if(ini&&fin){
-    const d1=new Date(ini+'T12:00'), d2=new Date(fin+'T12:00');
-    const dias=Math.round((d2-d1)/(1000*60*60*24))+1;
-    if(dias>0) document.getElementById('inc-dias').value=dias;
-  }
-  updateResumenInc();
+const ini=document.getElementById(‘inc-inicio’).value;
+const fin=document.getElementById(‘inc-fin’).value;
+if(ini&&fin){
+const d1=new Date(ini+‘T12:00’), d2=new Date(fin+‘T12:00’);
+const dias=Math.round((d2-d1)/(1000*60*60*24))+1;
+if(dias>0) document.getElementById(‘inc-dias’).value=dias;
+}
+updateResumenInc();
 }
 
 function calcFechaFinInc(){
-  const ini=document.getElementById('inc-inicio').value;
-  const dias=parseInt(document.getElementById('inc-dias').value)||0;
-  if(ini&&dias>0){
-    const d=new Date(ini+'T12:00');
-    d.setDate(d.getDate()+dias-1);
-    document.getElementById('inc-fin').value=d.toISOString().split('T')[0];
-  }
-  updateResumenInc();
+const ini=document.getElementById(‘inc-inicio’).value;
+const dias=parseInt(document.getElementById(‘inc-dias’).value)||0;
+if(ini&&dias>0){
+const d=new Date(ini+‘T12:00’);
+d.setDate(d.getDate()+dias-1);
+document.getElementById(‘inc-fin’).value=d.toISOString().split(‘T’)[0];
+}
+updateResumenInc();
 }
 
 function updateResumenInc(){
-  const ini=document.getElementById('inc-inicio').value;
-  const fin=document.getElementById('inc-fin').value;
-  const dias=document.getElementById('inc-dias').value;
-  const res=document.getElementById('inc-resumen');
-  const txt=document.getElementById('inc-resumen-txt');
-  if(ini&&(fin||dias)){
-    const dIni=new Date(ini+'T12:00').toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'});
-    const dFin=fin?new Date(fin+'T12:00').toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'}):'—';
-    txt.textContent=dIni+' al '+dFin+(dias?' ('+dias+' días)':'');
-    res.style.display='block';
-  } else res.style.display='none';
+const ini=document.getElementById(‘inc-inicio’).value;
+const fin=document.getElementById(‘inc-fin’).value;
+const dias=document.getElementById(‘inc-dias’).value;
+const res=document.getElementById(‘inc-resumen’);
+const txt=document.getElementById(‘inc-resumen-txt’);
+if(ini&&(fin||dias)){
+const dIni=new Date(ini+‘T12:00’).toLocaleDateString(‘es-MX’,{day:‘numeric’,month:‘long’,year:‘numeric’});
+const dFin=fin?new Date(fin+‘T12:00’).toLocaleDateString(‘es-MX’,{day:‘numeric’,month:‘long’,year:‘numeric’}):’—’;
+txt.textContent=dIni+’ al ‘+dFin+(dias?’ (’+dias+’ días)’:’’);
+res.style.display=‘block’;
+} else res.style.display=‘none’;
 }
 
 // ── Guardar incapacidad ───────────────────────────────
 async function guardarInc(){
-  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const noEmp=g('inc-noemp'), tipo=g('inc-tipo'), ini=g('inc-inicio'), dias=g('inc-dias'), dx=g('inc-dx');
-  if(!noEmp){toast('Busca un empleado primero','err');return;}
-  if(!tipo){toast('Selecciona el tipo de incapacidad','err');return;}
-  if(!ini){toast('La fecha de inicio es obligatoria','err');return;}
-  if(!dias){toast('Los días son obligatorios','err');return;}
-  if(!dx){toast('El diagnóstico es obligatorio','err');return;}
-  const inc={
-    id:'INC-'+Date.now(),
-    noEmp, tipo, diagnostico:dx,
-    incInicio:new Date(ini+'T12:00').toLocaleDateString('es-MX'),
-    incFin:g('inc-fin')?new Date(g('inc-fin')+'T12:00').toLocaleDateString('es-MX'):'',
-    incDias:parseInt(dias)||0,
-    numImss:g('inc-num-imss'),
-    secuencia:document.querySelector('input[name="inc-secuencia"]:checked')?.value||'Inicial',
-    notas:g('inc-notas'),
-    nombre:g('inc-nombre-h'), planta:g('inc-planta-h'),
-    turno:g('inc-turno-h'), depto:g('inc-depto-h'),
-    puesto:g('inc-puesto-h'), nss:g('inc-nss-h'),
-    fecha:new Date().toLocaleDateString('es-MX'),
-    cronicos:g('f-cronicos')||'',
-    registradoPor:currentUser?.nombre||'Enfermería',
-    mes:MESES[new Date().getMonth()], anio:new Date().getFullYear()
-  };
-  INC.push(inc); sv(SK.inc,INC);
-  // También guardar en GAS como registro especial
-  toast('⏳ Guardando...','inf'); setSyncDot('busy');
-  // Guardar incapacidad en hoja específica del GAS
-  gasPost({action:'saveInc', inc}).catch(()=>{});
-  const r=await gasPost({action:'saveRecord', record:{
-    ...inc, id:Date.now(), tipoTrabajador:'interno',
-    tipo:tipo, incapacidad:tipo,
-    semana:getWeek(new Date()), mesNum:new Date().getMonth()+1
-  }});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Incapacidad guardada — '+inc.nombre:'⚠️ Guardada local','ok');
-  closeModal('mo-inc');
-  resetModalInc();
-  renderInc();
+const g=id=>{const e=document.getElementById(id);return e?e.value.trim():’’;};
+const noEmp=g(‘inc-noemp’), tipo=g(‘inc-tipo’), ini=g(‘inc-inicio’), dias=g(‘inc-dias’), dx=g(‘inc-dx’);
+if(!noEmp){toast(‘Busca un empleado primero’,‘err’);return;}
+if(!tipo){toast(‘Selecciona el tipo de incapacidad’,‘err’);return;}
+if(!ini){toast(‘La fecha de inicio es obligatoria’,‘err’);return;}
+if(!dias){toast(‘Los días son obligatorios’,‘err’);return;}
+if(!dx){toast(‘El diagnóstico es obligatorio’,‘err’);return;}
+const inc={
+id:‘INC-’+Date.now(),
+noEmp, tipo, diagnostico:dx,
+incInicio:new Date(ini+‘T12:00’).toLocaleDateString(‘es-MX’),
+incFin:g(‘inc-fin’)?new Date(g(‘inc-fin’)+‘T12:00’).toLocaleDateString(‘es-MX’):’’,
+incDias:parseInt(dias)||0,
+numImss:g(‘inc-num-imss’),
+secuencia:document.querySelector(‘input[name=“inc-secuencia”]:checked’)?.value||‘Inicial’,
+notas:g(‘inc-notas’),
+nombre:g(‘inc-nombre-h’), planta:g(‘inc-planta-h’),
+turno:g(‘inc-turno-h’), depto:g(‘inc-depto-h’),
+puesto:g(‘inc-puesto-h’), nss:g(‘inc-nss-h’),
+fecha:new Date().toLocaleDateString(‘es-MX’),
+cronicos:g(‘f-cronicos’)||’’,
+registradoPor:currentUser?.nombre||‘Enfermería’,
+mes:MESES[new Date().getMonth()], anio:new Date().getFullYear()
+};
+INC.push(inc); sv(SK.inc,INC);
+// También guardar en GAS como registro especial
+toast(‘⏳ Guardando…’,‘inf’); setSyncDot(‘busy’);
+// Guardar incapacidad en hoja específica del GAS
+gasPost({action:‘saveInc’, inc}).catch(()=>{});
+const r=await gasPost({action:‘saveRecord’, record:{
+…inc, id:Date.now(), tipoTrabajador:‘interno’,
+tipo:tipo, incapacidad:tipo,
+semana:getWeek(new Date()), mesNum:new Date().getMonth()+1
+}});
+setSyncDot(r.ok?‘ok’:‘err’);
+toast(r.ok?’✅ Incapacidad guardada — ’+inc.nombre:‘⚠️ Guardada local’,‘ok’);
+closeModal(‘mo-inc’);
+resetModalInc();
+renderInc();
 }
 
 function resetModalInc(){
-  ['inc-noemp','inc-num-imss','inc-inicio','inc-dias','inc-fin','inc-dx','inc-notas'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
-  document.getElementById('inc-tipo').value='';
-  const ri=document.getElementById('inc-inicial');if(ri)ri.checked=true;
-  document.getElementById('inc-emp-card').style.display='none';
-  document.getElementById('inc-resumen').style.display='none';
+[‘inc-noemp’,‘inc-num-imss’,‘inc-inicio’,‘inc-dias’,‘inc-fin’,‘inc-dx’,‘inc-notas’].forEach(id=>{const e=document.getElementById(id);if(e)e.value=’’;});
+document.getElementById(‘inc-tipo’).value=’’;
+const ri=document.getElementById(‘inc-inicial’);if(ri)ri.checked=true;
+document.getElementById(‘inc-emp-card’).style.display=‘none’;
+document.getElementById(‘inc-resumen’).style.display=‘none’;
 }
 
 function editarInc(id){
-  const r=INC.find(x=>x.id===id); if(!r) return;
-  document.getElementById('inc-mo-title').textContent='Editar incapacidad — '+r.nombre;
-  document.getElementById('inc-noemp').value=r.noEmp||'';
-  document.getElementById('inc-nombre-h').value=r.nombre||'';
-  document.getElementById('inc-planta-h').value=r.planta||'';
-  document.getElementById('inc-turno-h').value=r.turno||'';
-  document.getElementById('inc-depto-h').value=r.depto||'';
-  document.getElementById('inc-puesto-h').value=r.puesto||'';
-  document.getElementById('inc-nss-h').value=r.nss||'';
-  document.getElementById('inc-tipo').value=r.tipo||'';
-  document.getElementById('inc-dx').value=r.diagnostico||'';
-  document.getElementById('inc-num-imss').value=r.numImss||'';
-  document.getElementById('inc-medico-exp').value=r.medicoExp||'';
-  document.getElementById('inc-notas').value=r.notas||'';
-  // Convertir fechas a ISO para los inputs
-  const toISO=str=>{if(!str)return '';const p=str.split('/');return p.length===3?p[2]+'-'+p[1].padStart(2,'0')+'-'+p[0].padStart(2,'0'):str;};
-  document.getElementById('inc-inicio').value=toISO(r.incInicio);
-  document.getElementById('inc-fin').value=toISO(r.incFin);
-  document.getElementById('inc-dias').value=r.incDias||'';
-  // Mostrar card
-  const card=document.getElementById('inc-emp-card');
-  card.innerHTML=`<div class="emp-card"><div class="ec-name">${r.nombre} <span class="ec-tag">No. ${r.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${r.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${r.turno||'—'}</div></div></div></div>`;
-  card.style.display='block';
-  updateResumenInc();
-  // Al guardar, actualizar en lugar de crear
-  document.querySelector('#mo-inc .btn-teal').onclick=function(){actualizarInc(id);};
-  openModal('mo-inc');
+const r=INC.find(x=>x.id===id); if(!r) return;
+document.getElementById(‘inc-mo-title’).textContent=‘Editar incapacidad — ‘+r.nombre;
+document.getElementById(‘inc-noemp’).value=r.noEmp||’’;
+document.getElementById(‘inc-nombre-h’).value=r.nombre||’’;
+document.getElementById(‘inc-planta-h’).value=r.planta||’’;
+document.getElementById(‘inc-turno-h’).value=r.turno||’’;
+document.getElementById(‘inc-depto-h’).value=r.depto||’’;
+document.getElementById(‘inc-puesto-h’).value=r.puesto||’’;
+document.getElementById(‘inc-nss-h’).value=r.nss||’’;
+document.getElementById(‘inc-tipo’).value=r.tipo||’’;
+document.getElementById(‘inc-dx’).value=r.diagnostico||’’;
+document.getElementById(‘inc-num-imss’).value=r.numImss||’’;
+document.getElementById(‘inc-medico-exp’).value=r.medicoExp||’’;
+document.getElementById(‘inc-notas’).value=r.notas||’’;
+// Convertir fechas a ISO para los inputs
+const toISO=str=>{if(!str)return ‘’;const p=str.split(’/’);return p.length===3?p[2]+’-’+p[1].padStart(2,‘0’)+’-’+p[0].padStart(2,‘0’):str;};
+document.getElementById(‘inc-inicio’).value=toISO(r.incInicio);
+document.getElementById(‘inc-fin’).value=toISO(r.incFin);
+document.getElementById(‘inc-dias’).value=r.incDias||’’;
+// Mostrar card
+const card=document.getElementById(‘inc-emp-card’);
+card.innerHTML=`<div class="emp-card"><div class="ec-name">${r.nombre} <span class="ec-tag">No. ${r.noEmp}</span></div><div class="ec-grid"><div class="ec-field"><label>Planta</label><div>${r.planta||'—'}</div></div><div class="ec-field"><label>Turno</label><div>${r.turno||'—'}</div></div></div></div>`;
+card.style.display=‘block’;
+updateResumenInc();
+// Al guardar, actualizar en lugar de crear
+document.querySelector(’#mo-inc .btn-teal’).onclick=function(){actualizarInc(id);};
+openModal(‘mo-inc’);
 }
 
 async function actualizarInc(id){
-  const g=id2=>{const e=document.getElementById(id2);return e?e.value.trim():'';};
-  const idx=INC.findIndex(x=>x.id===id); if(idx<0) return;
-  const ini=g('inc-inicio'), finV=g('inc-fin');
-  const toMX=str=>{if(!str)return '';const d=new Date(str+'T12:00');return d.toLocaleDateString('es-MX');};
-  Object.assign(INC[idx],{
-    tipo:g('inc-tipo'), diagnostico:g('inc-dx'),
-    incInicio:toMX(ini), incFin:toMX(finV),
-    incDias:parseInt(g('inc-dias'))||0,
-    numImss:g('inc-num-imss'), secuencia:document.querySelector('input[name="inc-secuencia"]:checked')?.value||'Inicial',
-    notas:g('inc-notas'), editado:new Date().toLocaleDateString('es-MX')
-  });
-  sv(SK.inc,INC); renderInc();
-  toast('✅ Incapacidad actualizada','ok');
-  closeModal('mo-inc');
-  resetModalInc();
-  document.querySelector('#mo-inc .btn-teal').onclick=guardarInc;
+const g=id2=>{const e=document.getElementById(id2);return e?e.value.trim():’’;};
+const idx=INC.findIndex(x=>x.id===id); if(idx<0) return;
+const ini=g(‘inc-inicio’), finV=g(‘inc-fin’);
+const toMX=str=>{if(!str)return ‘’;const d=new Date(str+‘T12:00’);return d.toLocaleDateString(‘es-MX’);};
+Object.assign(INC[idx],{
+tipo:g(‘inc-tipo’), diagnostico:g(‘inc-dx’),
+incInicio:toMX(ini), incFin:toMX(finV),
+incDias:parseInt(g(‘inc-dias’))||0,
+numImss:g(‘inc-num-imss’), secuencia:document.querySelector(‘input[name=“inc-secuencia”]:checked’)?.value||‘Inicial’,
+notas:g(‘inc-notas’), editado:new Date().toLocaleDateString(‘es-MX’)
+});
+sv(SK.inc,INC); renderInc();
+toast(‘✅ Incapacidad actualizada’,‘ok’);
+closeModal(‘mo-inc’);
+resetModalInc();
+document.querySelector(’#mo-inc .btn-teal’).onclick=guardarInc;
 }
 
 // ── Imprimir constancia ──────────────────────────────
 function imprimirInc(id){
-  var r=INC.find(x=>x.id===id);
-  if(!r){
-    // Buscar en registros de RE
-    const rid=String(id).replace('RE-','');
-    const re=RE.find(x=>String(x.id)===rid); if(!re)return;
-    r={nombre:re.nombre,noEmp:re.noEmp,planta:re.planta,turno:re.turno,depto:re.depto,nss:re.nss,
-       tipo:re.incapacidad,diagnostico:re.diagnostico,incInicio:re.incInicio,incFin:re.incFin,incDias:re.incDias,
-       institucion:'—',medicoExp:'',fecha:re.fecha};
-  }
-  const w=window.open('','_blank','width=700,height=900'); if(!w){toast('Popup bloqueado','err');return;}
-  w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Incapacidad ${r.noEmp}</title>
+var r=INC.find(x=>x.id===id);
+if(!r){
+// Buscar en registros de RE
+const rid=String(id).replace(‘RE-’,’’);
+const re=RE.find(x=>String(x.id)===rid); if(!re)return;
+r={nombre:re.nombre,noEmp:re.noEmp,planta:re.planta,turno:re.turno,depto:re.depto,nss:re.nss,
+tipo:re.incapacidad,diagnostico:re.diagnostico,incInicio:re.incInicio,incFin:re.incFin,incDias:re.incDias,
+institucion:’—’,medicoExp:’’,fecha:re.fecha};
+}
+const w=window.open(’’,’_blank’,‘width=700,height=900’); if(!w){toast(‘Popup bloqueado’,‘err’);return;}
+w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Incapacidad ${r.noEmp}</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-size:11.5px;padding:0}
@@ -2356,6 +2307,7 @@ function imprimirInc(id){
     .sig-box{text-align:center;width:180px;border-top:1.5px solid #0F2942;padding-top:5px;font-size:11px;font-weight:700}
     .print-btn{position:fixed;bottom:16px;right:16px;background:#0D9488;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px}
   </style></head><body>
+
   <div class="page">
     <div class="hdr">
       <div><h1>Constancia de Incapacidad</h1><p>Teleflex · Salud Ocupacional · NOM-030-STPS</p></div>
@@ -2398,266 +2350,249 @@ function imprimirInc(id){
 
 // ── Export Excel incapacidades ───────────────────────
 function exportInc(){
-  if(typeof XLSX==='undefined'){toast('XLSX no disponible','err');return;}
-  const wb=XLSX.utils.book_new();
-  const deRE=RE.filter(r=>r.incapacidad&&r.incapacidad!=='No'&&r.incInicio)
-    .map(r=>({nombre:r.nombre,noEmp:r.noEmp,planta:r.planta,turno:r.turno,depto:r.depto,nss:r.nss,
-      tipo:r.incapacidad,diagnostico:r.diagnostico,incInicio:r.incInicio,incFin:r.incFin,incDias:r.incDias,institucion:'—'}));
-  const todas=[...INC,...deRE];
-  const rows=[['No.Emp','Nombre','Planta','Departamento','NSS','Tipo','Inicial/Subsecuente','Diagnóstico','Inicio','Fin','Días','Folio IMSS']];
-  todas.forEach(r=>{
-    rows.push([r.noEmp||'',r.nombre||'',r.planta||'',r.depto||'',r.nss||'',r.tipo||'',r.secuencia||'',r.diagnostico||'',r.incInicio||'',r.incFin||'',r.incDias||0,r.numImss||'']);
-  });
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),'Incapacidades');
-  XLSX.writeFile(wb,'Incapacidades_'+new Date().toLocaleDateString('es-MX').replace(/\//g,'-')+'.xlsx');
-  toast('✅ Excel exportado','ok');
+if(typeof XLSX===‘undefined’){toast(‘XLSX no disponible’,‘err’);return;}
+const wb=XLSX.utils.book_new();
+const deRE=RE.filter(r=>r.incapacidad&&r.incapacidad!==‘No’&&r.incInicio)
+.map(r=>({nombre:r.nombre,noEmp:r.noEmp,planta:r.planta,turno:r.turno,depto:r.depto,nss:r.nss,
+tipo:r.incapacidad,diagnostico:r.diagnostico,incInicio:r.incInicio,incFin:r.incFin,incDias:r.incDias,institucion:’—’}));
+const todas=[…INC,…deRE];
+const rows=[[‘No.Emp’,‘Nombre’,‘Planta’,‘Departamento’,‘NSS’,‘Tipo’,‘Inicial/Subsecuente’,‘Diagnóstico’,‘Inicio’,‘Fin’,‘Días’,‘Folio IMSS’]];
+todas.forEach(r=>{
+rows.push([r.noEmp||’’,r.nombre||’’,r.planta||’’,r.depto||’’,r.nss||’’,r.tipo||’’,r.secuencia||’’,r.diagnostico||’’,r.incInicio||’’,r.incFin||’’,r.incDias||0,r.numImss||’’]);
+});
+XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),‘Incapacidades’);
+XLSX.writeFile(wb,‘Incapacidades_’+new Date().toLocaleDateString(‘es-MX’).replace(///g,’-’)+’.xlsx’);
+toast(‘✅ Excel exportado’,‘ok’);
 }
 
 // ══════════════════════════════════════════════════════
 // CITAS
 // ══════════════════════════════════════════════════════
 function autofillCita(val){
-  if(!val||val.length<2)return;
-  const e=HC.find(x=>String(x.noEmp).toLowerCase()===val.toLowerCase());
-  if(e){document.getElementById('c-nombre').value=e.nombre;document.getElementById('c-planta').value=e.planta||'';document.getElementById('c-turno').value=e.turno||'';sugFecha();}
+if(!val||val.length<2)return;
+const e=HC.find(x=>String(x.noEmp).toLowerCase()===val.toLowerCase());
+if(e){document.getElementById(‘c-nombre’).value=e.nombre;document.getElementById(‘c-planta’).value=e.planta||’’;document.getElementById(‘c-turno’).value=e.turno||’’;sugFecha();}
 }
 function sugFecha(){
-  const p=document.getElementById('c-planta').value;const dia=DIAS_PLANTA[p];const ds=document.getElementById('c-sug');
-  if(!dia||!ds){if(ds)ds.style.display='none';return;}
-  const hoy=new Date(),dias={Lunes:1,Martes:2,'Miércoles':3,Jueves:4,Viernes:5};
-  let diff=(dias[dia]||1)-hoy.getDay();if(diff<=0)diff+=7;
-  const f=new Date(hoy);f.setDate(hoy.getDate()+diff);
-  document.getElementById('c-fecha').value=f.toISOString().split('T')[0];
-  ds.style.display='block';ds.textContent='📅 Día para '+p+': '+dia+'s — '+f.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
+const p=document.getElementById(‘c-planta’).value;const dia=DIAS_PLANTA[p];const ds=document.getElementById(‘c-sug’);
+if(!dia||!ds){if(ds)ds.style.display=‘none’;return;}
+const hoy=new Date(),dias={Lunes:1,Martes:2,‘Miércoles’:3,Jueves:4,Viernes:5};
+let diff=(dias[dia]||1)-hoy.getDay();if(diff<=0)diff+=7;
+const f=new Date(hoy);f.setDate(hoy.getDate()+diff);
+document.getElementById(‘c-fecha’).value=f.toISOString().split(‘T’)[0];
+ds.style.display=‘block’;ds.textContent=‘📅 Día para ‘+p+’: ‘+dia+‘s — ‘+f.toLocaleDateString(‘es-MX’,{weekday:‘long’,day:‘numeric’,month:‘long’});
 }
 async function guardarCita(){
-  const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
-  const nombre=g('c-nombre'),planta=g('c-planta'),fecha=g('c-fecha'),motivo=g('c-motivo');
-  if(!nombre||!planta||!fecha||!motivo){toast('Nombre, planta, fecha y motivo son obligatorios','err');return;}
-  const cita={id:Date.now(),fecha:new Date(fecha+'T12:00').toLocaleDateString('es-MX'),fechaISO:fecha,
-    hora:g('c-hora'),noEmp:g('c-noemp')||'—',nombre,planta,turno:g('c-turno'),
-    motivo,urgencia:g('c-urgencia')||'Normal',estado:'Pendiente',diaPlanta:DIAS_PLANTA[planta]||''};
-  CI.push(cita);sv(SK.ci,CI);updateBadges();renderCitas();closeModal('mo-cita');
-  toast('Guardando...','inf');
-  const r=await gasPost({action:'saveCita',cita});
-  toast(r.ok?'✅ Cita guardada':'⚠️ Guardada local','ok');
+const g=id=>{const e=document.getElementById(id);return e?e.value.trim():’’;};
+const nombre=g(‘c-nombre’),planta=g(‘c-planta’),fecha=g(‘c-fecha’),motivo=g(‘c-motivo’);
+if(!nombre||!planta||!fecha||!motivo){toast(‘Nombre, planta, fecha y motivo son obligatorios’,‘err’);return;}
+const cita={id:Date.now(),fecha:new Date(fecha+‘T12:00’).toLocaleDateString(‘es-MX’),fechaISO:fecha,
+hora:g(‘c-hora’),noEmp:g(‘c-noemp’)||’—’,nombre,planta,turno:g(‘c-turno’),
+motivo,urgencia:g(‘c-urgencia’)||‘Normal’,estado:‘Pendiente’,diaPlanta:DIAS_PLANTA[planta]||’’};
+CI.push(cita);sv(SK.ci,CI);updateBadges();renderCitas();closeModal(‘mo-cita’);
+toast(‘Guardando…’,‘inf’);
+const r=await gasPost({action:‘saveCita’,cita});
+toast(r.ok?‘✅ Cita guardada’:‘⚠️ Guardada local’,‘ok’);
 }
 function renderCitas(){
-  const fp=(document.getElementById('cit-planta')||{}).value||'';
-  const fe=(document.getElementById('cit-estado')||{}).value||'';
-  let lista=[...CI].sort((a,b)=>(a.fechaISO||'').localeCompare(b.fechaISO||''));
-  if(fp)lista=lista.filter(c=>c.planta===fp);
-  if(fe)lista=lista.filter(c=>c.estado===fe);
-  const el=document.getElementById('cit-list');
-  if(!lista.length){el.innerHTML=`<div class="empty"><div class="empty-i">📅</div><div>${CI.length?'Sin resultados':'Sin citas'}</div></div>`;return;}
-  el.innerHTML=lista.map(c=>{
-    const uc=c.urgencia==='Urgente'?'pred':c.urgencia==='Prioritario'?'pamber':'pgray';
-    const ec=c.estado==='Atendida'?'pgreen':c.estado==='Cancelada'?'pred':c.estado==='Confirmada'?'pteal':'pamber';
-    return `<div class="card cp" style="margin-bottom:8px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-        <div style="flex:1">
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:3px">
-            <span style="font-weight:700;font-size:14px">${c.nombre}</span>
-            <span class="pill ${uc}">${c.urgencia||'Normal'}</span>
-            <span class="pill ${ec}">${c.estado}</span>
-          </div>
-          <div style="font-size:12px;color:var(--tx2)">No.${c.noEmp||'—'} · ${c.planta||'—'} · ${c.turno||'—'}</div>
-          <div style="font-size:12px;color:var(--navy);font-weight:700;margin-top:3px">📅 ${c.fecha} — ${c.hora||'—'}</div>
-          <div style="font-size:12px;color:var(--tx2)">Motivo: ${c.motivo}</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <button class="btn btn-ghost btn-xs" onclick="cambiarEstado(${c.id},'Confirmada')">✓ Confirmar</button>
-          <button class="btn btn-ghost btn-xs" style="color:var(--green)" onclick="cambiarEstado(${c.id},'Atendida')">✅ Atendida</button>
-          <button class="btn btn-ghost btn-xs" style="color:var(--red)" onclick="cambiarEstado(${c.id},'Cancelada')">✕ Cancelar</button>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+const fp=(document.getElementById(‘cit-planta’)||{}).value||’’;
+const fe=(document.getElementById(‘cit-estado’)||{}).value||’’;
+let lista=[…CI].sort((a,b)=>(a.fechaISO||’’).localeCompare(b.fechaISO||’’));
+if(fp)lista=lista.filter(c=>c.planta===fp);
+if(fe)lista=lista.filter(c=>c.estado===fe);
+const el=document.getElementById(‘cit-list’);
+if(!lista.length){el.innerHTML=`<div class="empty"><div class="empty-i">📅</div><div>${CI.length?'Sin resultados':'Sin citas'}</div></div>`;return;}
+el.innerHTML=lista.map(c=>{
+const uc=c.urgencia===‘Urgente’?‘pred’:c.urgencia===‘Prioritario’?‘pamber’:‘pgray’;
+const ec=c.estado===‘Atendida’?‘pgreen’:c.estado===‘Cancelada’?‘pred’:c.estado===‘Confirmada’?‘pteal’:‘pamber’;
+return `<div class="card cp" style="margin-bottom:8px"> <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap"> <div style="flex:1"> <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:3px"> <span style="font-weight:700;font-size:14px">${c.nombre}</span> <span class="pill ${uc}">${c.urgencia||'Normal'}</span> <span class="pill ${ec}">${c.estado}</span> </div> <div style="font-size:12px;color:var(--tx2)">No.${c.noEmp||'—'} · ${c.planta||'—'} · ${c.turno||'—'}</div> <div style="font-size:12px;color:var(--navy);font-weight:700;margin-top:3px">📅 ${c.fecha} — ${c.hora||'—'}</div> <div style="font-size:12px;color:var(--tx2)">Motivo: ${c.motivo}</div> </div> <div style="display:flex;flex-direction:column;gap:5px"> <button class="btn btn-ghost btn-xs" onclick="cambiarEstado(${c.id},'Confirmada')">✓ Confirmar</button> <button class="btn btn-ghost btn-xs" style="color:var(--green)" onclick="cambiarEstado(${c.id},'Atendida')">✅ Atendida</button> <button class="btn btn-ghost btn-xs" style="color:var(--red)" onclick="cambiarEstado(${c.id},'Cancelada')">✕ Cancelar</button> </div> </div> </div>`;
+}).join(’’);
 }
-function cambiarEstado(id,estado){const c=CI.find(x=>x.id===id);if(!c)return;c.estado=estado;sv(SK.ci,CI);updateBadges();renderCitas();toast('Cita: '+estado,'ok');}
+function cambiarEstado(id,estado){const c=CI.find(x=>x.id===id);if(!c)return;c.estado=estado;sv(SK.ci,CI);updateBadges();renderCitas();toast(’Cita: ’+estado,‘ok’);}
 
 // ══════════════════════════════════════════════════════
 // REPORTES
 // ══════════════════════════════════════════════════════
 function renderReporte(){
-  const yr=document.getElementById('rep-yr');
-  const years=[...new Set(RE.map(r=>r.anio||new Date().getFullYear()))].sort((a,b)=>b-a);
-  if(!years.includes(new Date().getFullYear()))years.unshift(new Date().getFullYear());
-  const sy=parseInt(yr.value)||new Date().getFullYear();
-  yr.innerHTML=years.map(y=>`<option value="${y}"${y===sy?' selected':''}>${y}</option>`).join('');
-  const periodo=(document.getElementById('rep-periodo')||{}).value||'anio';
-  const fp=(document.getElementById('rep-planta')||{}).value||'';
-  const ft=(document.getElementById('rep-turno')||{}).value||'';
-  const fm=(document.getElementById('rep-mes-f')||{}).value||'';
-  const mfEl=document.getElementById('rep-mes-f');
-  if(mfEl)mfEl.style.display=periodo!=='anio'?'':'none';
+const yr=document.getElementById(‘rep-yr’);
+const years=[…new Set(RE.map(r=>r.anio||new Date().getFullYear()))].sort((a,b)=>b-a);
+if(!years.includes(new Date().getFullYear()))years.unshift(new Date().getFullYear());
+const sy=parseInt(yr.value)||new Date().getFullYear();
+yr.innerHTML=years.map(y=>`<option value="${y}"${y===sy?' selected':''}>${y}</option>`).join(’’);
+const periodo=(document.getElementById(‘rep-periodo’)||{}).value||‘anio’;
+const fp=(document.getElementById(‘rep-planta’)||{}).value||’’;
+const ft=(document.getElementById(‘rep-turno’)||{}).value||’’;
+const fm=(document.getElementById(‘rep-mes-f’)||{}).value||’’;
+const mfEl=document.getElementById(‘rep-mes-f’);
+if(mfEl)mfEl.style.display=periodo!==‘anio’?’’:‘none’;
 
-  let data=RE.filter(r=>{
-    if((r.anio||new Date().getFullYear())!==sy)return false;
-    if(fp&&r.planta!==fp)return false;
-    if(ft&&r.turno!==ft)return false;
-    if(fm&&r.mes!==fm)return false;
-    return true;
-  });
+let data=RE.filter(r=>{
+if((r.anio||new Date().getFullYear())!==sy)return false;
+if(fp&&r.planta!==fp)return false;
+if(ft&&r.turno!==ft)return false;
+if(fm&&r.mes!==fm)return false;
+return true;
+});
 
-  // KPIs
-  const ext=data.filter(r=>r.tipoTrabajador==='externo');
-  const rt=data.filter(r=>r.tipo==='Probable riesgo de trabajo'||r.tipo==='Accidente de trabajo');
-  const inc=data.filter(r=>r.incapacidad&&r.incapacidad!=='No');
-  document.getElementById('r-tot').textContent=data.length;
-  document.getElementById('r-int').textContent=data.length-ext.length;
-  document.getElementById('r-ext').textContent=ext.length;
-  document.getElementById('r-rt').textContent=rt.length;
-  document.getElementById('r-inc').textContent=inc.length;
+// KPIs
+const ext=data.filter(r=>r.tipoTrabajador===‘externo’);
+const rt=data.filter(r=>r.tipo===‘Probable riesgo de trabajo’||r.tipo===‘Accidente de trabajo’);
+const inc=data.filter(r=>r.incapacidad&&r.incapacidad!==‘No’);
+document.getElementById(‘r-tot’).textContent=data.length;
+document.getElementById(‘r-int’).textContent=data.length-ext.length;
+document.getElementById(‘r-ext’).textContent=ext.length;
+document.getElementById(‘r-rt’).textContent=rt.length;
+document.getElementById(‘r-inc’).textContent=inc.length;
 
-  // Main chart
-  let labels=MSC,valores=Array(12).fill(0);
-  if(periodo==='anio'){data.forEach(r=>{const m=(r.mesNum||1)-1;if(m>=0&&m<12)valores[m]++;});}
-  else if(periodo==='dia'){labels=Array.from({length:24},(_,i)=>i+'h');valores=Array(24).fill(0);data.forEach(r=>{if(!r.hora)return;const h=parseInt(r.hora.split(':')[0]);if(h>=0&&h<24)valores[h]++;});}
-  else{labels=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];valores=Array(7).fill(0);data.forEach(r=>{if(!r.fecha)return;const p=r.fecha.split('/');if(p.length<3)return;const d=new Date(p[2]+'-'+p[1].padStart(2,'0')+'-'+p[0].padStart(2,'0'));if(!isNaN(d))valores[d.getDay()]++;});}
-  document.getElementById('rep-chart-title').textContent=periodo==='anio'?'Consultas por mes':periodo==='dia'?'Consultas por hora':'Consultas por día de la semana';
-  destroyChart('rep');
-  _charts.rep=new Chart(document.getElementById('ch-rep'),{type:'bar',data:{labels,datasets:[{label:'Consultas',data:valores,backgroundColor:'rgba(13,148,136,.15)',borderColor:'#0D9488',borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+// Main chart
+let labels=MSC,valores=Array(12).fill(0);
+if(periodo===‘anio’){data.forEach(r=>{const m=(r.mesNum||1)-1;if(m>=0&&m<12)valores[m]++;});}
+else if(periodo===‘dia’){labels=Array.from({length:24},(_,i)=>i+‘h’);valores=Array(24).fill(0);data.forEach(r=>{if(!r.hora)return;const h=parseInt(r.hora.split(’:’)[0]);if(h>=0&&h<24)valores[h]++;});}
+else{labels=[‘Dom’,‘Lun’,‘Mar’,‘Mié’,‘Jue’,‘Vie’,‘Sáb’];valores=Array(7).fill(0);data.forEach(r=>{if(!r.fecha)return;const p=r.fecha.split(’/’);if(p.length<3)return;const d=new Date(p[2]+’-’+p[1].padStart(2,‘0’)+’-’+p[0].padStart(2,‘0’));if(!isNaN(d))valores[d.getDay()]++;});}
+document.getElementById(‘rep-chart-title’).textContent=periodo===‘anio’?‘Consultas por mes’:periodo===‘dia’?‘Consultas por hora’:‘Consultas por día de la semana’;
+destroyChart(‘rep’);
+_charts.rep=new Chart(document.getElementById(‘ch-rep’),{type:‘bar’,data:{labels,datasets:[{label:‘Consultas’,data:valores,backgroundColor:‘rgba(13,148,136,.15)’,borderColor:’#0D9488’,borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
 
-  // Sistemas chart
-  const cs={};data.forEach(r=>cs[r.sistema]=(cs[r.sistema]||0)+1);
-  const ts=Object.entries(cs).sort((a,b)=>b[1]-a[1]).slice(0,6);
-  destroyChart('sis');
-  if(ts.length)_charts.sis=new Chart(document.getElementById('ch-sis'),{type:'doughnut',data:{labels:ts.map(([k])=>(SIS[k]||SIS.otro).n),datasets:[{data:ts.map(([,v])=>v),backgroundColor:ts.map(([k])=>(SIS[k]||SIS.otro).c+'55'),borderColor:ts.map(([k])=>(SIS[k]||SIS.otro).c),borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}}}}});
+// Sistemas chart
+const cs={};data.forEach(r=>cs[r.sistema]=(cs[r.sistema]||0)+1);
+const ts=Object.entries(cs).sort((a,b)=>b[1]-a[1]).slice(0,6);
+destroyChart(‘sis’);
+if(ts.length)_charts.sis=new Chart(document.getElementById(‘ch-sis’),{type:‘doughnut’,data:{labels:ts.map(([k])=>(SIS[k]||SIS.otro).n),datasets:[{data:ts.map(([,v])=>v),backgroundColor:ts.map(([k])=>(SIS[k]||SIS.otro).c+‘55’),borderColor:ts.map(([k])=>(SIS[k]||SIS.otro).c),borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:‘bottom’,labels:{font:{size:10},boxWidth:10}}}}});
 
-  // Motivos bar chart
-  const total=data.length||1;
-  const sorted=Object.entries(cs).sort((a,b)=>b[1]-a[1]);
-  document.getElementById('rep-motivos').innerHTML=sorted.length?sorted.map(([k,v])=>{const s=SIS[k]||SIS.otro;const pct=Math.round(v/total*100);return`<div class="pr-row"><div class="pr-lbl" style="color:${s.c}">${s.n}</div><div class="pr-wrap"><div class="pr-bar" style="width:${pct}%;background:${s.c}"></div></div><div class="pr-n">${v}</div><span style="font-size:10px;color:var(--tx3);min-width:30px;text-align:right">${pct}%</span></div>`;}).join(''):'<div style="color:var(--tx3);font-size:12px;text-align:center;padding:16px">Sin datos</div>';
+// Motivos bar chart
+const total=data.length||1;
+const sorted=Object.entries(cs).sort((a,b)=>b[1]-a[1]);
+document.getElementById(‘rep-motivos’).innerHTML=sorted.length?sorted.map(([k,v])=>{const s=SIS[k]||SIS.otro;const pct=Math.round(v/total*100);return`<div class="pr-row"><div class="pr-lbl" style="color:${s.c}">${s.n}</div><div class="pr-wrap"><div class="pr-bar" style="width:${pct}%;background:${s.c}"></div></div><div class="pr-n">${v}</div><span style="font-size:10px;color:var(--tx3);min-width:30px;text-align:right">${pct}%</span></div>`;}).join(’’):’<div style="color:var(--tx3);font-size:12px;text-align:center;padding:16px">Sin datos</div>’;
 
-  // Por planta mini charts
-  const pCfg=[['Américas','pa'],['Barrancas','pb'],['Cantera','pc'],['Juventud','pj']];
-  if(!window._pCharts)window._pCharts={};
-  pCfg.forEach(([p,pid])=>{
-    const pData=RE.filter(r=>(r.anio||new Date().getFullYear())===sy&&(r.planta===p||(r.planta==='Americas'&&p==='Américas')));
-    const pm=Array(12).fill(0);pData.forEach(r=>{const m=(r.mesNum||1)-1;if(m>=0&&m<12)pm[m]++;});
-    const ctx=document.getElementById('ch-'+pid);if(!ctx)return;
-    if(window._pCharts[pid])window._pCharts[pid].destroy();
-    window._pCharts[pid]=new Chart(ctx,{type:'bar',data:{labels:MSC,datasets:[{data:pm,backgroundColor:'rgba(13,148,136,.12)',borderColor:'#0D9488',borderWidth:1.5,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1,font:{size:8}}},x:{ticks:{font:{size:8}}}}}});
-    const kpiEl=document.getElementById('kpi-'+pid);
-    if(kpiEl)kpiEl.textContent=pData.length+' consultas en '+sy;
-  });
+// Por planta mini charts
+const pCfg=[[‘Américas’,‘pa’],[‘Barrancas’,‘pb’],[‘Cantera’,‘pc’],[‘Juventud’,‘pj’]];
+if(!window._pCharts)window._pCharts={};
+pCfg.forEach(([p,pid])=>{
+const pData=RE.filter(r=>(r.anio||new Date().getFullYear())===sy&&(r.planta===p||(r.planta===‘Americas’&&p===‘Américas’)));
+const pm=Array(12).fill(0);pData.forEach(r=>{const m=(r.mesNum||1)-1;if(m>=0&&m<12)pm[m]++;});
+const ctx=document.getElementById(‘ch-’+pid);if(!ctx)return;
+if(window._pCharts[pid])window._pCharts[pid].destroy();
+window._pCharts[pid]=new Chart(ctx,{type:‘bar’,data:{labels:MSC,datasets:[{data:pm,backgroundColor:‘rgba(13,148,136,.12)’,borderColor:’#0D9488’,borderWidth:1.5,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1,font:{size:8}}},x:{ticks:{font:{size:8}}}}}});
+const kpiEl=document.getElementById(‘kpi-’+pid);
+if(kpiEl)kpiEl.textContent=pData.length+’ consultas en ’+sy;
+});
 }
 function destroyChart(k){if(_charts[k]){try{_charts[k].destroy();}catch(e){}delete _charts[k];}}
 
 function exportRegs(){
-  if(typeof XLSX==='undefined'){toast('XLSX no disponible','err');return;}
-  const wb=XLSX.utils.book_new();
-  const rows=[['Fecha','Hora','No.Emp','Nombre','Planta','Turno','Depto','Tipo','Diagnóstico','Sistema','Tratamiento','Seguimiento','Incapacidad','T/A','FC','Temp','Peso','SpO₂','Glucosa','Mes','Año']];
-  RE.forEach(r=>rows.push([r.fecha||'',r.hora||'',r.noEmp||'',r.nombre||'',r.planta||'',r.turno||'',r.depto||'',r.tipo||'',r.diagnostico||'',(SIS[r.sistema]||SIS.otro).n,r.tratamiento||'',r.seguimiento||'',r.incapacidad||'',r.ta||'',r.fc||'',r.temp||'',r.peso||'',r.spo2||'',r.glucosa||'',r.mes||'',r.anio||'']));
-  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),'Registros');
-  XLSX.writeFile(wb,'Enfermeria_Registros.xlsx');
-  toast('✅ Excel exportado','ok');
+if(typeof XLSX===‘undefined’){toast(‘XLSX no disponible’,‘err’);return;}
+const wb=XLSX.utils.book_new();
+const rows=[[‘Fecha’,‘Hora’,‘No.Emp’,‘Nombre’,‘Planta’,‘Turno’,‘Depto’,‘Tipo’,‘Diagnóstico’,‘Sistema’,‘Tratamiento’,‘Seguimiento’,‘Incapacidad’,‘T/A’,‘FC’,‘Temp’,‘Peso’,‘SpO₂’,‘Glucosa’,‘Mes’,‘Año’]];
+RE.forEach(r=>rows.push([r.fecha||’’,r.hora||’’,r.noEmp||’’,r.nombre||’’,r.planta||’’,r.turno||’’,r.depto||’’,r.tipo||’’,r.diagnostico||’’,(SIS[r.sistema]||SIS.otro).n,r.tratamiento||’’,r.seguimiento||’’,r.incapacidad||’’,r.ta||’’,r.fc||’’,r.temp||’’,r.peso||’’,r.spo2||’’,r.glucosa||’’,r.mes||’’,r.anio||’’]));
+XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),‘Registros’);
+XLSX.writeFile(wb,‘Enfermeria_Registros.xlsx’);
+toast(‘✅ Excel exportado’,‘ok’);
 }
 function exportReporte(){
-  if(typeof XLSX==='undefined'){toast('XLSX no disponible','err');return;}
-  const sy=parseInt(document.getElementById('rep-yr').value)||new Date().getFullYear();
-  const wb=XLSX.utils.book_new();
-  ['Todas',...PLANTAS].forEach(p=>{
-    const data=RE.filter(r=>{if((r.anio||new Date().getFullYear())!==sy)return false;if(p!=='Todas'&&r.planta!==p)return false;return true;});
-    const rows=[['Fecha','Nombre','No.Emp','Planta','Turno','Diagnóstico','Sistema','Tratamiento','Seguimiento','Tipo','Incapacidad','Mes']];
-    data.forEach(r=>rows.push([r.fecha||'',r.nombre||'',r.noEmp||'',r.planta||'',r.turno||'',r.diagnostico||'',(SIS[r.sistema]||SIS.otro).n,r.tratamiento||'',r.seguimiento||'',r.tipo||'',r.incapacidad||'',r.mes||'']));
-    XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),p.substring(0,31));
-  });
-  XLSX.writeFile(wb,'Enf_Reporte_'+sy+'.xlsx');
-  toast('✅ Excel exportado','ok');
+if(typeof XLSX===‘undefined’){toast(‘XLSX no disponible’,‘err’);return;}
+const sy=parseInt(document.getElementById(‘rep-yr’).value)||new Date().getFullYear();
+const wb=XLSX.utils.book_new();
+[‘Todas’,…PLANTAS].forEach(p=>{
+const data=RE.filter(r=>{if((r.anio||new Date().getFullYear())!==sy)return false;if(p!==‘Todas’&&r.planta!==p)return false;return true;});
+const rows=[[‘Fecha’,‘Nombre’,‘No.Emp’,‘Planta’,‘Turno’,‘Diagnóstico’,‘Sistema’,‘Tratamiento’,‘Seguimiento’,‘Tipo’,‘Incapacidad’,‘Mes’]];
+data.forEach(r=>rows.push([r.fecha||’’,r.nombre||’’,r.noEmp||’’,r.planta||’’,r.turno||’’,r.diagnostico||’’,(SIS[r.sistema]||SIS.otro).n,r.tratamiento||’’,r.seguimiento||’’,r.tipo||’’,r.incapacidad||’’,r.mes||’’]));
+XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rows),p.substring(0,31));
+});
+XLSX.writeFile(wb,‘Enf_Reporte_’+sy+’.xlsx’);
+toast(‘✅ Excel exportado’,‘ok’);
 }
 
 // ══════════════════════════════════════════════════════
 // HEAD COUNT
 // ══════════════════════════════════════════════════════
 function importarHC(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    try{
-      const wb=XLSX.read(e.target.result,{type:'binary'});
-      const ws=wb.Sheets[wb.SheetNames[0]];
-      const rows=XLSX.utils.sheet_to_json(ws,{defval:''});
-      if(!rows.length){toast('Archivo vacío','err');return;}
-      const cols=Object.keys(rows[0]);
-      const find=patterns=>cols.find(c=>patterns.some(p=>c.toLowerCase().includes(p)))||'';
-      const m={noEmp:find(['no.emp','noemp','numero','num.emp']),nombre:find(['nombre']),
-        depto:find(['depto','departamento','area','área']),puesto:find(['puesto','cargo']),
-        planta:find(['planta','site']),turno:find(['turno','shift']),
-        nss:find(['nss','seguro']),genero:find(['genero','género','sexo'])};
-      HC=rows.map(r=>({noEmp:String(r[m.noEmp]||'').trim(),nombre:String(r[m.nombre]||'').trim(),curp:String(r[m.curp]||'').trim(),supervisor:String(r[m.supervisor]||'').trim(),puesto:String(r[m.puesto]||'').trim(),planta:String(r[m.planta]||'').trim(),categoria:String(r[m.categoria]||'').trim()})).filter(r=>r.noEmp&&r.nombre);
-      sv(SK.hc,HC);
-      document.getElementById('hc-upload').style.display='none';
-      document.getElementById('hc-table').style.display='block';
-      const bd=document.getElementById('btn-del-hc');if(bd)bd.style.display='';
-      renderHC('');
-      document.getElementById('hc-cnt').textContent=HC.length+' empleados cargados';
-      toast('✅ HC importado: '+HC.length+' empleados','ok');
-    }catch(err){toast('Error: '+err.message,'err');}
-  };
-  reader.readAsBinaryString(file);
+const file=input.files[0];if(!file)return;
+const reader=new FileReader();
+reader.onload=e=>{
+try{
+const wb=XLSX.read(e.target.result,{type:‘binary’});
+const ws=wb.Sheets[wb.SheetNames[0]];
+const rows=XLSX.utils.sheet_to_json(ws,{defval:’’});
+if(!rows.length){toast(‘Archivo vacío’,‘err’);return;}
+const cols=Object.keys(rows[0]);
+const find=patterns=>cols.find(c=>patterns.some(p=>c.toLowerCase().includes(p)))||’’;
+const m={noEmp:find([‘no.emp’,‘noemp’,‘numero’,‘num.emp’]),nombre:find([‘nombre’]),
+depto:find([‘depto’,‘departamento’,‘area’,‘área’]),puesto:find([‘puesto’,‘cargo’]),
+planta:find([‘planta’,‘site’]),turno:find([‘turno’,‘shift’]),
+nss:find([‘nss’,‘seguro’]),genero:find([‘genero’,‘género’,‘sexo’])};
+HC=rows.map(r=>({noEmp:String(r[m.noEmp]||’’).trim(),nombre:String(r[m.nombre]||’’).trim(),curp:String(r[m.curp]||’’).trim(),supervisor:String(r[m.supervisor]||’’).trim(),puesto:String(r[m.puesto]||’’).trim(),planta:String(r[m.planta]||’’).trim(),categoria:String(r[m.categoria]||’’).trim()})).filter(r=>r.noEmp&&r.nombre);
+sv(SK.hc,HC);
+document.getElementById(‘hc-upload’).style.display=‘none’;
+document.getElementById(‘hc-table’).style.display=‘block’;
+const bd=document.getElementById(‘btn-del-hc’);if(bd)bd.style.display=’’;
+renderHC(’’);
+document.getElementById(‘hc-cnt’).textContent=HC.length+’ empleados cargados’;
+toast(‘✅ HC importado: ‘+HC.length+’ empleados’,‘ok’);
+}catch(err){toast(‘Error: ‘+err.message,‘err’);}
+};
+reader.readAsBinaryString(file);
 }
 function renderHC(q){
-  q=(q||'').toLowerCase();
-  const lista=HC.filter(e=>!q||(e.nombre+e.noEmp+e.puesto+e.planta).toLowerCase().includes(q)).slice(0,150);
-  document.getElementById('hc-tbody').innerHTML=lista.map(e=>`<tr>
-    <td style="padding:8px 11px;border-bottom:1px solid var(--bor)"><span class="folio">${e.noEmp}</span></td>
-    <td style="padding:8px 11px;border-bottom:1px solid var(--bor)"><strong>${e.nombre}</strong></td>
-    <td style="padding:8px 11px;border-bottom:1px solid var(--bor)">${e.planta||'—'}</td>
-    <td style="padding:8px 11px;border-bottom:1px solid var(--bor)">${e.puesto||'—'}</td>
+q=(q||’’).toLowerCase();
+const lista=HC.filter(e=>!q||(e.nombre+e.noEmp+e.puesto+e.planta).toLowerCase().includes(q)).slice(0,150);
+document.getElementById(‘hc-tbody’).innerHTML=lista.map(e=>`<tr>
+<td style="padding:8px 11px;border-bottom:1px solid var(--bor)"><span class="folio">${e.noEmp}</span></td>
+<td style="padding:8px 11px;border-bottom:1px solid var(--bor)"><strong>${e.nombre}</strong></td>
+<td style="padding:8px 11px;border-bottom:1px solid var(--bor)">${e.planta||’—’}</td>
+<td style="padding:8px 11px;border-bottom:1px solid var(--bor)">${e.puesto||’—’}</td>
+
   </tr>`).join('');
   document.getElementById('hc-cnt').textContent=HC.length+' empleados'+(q?' (filtrado)':'');
 }
 
-function delHC(){if(!confirm('¿Eliminar head count?'))return;HC=[];sv(SK.hc,HC);document.getElementById('hc-upload').style.display='block';document.getElementById('hc-table').style.display='none';const bd=document.getElementById('btn-del-hc');if(bd)bd.style.display='none';document.getElementById('hc-cnt').textContent='0 empleados';toast('HC eliminado','ok');}
+function delHC(){if(!confirm(’¿Eliminar head count?’))return;HC=[];sv(SK.hc,HC);document.getElementById(‘hc-upload’).style.display=‘block’;document.getElementById(‘hc-table’).style.display=‘none’;const bd=document.getElementById(‘btn-del-hc’);if(bd)bd.style.display=‘none’;document.getElementById(‘hc-cnt’).textContent=‘0 empleados’;toast(‘HC eliminado’,‘ok’);}
 
 async function syncHC(){
-  setSyncDot('busy');
-  toast('Descargando Head Count...','inf');
-  try{
-    const r=await gasGet({action:'getHC'});
-    if(r.ok&&Array.isArray(r.data)&&r.data.length){
-      HC=r.data;
-      sv(SK.hc,HC);
-      document.getElementById('hc-upload').style.display='none';
-      document.getElementById('hc-table').style.display='block';
-      const bd=document.getElementById('btn-del-hc');if(bd)bd.style.display='';
-      renderHC('');
-      document.getElementById('hc-cnt').textContent=HC.length+' empleados';
-      setSyncDot('ok');
-      toast('✅ HC sincronizado — '+HC.length+' empleados','ok');
-    } else {
-      setSyncDot('err');
-      toast('Sin datos en el GAS. Importa el Excel primero.','err');
-    }
-  }catch(e){setSyncDot('err');toast('Error de conexión','err');}
+setSyncDot(‘busy’);
+toast(‘Descargando Head Count…’,‘inf’);
+try{
+const r=await gasGet({action:‘getHC’});
+if(r.ok&&Array.isArray(r.data)&&r.data.length){
+HC=r.data;
+sv(SK.hc,HC);
+document.getElementById(‘hc-upload’).style.display=‘none’;
+document.getElementById(‘hc-table’).style.display=‘block’;
+const bd=document.getElementById(‘btn-del-hc’);if(bd)bd.style.display=’’;
+renderHC(’’);
+document.getElementById(‘hc-cnt’).textContent=HC.length+’ empleados’;
+setSyncDot(‘ok’);
+toast(‘✅ HC sincronizado — ‘+HC.length+’ empleados’,‘ok’);
+} else {
+setSyncDot(‘err’);
+toast(‘Sin datos en el GAS. Importa el Excel primero.’,‘err’);
+}
+}catch(e){setSyncDot(‘err’);toast(‘Error de conexión’,‘err’);}
 }
 
 // ══════════════════════════════════════════════════════
 // UTILS
 // ══════════════════════════════════════════════════════
-function openModal(id){const el=document.getElementById(id);if(el)el.classList.add('open');}
-function closeModal(id){const el=document.getElementById(id);if(el)el.classList.remove('open');}
-function toast(msg,type='ok'){const c=document.createElement('div');c.className='ti t'+(type==='err'?'err':type==='inf'?'inf':'ok');c.textContent=msg;document.getElementById('toast').appendChild(c);setTimeout(()=>c.remove(),3500);}
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function openModal(id){const el=document.getElementById(id);if(el)el.classList.add(‘open’);}
+function closeModal(id){const el=document.getElementById(id);if(el)el.classList.remove(‘open’);}
+function toast(msg,type=‘ok’){const c=document.createElement(‘div’);c.className=‘ti t’+(type===‘err’?‘err’:type===‘inf’?‘inf’:‘ok’);c.textContent=msg;document.getElementById(‘toast’).appendChild(c);setTimeout(()=>c.remove(),3500);}
+function esc(s){return String(s||’’).replace(/&/g,’&’).replace(/”/g,’"’).replace(/</g,’<’).replace(/>/g,’>’);}
 function getWeek(d){const dt=new Date(d);dt.setHours(0,0,0,0);dt.setDate(dt.getDate()+3-(dt.getDay()+6)%7);const w=new Date(dt.getFullYear(),0,4);return 1+Math.round(((dt-w)/86400000-3+(w.getDay()+6)%7)/7);}
-document.addEventListener('click',e=>{if(!e.target.closest('.sw'))document.querySelectorAll('.sr-drop').forEach(d=>d.classList.remove('show'));if(e.target.classList.contains('ov'))e.target.classList.remove('open');});
-document.addEventListener('DOMContentLoaded', async function(){
-  // Cargar usuarios del GAS — reemplaza completamente el localStorage
-  try{
-    const r=await gasGet({action:'getUsers'});
-    if(r.ok&&Array.isArray(r.data)&&r.data.length){
-      // Guardar directamente los usuarios del GAS (son la fuente de verdad)
-      sv(SK.users, r.data);
-    }
-  }catch(e){
-    console.warn('No se pudo cargar usuarios del GAS, usando locales');
-  }
-  poblarSelectUsuarios();
-  syncEmb();
+document.addEventListener(‘click’,e=>{if(!e.target.closest(’.sw’))document.querySelectorAll(’.sr-drop’).forEach(d=>d.classList.remove(‘show’));if(e.target.classList.contains(‘ov’))e.target.classList.remove(‘open’);});
+document.addEventListener(‘DOMContentLoaded’, async function(){
+// Cargar usuarios del GAS — reemplaza completamente el localStorage
+try{
+const r=await gasGet({action:‘getUsers’});
+if(r.ok&&Array.isArray(r.data)&&r.data.length){
+// Guardar directamente los usuarios del GAS (son la fuente de verdad)
+sv(SK.users, r.data);
+}
+}catch(e){
+console.warn(‘No se pudo cargar usuarios del GAS, usando locales’);
+}
+poblarSelectUsuarios();
+syncEmb();
 });
-window.addEventListener('error',e=>{console.warn('[ENF]',e.message,e.lineno);});
+window.addEventListener(‘error’,e=>{console.warn(’[ENF]’,e.message,e.lineno);});
 
 // ══ CIE-10 ══
 // ══════════════════════════════════════════════════════════════════════
@@ -2666,405 +2601,398 @@ window.addEventListener('error',e=>{console.warn('[ENF]',e.message,e.lineno);});
 // Uso: window.CIE10 disponible en médico y enfermería
 // ══════════════════════════════════════════════════════════════════════
 const CIE10 = [
-  // ── MUSCULOESQUELÉTICO ──────────────────────────────────────────
-  {c:'M54.5',d:'Lumbago no especificado',s:'Musculoesquelético'},
-  {c:'M54.4',d:'Lumbociatalgia',s:'Musculoesquelético'},
-  {c:'M54.2',d:'Cervicalgia',s:'Musculoesquelético'},
-  {c:'M54.6',d:'Dolor en la columna dorsal',s:'Musculoesquelético'},
-  {c:'M54.3',d:'Ciática',s:'Musculoesquelético'},
-  {c:'M75.1',d:'Síndrome del manguito rotador',s:'Musculoesquelético'},
-  {c:'M75.0',d:'Capsulitis adhesiva del hombro',s:'Musculoesquelético'},
-  {c:'M77.1',d:'Epicondilitis lateral (codo de tenista)',s:'Musculoesquelético'},
-  {c:'M77.0',d:'Epicondilitis medial (codo de golfista)',s:'Musculoesquelético'},
-  {c:'M65.3',d:'Dedo en gatillo',s:'Musculoesquelético'},
-  {c:'G54.2',d:'Síndrome del túnel carpiano',s:'Musculoesquelético'},
-  {c:'M70.0',d:'Tenosinovitis del estiloides radial (De Quervain)',s:'Musculoesquelético'},
-  {c:'M79.3',d:'Paniculitis',s:'Musculoesquelético'},
-  {c:'M79.1',d:'Mialgia',s:'Musculoesquelético'},
-  {c:'M79.6',d:'Dolor en miembro',s:'Musculoesquelético'},
-  {c:'M25.5',d:'Dolor en articulación',s:'Musculoesquelético'},
-  {c:'M17.1',d:'Gonartrosis primaria',s:'Musculoesquelético'},
-  {c:'M16.1',d:'Coxartrosis primaria',s:'Musculoesquelético'},
-  {c:'M19.9',d:'Artrosis no especificada',s:'Musculoesquelético'},
-  {c:'M06.9',d:'Artritis reumatoide no especificada',s:'Musculoesquelético'},
-  {c:'M10.9',d:'Gota no especificada',s:'Musculoesquelético'},
-  {c:'M47.8',d:'Espondiloartrosis',s:'Musculoesquelético'},
-  {c:'M51.1',d:'Degeneración de disco intervertebral lumbar',s:'Musculoesquelético'},
-  {c:'M48.0',d:'Estenosis espinal',s:'Musculoesquelético'},
-  {c:'M62.8',d:'Espasmo muscular',s:'Musculoesquelético'},
-  {c:'M79.0',d:'Reumatismo no especificado',s:'Musculoesquelético'},
-  {c:'M76.6',d:'Tendinitis aquiliana',s:'Musculoesquelético'},
-  {c:'M72.2',d:'Fibromatosis plantar (fascitis plantar)',s:'Musculoesquelético'},
-  {c:'M67.4',d:'Quiste de Baker',s:'Musculoesquelético'},
-  {c:'M23.2',d:'Lesión de menisco',s:'Musculoesquelético'},
+// ── MUSCULOESQUELÉTICO ──────────────────────────────────────────
+{c:‘M54.5’,d:‘Lumbago no especificado’,s:‘Musculoesquelético’},
+{c:‘M54.4’,d:‘Lumbociatalgia’,s:‘Musculoesquelético’},
+{c:‘M54.2’,d:‘Cervicalgia’,s:‘Musculoesquelético’},
+{c:‘M54.6’,d:‘Dolor en la columna dorsal’,s:‘Musculoesquelético’},
+{c:‘M54.3’,d:‘Ciática’,s:‘Musculoesquelético’},
+{c:‘M75.1’,d:‘Síndrome del manguito rotador’,s:‘Musculoesquelético’},
+{c:‘M75.0’,d:‘Capsulitis adhesiva del hombro’,s:‘Musculoesquelético’},
+{c:‘M77.1’,d:‘Epicondilitis lateral (codo de tenista)’,s:‘Musculoesquelético’},
+{c:‘M77.0’,d:‘Epicondilitis medial (codo de golfista)’,s:‘Musculoesquelético’},
+{c:‘M65.3’,d:‘Dedo en gatillo’,s:‘Musculoesquelético’},
+{c:‘G54.2’,d:‘Síndrome del túnel carpiano’,s:‘Musculoesquelético’},
+{c:‘M70.0’,d:‘Tenosinovitis del estiloides radial (De Quervain)’,s:‘Musculoesquelético’},
+{c:‘M79.3’,d:‘Paniculitis’,s:‘Musculoesquelético’},
+{c:‘M79.1’,d:‘Mialgia’,s:‘Musculoesquelético’},
+{c:‘M79.6’,d:‘Dolor en miembro’,s:‘Musculoesquelético’},
+{c:‘M25.5’,d:‘Dolor en articulación’,s:‘Musculoesquelético’},
+{c:‘M17.1’,d:‘Gonartrosis primaria’,s:‘Musculoesquelético’},
+{c:‘M16.1’,d:‘Coxartrosis primaria’,s:‘Musculoesquelético’},
+{c:‘M19.9’,d:‘Artrosis no especificada’,s:‘Musculoesquelético’},
+{c:‘M06.9’,d:‘Artritis reumatoide no especificada’,s:‘Musculoesquelético’},
+{c:‘M10.9’,d:‘Gota no especificada’,s:‘Musculoesquelético’},
+{c:‘M47.8’,d:‘Espondiloartrosis’,s:‘Musculoesquelético’},
+{c:‘M51.1’,d:‘Degeneración de disco intervertebral lumbar’,s:‘Musculoesquelético’},
+{c:‘M48.0’,d:‘Estenosis espinal’,s:‘Musculoesquelético’},
+{c:‘M62.8’,d:‘Espasmo muscular’,s:‘Musculoesquelético’},
+{c:‘M79.0’,d:‘Reumatismo no especificado’,s:‘Musculoesquelético’},
+{c:‘M76.6’,d:‘Tendinitis aquiliana’,s:‘Musculoesquelético’},
+{c:‘M72.2’,d:‘Fibromatosis plantar (fascitis plantar)’,s:‘Musculoesquelético’},
+{c:‘M67.4’,d:‘Quiste de Baker’,s:‘Musculoesquelético’},
+{c:‘M23.2’,d:‘Lesión de menisco’,s:‘Musculoesquelético’},
 
-  // ── TRAUMATOLOGÍA / ACCIDENTES ─────────────────────────────────
-  {c:'S00.9',d:'Traumatismo superficial de la cabeza, no especificado',s:'Traumatología'},
-  {c:'S09.9',d:'Traumatismo de la cabeza, no especificado',s:'Traumatología'},
-  {c:'S20.2',d:'Contusión del tórax',s:'Traumatología'},
-  {c:'S30.1',d:'Contusión de la pared abdominal',s:'Traumatología'},
-  {c:'S40.0',d:'Contusión del hombro',s:'Traumatología'},
-  {c:'S50.0',d:'Contusión del codo',s:'Traumatología'},
-  {c:'S60.0',d:'Contusión del dedo de la mano',s:'Traumatología'},
-  {c:'S60.2',d:'Contusión de la mano',s:'Traumatología'},
-  {c:'S70.0',d:'Contusión de la cadera',s:'Traumatología'},
-  {c:'S80.0',d:'Contusión de la rodilla',s:'Traumatología'},
-  {c:'S90.0',d:'Contusión del tobillo',s:'Traumatología'},
-  {c:'S90.3',d:'Contusión del dedo del pie',s:'Traumatología'},
-  {c:'S52.5',d:'Fractura de la extremidad distal del radio',s:'Traumatología'},
-  {c:'S62.5',d:'Fractura de metacarpiano',s:'Traumatología'},
-  {c:'S82.6',d:'Fractura del peroné',s:'Traumatología'},
-  {c:'S92.3',d:'Fractura del metatarsiano',s:'Traumatología'},
-  {c:'S93.4',d:'Esguince del tobillo',s:'Traumatología'},
-  {c:'S83.6',d:'Esguince y torcedura de la rodilla',s:'Traumatología'},
-  {c:'S43.4',d:'Esguince del hombro',s:'Traumatología'},
-  {c:'T14.0',d:'Herida de región no especificada del cuerpo',s:'Traumatología'},
-  {c:'T14.1',d:'Fractura de región no especificada',s:'Traumatología'},
-  {c:'T30.0',d:'Quemadura de grado no especificado',s:'Traumatología'},
-  {c:'T30.1',d:'Quemadura de primer grado',s:'Traumatología'},
-  {c:'T30.2',d:'Quemadura de segundo grado',s:'Traumatología'},
-  {c:'W19',d:'Caída no especificada',s:'Traumatología'},
-  {c:'W01',d:'Caída en el mismo nivel por resbalón o tropezón',s:'Traumatología'},
-  {c:'X50',d:'Esfuerzo y movimientos extenuantes (sobreesfuerzo)',s:'Traumatología'},
-  {c:'S61.0',d:'Herida del dedo de la mano sin daño de la uña',s:'Traumatología'},
-  {c:'T08',d:'Fractura de columna, nivel no especificado',s:'Traumatología'},
-  {c:'T75.4',d:'Efectos de la corriente eléctrica',s:'Traumatología'},
+// ── TRAUMATOLOGÍA / ACCIDENTES ─────────────────────────────────
+{c:‘S00.9’,d:‘Traumatismo superficial de la cabeza, no especificado’,s:‘Traumatología’},
+{c:‘S09.9’,d:‘Traumatismo de la cabeza, no especificado’,s:‘Traumatología’},
+{c:‘S20.2’,d:‘Contusión del tórax’,s:‘Traumatología’},
+{c:‘S30.1’,d:‘Contusión de la pared abdominal’,s:‘Traumatología’},
+{c:‘S40.0’,d:‘Contusión del hombro’,s:‘Traumatología’},
+{c:‘S50.0’,d:‘Contusión del codo’,s:‘Traumatología’},
+{c:‘S60.0’,d:‘Contusión del dedo de la mano’,s:‘Traumatología’},
+{c:‘S60.2’,d:‘Contusión de la mano’,s:‘Traumatología’},
+{c:‘S70.0’,d:‘Contusión de la cadera’,s:‘Traumatología’},
+{c:‘S80.0’,d:‘Contusión de la rodilla’,s:‘Traumatología’},
+{c:‘S90.0’,d:‘Contusión del tobillo’,s:‘Traumatología’},
+{c:‘S90.3’,d:‘Contusión del dedo del pie’,s:‘Traumatología’},
+{c:‘S52.5’,d:‘Fractura de la extremidad distal del radio’,s:‘Traumatología’},
+{c:‘S62.5’,d:‘Fractura de metacarpiano’,s:‘Traumatología’},
+{c:‘S82.6’,d:‘Fractura del peroné’,s:‘Traumatología’},
+{c:‘S92.3’,d:‘Fractura del metatarsiano’,s:‘Traumatología’},
+{c:‘S93.4’,d:‘Esguince del tobillo’,s:‘Traumatología’},
+{c:‘S83.6’,d:‘Esguince y torcedura de la rodilla’,s:‘Traumatología’},
+{c:‘S43.4’,d:‘Esguince del hombro’,s:‘Traumatología’},
+{c:‘T14.0’,d:‘Herida de región no especificada del cuerpo’,s:‘Traumatología’},
+{c:‘T14.1’,d:‘Fractura de región no especificada’,s:‘Traumatología’},
+{c:‘T30.0’,d:‘Quemadura de grado no especificado’,s:‘Traumatología’},
+{c:‘T30.1’,d:‘Quemadura de primer grado’,s:‘Traumatología’},
+{c:‘T30.2’,d:‘Quemadura de segundo grado’,s:‘Traumatología’},
+{c:‘W19’,d:‘Caída no especificada’,s:‘Traumatología’},
+{c:‘W01’,d:‘Caída en el mismo nivel por resbalón o tropezón’,s:‘Traumatología’},
+{c:‘X50’,d:‘Esfuerzo y movimientos extenuantes (sobreesfuerzo)’,s:‘Traumatología’},
+{c:‘S61.0’,d:‘Herida del dedo de la mano sin daño de la uña’,s:‘Traumatología’},
+{c:‘T08’,d:‘Fractura de columna, nivel no especificado’,s:‘Traumatología’},
+{c:‘T75.4’,d:‘Efectos de la corriente eléctrica’,s:‘Traumatología’},
 
-  // ── CARDIOVASCULAR ─────────────────────────────────────────────
-  {c:'I10',d:'Hipertensión arterial esencial primaria',s:'Cardiovascular'},
-  {c:'I11.9',d:'Cardiopatía hipertensiva sin insuficiencia cardíaca',s:'Cardiovascular'},
-  {c:'I25.1',d:'Enfermedad coronaria aterosclerótica',s:'Cardiovascular'},
-  {c:'I20.9',d:'Angina de pecho no especificada',s:'Cardiovascular'},
-  {c:'I50.9',d:'Insuficiencia cardíaca no especificada',s:'Cardiovascular'},
-  {c:'I48',d:'Fibrilación y aleteo auricular',s:'Cardiovascular'},
-  {c:'I49.9',d:'Arritmia cardíaca no especificada',s:'Cardiovascular'},
-  {c:'I83.9',d:'Várices de los miembros inferiores sin úlcera ni inflamación',s:'Cardiovascular'},
-  {c:'I87.2',d:'Insuficiencia venosa (crónica)',s:'Cardiovascular'},
-  {c:'R00.0',d:'Taquicardia no especificada',s:'Cardiovascular'},
-  {c:'R00.1',d:'Bradicardia no especificada',s:'Cardiovascular'},
-  {c:'R01.1',d:'Soplo cardíaco',s:'Cardiovascular'},
-  {c:'R03.0',d:'Lectura de presión arterial alta sin diagnóstico de hipertensión',s:'Cardiovascular'},
-  {c:'I73.9',d:'Enfermedad vascular periférica no especificada',s:'Cardiovascular'},
-  {c:'I84.9',d:'Hemorroides sin complicación',s:'Cardiovascular'},
+// ── CARDIOVASCULAR ─────────────────────────────────────────────
+{c:‘I10’,d:‘Hipertensión arterial esencial primaria’,s:‘Cardiovascular’},
+{c:‘I11.9’,d:‘Cardiopatía hipertensiva sin insuficiencia cardíaca’,s:‘Cardiovascular’},
+{c:‘I25.1’,d:‘Enfermedad coronaria aterosclerótica’,s:‘Cardiovascular’},
+{c:‘I20.9’,d:‘Angina de pecho no especificada’,s:‘Cardiovascular’},
+{c:‘I50.9’,d:‘Insuficiencia cardíaca no especificada’,s:‘Cardiovascular’},
+{c:‘I48’,d:‘Fibrilación y aleteo auricular’,s:‘Cardiovascular’},
+{c:‘I49.9’,d:‘Arritmia cardíaca no especificada’,s:‘Cardiovascular’},
+{c:‘I83.9’,d:‘Várices de los miembros inferiores sin úlcera ni inflamación’,s:‘Cardiovascular’},
+{c:‘I87.2’,d:‘Insuficiencia venosa (crónica)’,s:‘Cardiovascular’},
+{c:‘R00.0’,d:‘Taquicardia no especificada’,s:‘Cardiovascular’},
+{c:‘R00.1’,d:‘Bradicardia no especificada’,s:‘Cardiovascular’},
+{c:‘R01.1’,d:‘Soplo cardíaco’,s:‘Cardiovascular’},
+{c:‘R03.0’,d:‘Lectura de presión arterial alta sin diagnóstico de hipertensión’,s:‘Cardiovascular’},
+{c:‘I73.9’,d:‘Enfermedad vascular periférica no especificada’,s:‘Cardiovascular’},
+{c:‘I84.9’,d:‘Hemorroides sin complicación’,s:‘Cardiovascular’},
 
-  // ── RESPIRATORIO ───────────────────────────────────────────────
-  {c:'J06.9',d:'Infección aguda de las vías respiratorias superiores, no especificada',s:'Respiratorio'},
-  {c:'J00',d:'Rinofaringitis aguda (resfriado común)',s:'Respiratorio'},
-  {c:'J02.9',d:'Faringitis aguda no especificada',s:'Respiratorio'},
-  {c:'J03.9',d:'Amigdalitis aguda no especificada',s:'Respiratorio'},
-  {c:'J04.0',d:'Laringitis aguda',s:'Respiratorio'},
-  {c:'J20.9',d:'Bronquitis aguda no especificada',s:'Respiratorio'},
-  {c:'J18.9',d:'Neumonía no especificada',s:'Respiratorio'},
-  {c:'J45.9',d:'Asma no especificada',s:'Respiratorio'},
-  {c:'J45.0',d:'Asma predominantemente alérgica',s:'Respiratorio'},
-  {c:'J44.1',d:'EPOC con exacerbación aguda',s:'Respiratorio'},
-  {c:'J30.1',d:'Rinitis alérgica debida al polen',s:'Respiratorio'},
-  {c:'J30.4',d:'Rinitis alérgica crónica',s:'Respiratorio'},
-  {c:'J31.0',d:'Rinitis crónica',s:'Respiratorio'},
-  {c:'J32.9',d:'Sinusitis crónica no especificada',s:'Respiratorio'},
-  {c:'J01.9',d:'Sinusitis aguda no especificada',s:'Respiratorio'},
-  {c:'R05',d:'Tos',s:'Respiratorio'},
-  {c:'R06.0',d:'Disnea',s:'Respiratorio'},
-  {c:'J70.2',d:'Neumonitis por inhalación de polvo',s:'Respiratorio'},
-  {c:'J68.0',d:'Bronquitis y neumonitis por inhalación de gases',s:'Respiratorio'},
-  {c:'U07.1',d:'COVID-19 confirmado',s:'Respiratorio'},
+// ── RESPIRATORIO ───────────────────────────────────────────────
+{c:‘J06.9’,d:‘Infección aguda de las vías respiratorias superiores, no especificada’,s:‘Respiratorio’},
+{c:‘J00’,d:‘Rinofaringitis aguda (resfriado común)’,s:‘Respiratorio’},
+{c:‘J02.9’,d:‘Faringitis aguda no especificada’,s:‘Respiratorio’},
+{c:‘J03.9’,d:‘Amigdalitis aguda no especificada’,s:‘Respiratorio’},
+{c:‘J04.0’,d:‘Laringitis aguda’,s:‘Respiratorio’},
+{c:‘J20.9’,d:‘Bronquitis aguda no especificada’,s:‘Respiratorio’},
+{c:‘J18.9’,d:‘Neumonía no especificada’,s:‘Respiratorio’},
+{c:‘J45.9’,d:‘Asma no especificada’,s:‘Respiratorio’},
+{c:‘J45.0’,d:‘Asma predominantemente alérgica’,s:‘Respiratorio’},
+{c:‘J44.1’,d:‘EPOC con exacerbación aguda’,s:‘Respiratorio’},
+{c:‘J30.1’,d:‘Rinitis alérgica debida al polen’,s:‘Respiratorio’},
+{c:‘J30.4’,d:‘Rinitis alérgica crónica’,s:‘Respiratorio’},
+{c:‘J31.0’,d:‘Rinitis crónica’,s:‘Respiratorio’},
+{c:‘J32.9’,d:‘Sinusitis crónica no especificada’,s:‘Respiratorio’},
+{c:‘J01.9’,d:‘Sinusitis aguda no especificada’,s:‘Respiratorio’},
+{c:‘R05’,d:‘Tos’,s:‘Respiratorio’},
+{c:‘R06.0’,d:‘Disnea’,s:‘Respiratorio’},
+{c:‘J70.2’,d:‘Neumonitis por inhalación de polvo’,s:‘Respiratorio’},
+{c:‘J68.0’,d:‘Bronquitis y neumonitis por inhalación de gases’,s:‘Respiratorio’},
+{c:‘U07.1’,d:‘COVID-19 confirmado’,s:‘Respiratorio’},
 
-  // ── DIGESTIVO ──────────────────────────────────────────────────
-  {c:'K21.0',d:'Enfermedad por reflujo gastroesofágico con esofagitis',s:'Digestivo'},
-  {c:'K21.9',d:'Enfermedad por reflujo gastroesofágico sin esofagitis',s:'Digestivo'},
-  {c:'K25.9',d:'Úlcera gástrica no especificada',s:'Digestivo'},
-  {c:'K26.9',d:'Úlcera duodenal no especificada',s:'Digestivo'},
-  {c:'K29.7',d:'Gastritis no especificada',s:'Digestivo'},
-  {c:'K52.9',d:'Gastroenteritis y colitis no infecciosa no especificada',s:'Digestivo'},
-  {c:'A09',d:'Diarrea y gastroenteritis de presunto origen infeccioso',s:'Digestivo'},
-  {c:'K59.0',d:'Estreñimiento',s:'Digestivo'},
-  {c:'K58.9',d:'Síndrome del colon irritable sin diarrea',s:'Digestivo'},
-  {c:'K57.3',d:'Enfermedad diverticular del intestino grueso sin perforación',s:'Digestivo'},
-  {c:'K80.2',d:'Colelitiasis con colecistitis crónica',s:'Digestivo'},
-  {c:'K80.1',d:'Cálculo de la vesícula biliar con colecistitis aguda',s:'Digestivo'},
-  {c:'K92.1',d:'Melena',s:'Digestivo'},
-  {c:'R10.4',d:'Otros dolores abdominales y los no especificados',s:'Digestivo'},
-  {c:'R11',d:'Náusea y vómito',s:'Digestivo'},
-  {c:'K74.6',d:'Cirrosis hepática no especificada',s:'Digestivo'},
-  {c:'K76.0',d:'Hígado graso no alcohólico',s:'Digestivo'},
-  {c:'B19.9',d:'Hepatitis viral no especificada',s:'Digestivo'},
-  {c:'K62.5',d:'Hemorragia del ano y del recto',s:'Digestivo'},
-  {c:'K90.0',d:'Enfermedad celíaca',s:'Digestivo'},
+// ── DIGESTIVO ──────────────────────────────────────────────────
+{c:‘K21.0’,d:‘Enfermedad por reflujo gastroesofágico con esofagitis’,s:‘Digestivo’},
+{c:‘K21.9’,d:‘Enfermedad por reflujo gastroesofágico sin esofagitis’,s:‘Digestivo’},
+{c:‘K25.9’,d:‘Úlcera gástrica no especificada’,s:‘Digestivo’},
+{c:‘K26.9’,d:‘Úlcera duodenal no especificada’,s:‘Digestivo’},
+{c:‘K29.7’,d:‘Gastritis no especificada’,s:‘Digestivo’},
+{c:‘K52.9’,d:‘Gastroenteritis y colitis no infecciosa no especificada’,s:‘Digestivo’},
+{c:‘A09’,d:‘Diarrea y gastroenteritis de presunto origen infeccioso’,s:‘Digestivo’},
+{c:‘K59.0’,d:‘Estreñimiento’,s:‘Digestivo’},
+{c:‘K58.9’,d:‘Síndrome del colon irritable sin diarrea’,s:‘Digestivo’},
+{c:‘K57.3’,d:‘Enfermedad diverticular del intestino grueso sin perforación’,s:‘Digestivo’},
+{c:‘K80.2’,d:‘Colelitiasis con colecistitis crónica’,s:‘Digestivo’},
+{c:‘K80.1’,d:‘Cálculo de la vesícula biliar con colecistitis aguda’,s:‘Digestivo’},
+{c:‘K92.1’,d:‘Melena’,s:‘Digestivo’},
+{c:‘R10.4’,d:‘Otros dolores abdominales y los no especificados’,s:‘Digestivo’},
+{c:‘R11’,d:‘Náusea y vómito’,s:‘Digestivo’},
+{c:‘K74.6’,d:‘Cirrosis hepática no especificada’,s:‘Digestivo’},
+{c:‘K76.0’,d:‘Hígado graso no alcohólico’,s:‘Digestivo’},
+{c:‘B19.9’,d:‘Hepatitis viral no especificada’,s:‘Digestivo’},
+{c:‘K62.5’,d:‘Hemorragia del ano y del recto’,s:‘Digestivo’},
+{c:‘K90.0’,d:‘Enfermedad celíaca’,s:‘Digestivo’},
 
-  // ── ENDOCRINO / METABÓLICO ─────────────────────────────────────
-  {c:'E11.9',d:'Diabetes mellitus tipo 2 sin complicaciones',s:'Endocrino/Metabólico'},
-  {c:'E11.6',d:'Diabetes mellitus tipo 2 con complicaciones no especificadas',s:'Endocrino/Metabólico'},
-  {c:'E10.9',d:'Diabetes mellitus tipo 1 sin complicaciones',s:'Endocrino/Metabólico'},
-  {c:'E78.0',d:'Hipercolesterolemia pura',s:'Endocrino/Metabólico'},
-  {c:'E78.1',d:'Hipertrigliceridemia pura',s:'Endocrino/Metabólico'},
-  {c:'E78.5',d:'Hiperlipidemia no especificada',s:'Endocrino/Metabólico'},
-  {c:'E03.9',d:'Hipotiroidismo no especificado',s:'Endocrino/Metabólico'},
-  {c:'E05.9',d:'Tirotoxicosis no especificada',s:'Endocrino/Metabólico'},
-  {c:'E04.9',d:'Bocio no tóxico no especificado',s:'Endocrino/Metabólico'},
-  {c:'E66.9',d:'Obesidad no especificada',s:'Endocrino/Metabólico'},
-  {c:'E66.0',d:'Obesidad debida a exceso de calorías',s:'Endocrino/Metabólico'},
-  {c:'E63.9',d:'Deficiencia nutricional no especificada',s:'Endocrino/Metabólico'},
-  {c:'E55.9',d:'Deficiencia de vitamina D no especificada',s:'Endocrino/Metabólico'},
-  {c:'E50.9',d:'Deficiencia de vitamina A no especificada',s:'Endocrino/Metabólico'},
-  {c:'E61.1',d:'Deficiencia de hierro',s:'Endocrino/Metabólico'},
-  {c:'E83.5',d:'Trastornos del metabolismo del calcio',s:'Endocrino/Metabólico'},
-  {c:'E16.2',d:'Hipoglucemia no especificada',s:'Endocrino/Metabólico'},
-  {c:'E87.1',d:'Hiponatremia',s:'Endocrino/Metabólico'},
-  {c:'E87.6',d:'Hipocalemia',s:'Endocrino/Metabólico'},
-  {c:'E88.0',d:'Trastorno del metabolismo de proteínas plasmáticas',s:'Endocrino/Metabólico'},
+// ── ENDOCRINO / METABÓLICO ─────────────────────────────────────
+{c:‘E11.9’,d:‘Diabetes mellitus tipo 2 sin complicaciones’,s:‘Endocrino/Metabólico’},
+{c:‘E11.6’,d:‘Diabetes mellitus tipo 2 con complicaciones no especificadas’,s:‘Endocrino/Metabólico’},
+{c:‘E10.9’,d:‘Diabetes mellitus tipo 1 sin complicaciones’,s:‘Endocrino/Metabólico’},
+{c:‘E78.0’,d:‘Hipercolesterolemia pura’,s:‘Endocrino/Metabólico’},
+{c:‘E78.1’,d:‘Hipertrigliceridemia pura’,s:‘Endocrino/Metabólico’},
+{c:‘E78.5’,d:‘Hiperlipidemia no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E03.9’,d:‘Hipotiroidismo no especificado’,s:‘Endocrino/Metabólico’},
+{c:‘E05.9’,d:‘Tirotoxicosis no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E04.9’,d:‘Bocio no tóxico no especificado’,s:‘Endocrino/Metabólico’},
+{c:‘E66.9’,d:‘Obesidad no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E66.0’,d:‘Obesidad debida a exceso de calorías’,s:‘Endocrino/Metabólico’},
+{c:‘E63.9’,d:‘Deficiencia nutricional no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E55.9’,d:‘Deficiencia de vitamina D no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E50.9’,d:‘Deficiencia de vitamina A no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E61.1’,d:‘Deficiencia de hierro’,s:‘Endocrino/Metabólico’},
+{c:‘E83.5’,d:‘Trastornos del metabolismo del calcio’,s:‘Endocrino/Metabólico’},
+{c:‘E16.2’,d:‘Hipoglucemia no especificada’,s:‘Endocrino/Metabólico’},
+{c:‘E87.1’,d:‘Hiponatremia’,s:‘Endocrino/Metabólico’},
+{c:‘E87.6’,d:‘Hipocalemia’,s:‘Endocrino/Metabólico’},
+{c:‘E88.0’,d:‘Trastorno del metabolismo de proteínas plasmáticas’,s:‘Endocrino/Metabólico’},
 
-  // ── NEUROLÓGICO ────────────────────────────────────────────────
-  {c:'G43.9',d:'Migraña no especificada',s:'Neurológico'},
-  {c:'G43.0',d:'Migraña sin aura (migraña común)',s:'Neurológico'},
-  {c:'G44.2',d:'Cefalea tensional',s:'Neurológico'},
-  {c:'R51',d:'Cefalea',s:'Neurológico'},
-  {c:'G40.9',d:'Epilepsia no especificada',s:'Neurológico'},
-  {c:'G45.9',d:'Ataque isquémico transitorio no especificado',s:'Neurológico'},
-  {c:'G63.2',d:'Polineuropatía diabética',s:'Neurológico'},
-  {c:'G62.9',d:'Polineuropatía no especificada',s:'Neurológico'},
-  {c:'G54.2',d:'Síndrome del túnel carpiano',s:'Neurológico'},
-  {c:'G51.0',d:'Parálisis de Bell',s:'Neurológico'},
-  {c:'G35',d:'Esclerosis múltiple',s:'Neurológico'},
-  {c:'R42',d:'Mareo y desvanecimiento',s:'Neurológico'},
-  {c:'R55',d:'Síncope y colapso',s:'Neurológico'},
-  {c:'R25.2',d:'Calambre y espasmo',s:'Neurológico'},
-  {c:'G89.2',d:'Dolor crónico',s:'Neurológico'},
-  {c:'G47.0',d:'Insomnio',s:'Neurológico'},
-  {c:'G47.3',d:'Apnea del sueño',s:'Neurológico'},
-  {c:'H81.1',d:'Vértigo paroxístico benigno',s:'Neurológico'},
-  {c:'H81.3',d:'Otras alteraciones del equilibrio (vértigo)',s:'Neurológico'},
-  {c:'G20',d:'Enfermedad de Parkinson',s:'Neurológico'},
+// ── NEUROLÓGICO ────────────────────────────────────────────────
+{c:‘G43.9’,d:‘Migraña no especificada’,s:‘Neurológico’},
+{c:‘G43.0’,d:‘Migraña sin aura (migraña común)’,s:‘Neurológico’},
+{c:‘G44.2’,d:‘Cefalea tensional’,s:‘Neurológico’},
+{c:‘R51’,d:‘Cefalea’,s:‘Neurológico’},
+{c:‘G40.9’,d:‘Epilepsia no especificada’,s:‘Neurológico’},
+{c:‘G45.9’,d:‘Ataque isquémico transitorio no especificado’,s:‘Neurológico’},
+{c:‘G63.2’,d:‘Polineuropatía diabética’,s:‘Neurológico’},
+{c:‘G62.9’,d:‘Polineuropatía no especificada’,s:‘Neurológico’},
+{c:‘G54.2’,d:‘Síndrome del túnel carpiano’,s:‘Neurológico’},
+{c:‘G51.0’,d:‘Parálisis de Bell’,s:‘Neurológico’},
+{c:‘G35’,d:‘Esclerosis múltiple’,s:‘Neurológico’},
+{c:‘R42’,d:‘Mareo y desvanecimiento’,s:‘Neurológico’},
+{c:‘R55’,d:‘Síncope y colapso’,s:‘Neurológico’},
+{c:‘R25.2’,d:‘Calambre y espasmo’,s:‘Neurológico’},
+{c:‘G89.2’,d:‘Dolor crónico’,s:‘Neurológico’},
+{c:‘G47.0’,d:‘Insomnio’,s:‘Neurológico’},
+{c:‘G47.3’,d:‘Apnea del sueño’,s:‘Neurológico’},
+{c:‘H81.1’,d:‘Vértigo paroxístico benigno’,s:‘Neurológico’},
+{c:‘H81.3’,d:‘Otras alteraciones del equilibrio (vértigo)’,s:‘Neurológico’},
+{c:‘G20’,d:‘Enfermedad de Parkinson’,s:‘Neurológico’},
 
-  // ── PSIQUIÁTRICO / MENTAL ──────────────────────────────────────
-  {c:'F41.1',d:'Trastorno de ansiedad generalizada',s:'Psiquiátrico/Mental'},
-  {c:'F41.0',d:'Trastorno de pánico',s:'Psiquiátrico/Mental'},
-  {c:'F32.9',d:'Episodio depresivo no especificado',s:'Psiquiátrico/Mental'},
-  {c:'F33.9',d:'Trastorno depresivo recurrente no especificado',s:'Psiquiátrico/Mental'},
-  {c:'F43.1',d:'Trastorno de estrés postraumático',s:'Psiquiátrico/Mental'},
-  {c:'F43.2',d:'Trastornos de adaptación',s:'Psiquiátrico/Mental'},
-  {c:'F43.0',d:'Reacción al estrés agudo',s:'Psiquiátrico/Mental'},
-  {c:'Z73.0',d:'Síndrome de agotamiento (burnout)',s:'Psiquiátrico/Mental'},
-  {c:'F10.1',d:'Trastorno mental por uso de alcohol — uso nocivo',s:'Psiquiátrico/Mental'},
-  {c:'F17.2',d:'Trastornos mentales por nicotina — dependencia',s:'Psiquiátrico/Mental'},
-  {c:'F51.0',d:'Insomnio no orgánico',s:'Psiquiátrico/Mental'},
-  {c:'F45.0',d:'Trastorno de somatización',s:'Psiquiátrico/Mental'},
-  {c:'F45.1',d:'Trastorno somatomorfo indiferenciado',s:'Psiquiátrico/Mental'},
-  {c:'F20.9',d:'Esquizofrenia no especificada',s:'Psiquiátrico/Mental'},
-  {c:'F31.9',d:'Trastorno bipolar no especificado',s:'Psiquiátrico/Mental'},
-  {c:'F90.0',d:'TDAH predominantemente inatento',s:'Psiquiátrico/Mental'},
-  {c:'F40.1',d:'Fobias sociales',s:'Psiquiátrico/Mental'},
-  {c:'Z56.0',d:'Desempleo',s:'Psiquiátrico/Mental'},
-  {c:'Z56.6',d:'Otras dificultades físicas y mentales relacionadas con el trabajo',s:'Psiquiátrico/Mental'},
-  {c:'Z60.0',d:'Problemas de ajuste a las transiciones en el ciclo vital',s:'Psiquiátrico/Mental'},
+// ── PSIQUIÁTRICO / MENTAL ──────────────────────────────────────
+{c:‘F41.1’,d:‘Trastorno de ansiedad generalizada’,s:‘Psiquiátrico/Mental’},
+{c:‘F41.0’,d:‘Trastorno de pánico’,s:‘Psiquiátrico/Mental’},
+{c:‘F32.9’,d:‘Episodio depresivo no especificado’,s:‘Psiquiátrico/Mental’},
+{c:‘F33.9’,d:‘Trastorno depresivo recurrente no especificado’,s:‘Psiquiátrico/Mental’},
+{c:‘F43.1’,d:‘Trastorno de estrés postraumático’,s:‘Psiquiátrico/Mental’},
+{c:‘F43.2’,d:‘Trastornos de adaptación’,s:‘Psiquiátrico/Mental’},
+{c:‘F43.0’,d:‘Reacción al estrés agudo’,s:‘Psiquiátrico/Mental’},
+{c:‘Z73.0’,d:‘Síndrome de agotamiento (burnout)’,s:‘Psiquiátrico/Mental’},
+{c:‘F10.1’,d:‘Trastorno mental por uso de alcohol — uso nocivo’,s:‘Psiquiátrico/Mental’},
+{c:‘F17.2’,d:‘Trastornos mentales por nicotina — dependencia’,s:‘Psiquiátrico/Mental’},
+{c:‘F51.0’,d:‘Insomnio no orgánico’,s:‘Psiquiátrico/Mental’},
+{c:‘F45.0’,d:‘Trastorno de somatización’,s:‘Psiquiátrico/Mental’},
+{c:‘F45.1’,d:‘Trastorno somatomorfo indiferenciado’,s:‘Psiquiátrico/Mental’},
+{c:‘F20.9’,d:‘Esquizofrenia no especificada’,s:‘Psiquiátrico/Mental’},
+{c:‘F31.9’,d:‘Trastorno bipolar no especificado’,s:‘Psiquiátrico/Mental’},
+{c:‘F90.0’,d:‘TDAH predominantemente inatento’,s:‘Psiquiátrico/Mental’},
+{c:‘F40.1’,d:‘Fobias sociales’,s:‘Psiquiátrico/Mental’},
+{c:‘Z56.0’,d:‘Desempleo’,s:‘Psiquiátrico/Mental’},
+{c:‘Z56.6’,d:‘Otras dificultades físicas y mentales relacionadas con el trabajo’,s:‘Psiquiátrico/Mental’},
+{c:‘Z60.0’,d:‘Problemas de ajuste a las transiciones en el ciclo vital’,s:‘Psiquiátrico/Mental’},
 
-  // ── DERMATOLÓGICO ─────────────────────────────────────────────
-  {c:'L23.9',d:'Dermatitis alérgica de contacto no especificada',s:'Dermatológico'},
-  {c:'L24.9',d:'Dermatitis irritativa de contacto no especificada',s:'Dermatológico'},
-  {c:'L25.9',d:'Dermatitis de contacto no especificada',s:'Dermatológico'},
-  {c:'L20.9',d:'Dermatitis atópica no especificada',s:'Dermatológico'},
-  {c:'L30.9',d:'Dermatitis no especificada',s:'Dermatológico'},
-  {c:'L50.9',d:'Urticaria no especificada',s:'Dermatológico'},
-  {c:'L40.0',d:'Psoriasis vulgar',s:'Dermatológico'},
-  {c:'B35.1',d:'Tiña de la mano',s:'Dermatológico'},
-  {c:'B35.3',d:'Tiña del pie (pie de atleta)',s:'Dermatológico'},
-  {c:'B35.4',d:'Tiña del cuerpo',s:'Dermatológico'},
-  {c:'B02.9',d:'Zóster sin complicaciones (herpes zóster)',s:'Dermatológico'},
-  {c:'L60.0',d:'Uña encarnada',s:'Dermatológico'},
-  {c:'L70.0',d:'Acné vulgar',s:'Dermatológico'},
-  {c:'L72.0',d:'Quiste epidérmico',s:'Dermatológico'},
-  {c:'L08.0',d:'Piodermia',s:'Dermatológico'},
-  {c:'L03.9',d:'Celulitis no especificada',s:'Dermatológico'},
-  {c:'L02.9',d:'Absceso cutáneo, forúnculo y ántrax no especificados',s:'Dermatológico'},
-  {c:'T78.4',d:'Alergia no especificada',s:'Dermatológico'},
-  {c:'R21',d:'Erupción y otras erupciones cutáneas inespecíficas',s:'Dermatológico'},
-  {c:'L57.0',d:'Queratosis actínica',s:'Dermatológico'},
+// ── DERMATOLÓGICO ─────────────────────────────────────────────
+{c:‘L23.9’,d:‘Dermatitis alérgica de contacto no especificada’,s:‘Dermatológico’},
+{c:‘L24.9’,d:‘Dermatitis irritativa de contacto no especificada’,s:‘Dermatológico’},
+{c:‘L25.9’,d:‘Dermatitis de contacto no especificada’,s:‘Dermatológico’},
+{c:‘L20.9’,d:‘Dermatitis atópica no especificada’,s:‘Dermatológico’},
+{c:‘L30.9’,d:‘Dermatitis no especificada’,s:‘Dermatológico’},
+{c:‘L50.9’,d:‘Urticaria no especificada’,s:‘Dermatológico’},
+{c:‘L40.0’,d:‘Psoriasis vulgar’,s:‘Dermatológico’},
+{c:‘B35.1’,d:‘Tiña de la mano’,s:‘Dermatológico’},
+{c:‘B35.3’,d:‘Tiña del pie (pie de atleta)’,s:‘Dermatológico’},
+{c:‘B35.4’,d:‘Tiña del cuerpo’,s:‘Dermatológico’},
+{c:‘B02.9’,d:‘Zóster sin complicaciones (herpes zóster)’,s:‘Dermatológico’},
+{c:‘L60.0’,d:‘Uña encarnada’,s:‘Dermatológico’},
+{c:‘L70.0’,d:‘Acné vulgar’,s:‘Dermatológico’},
+{c:‘L72.0’,d:‘Quiste epidérmico’,s:‘Dermatológico’},
+{c:‘L08.0’,d:‘Piodermia’,s:‘Dermatológico’},
+{c:‘L03.9’,d:‘Celulitis no especificada’,s:‘Dermatológico’},
+{c:‘L02.9’,d:‘Absceso cutáneo, forúnculo y ántrax no especificados’,s:‘Dermatológico’},
+{c:‘T78.4’,d:‘Alergia no especificada’,s:‘Dermatológico’},
+{c:‘R21’,d:‘Erupción y otras erupciones cutáneas inespecíficas’,s:‘Dermatológico’},
+{c:‘L57.0’,d:‘Queratosis actínica’,s:‘Dermatológico’},
 
-  // ── GENITOURINARIO ─────────────────────────────────────────────
-  {c:'N39.0',d:'Infección de las vías urinarias de sitio no especificado',s:'Genitourinario'},
-  {c:'N30.0',d:'Cistitis aguda',s:'Genitourinario'},
-  {c:'N10',d:'Nefritis tubulointersticial aguda',s:'Genitourinario'},
-  {c:'N20.0',d:'Cálculo del riñón',s:'Genitourinario'},
-  {c:'N20.1',d:'Cálculo del uréter',s:'Genitourinario'},
-  {c:'N40',d:'Hiperplasia de la próstata',s:'Genitourinario'},
-  {c:'N42.1',d:'Prostatitis crónica',s:'Genitourinario'},
-  {c:'R31',d:'Hematuria no especificada',s:'Genitourinario'},
-  {c:'R32',d:'Incontinencia urinaria no especificada',s:'Genitourinario'},
-  {c:'R33',d:'Retención de orina',s:'Genitourinario'},
-  {c:'N18.9',d:'Enfermedad renal crónica no especificada',s:'Genitourinario'},
-  {c:'N04.9',d:'Síndrome nefrótico no especificado',s:'Genitourinario'},
+// ── GENITOURINARIO ─────────────────────────────────────────────
+{c:‘N39.0’,d:‘Infección de las vías urinarias de sitio no especificado’,s:‘Genitourinario’},
+{c:‘N30.0’,d:‘Cistitis aguda’,s:‘Genitourinario’},
+{c:‘N10’,d:‘Nefritis tubulointersticial aguda’,s:‘Genitourinario’},
+{c:‘N20.0’,d:‘Cálculo del riñón’,s:‘Genitourinario’},
+{c:‘N20.1’,d:‘Cálculo del uréter’,s:‘Genitourinario’},
+{c:‘N40’,d:‘Hiperplasia de la próstata’,s:‘Genitourinario’},
+{c:‘N42.1’,d:‘Prostatitis crónica’,s:‘Genitourinario’},
+{c:‘R31’,d:‘Hematuria no especificada’,s:‘Genitourinario’},
+{c:‘R32’,d:‘Incontinencia urinaria no especificada’,s:‘Genitourinario’},
+{c:‘R33’,d:‘Retención de orina’,s:‘Genitourinario’},
+{c:‘N18.9’,d:‘Enfermedad renal crónica no especificada’,s:‘Genitourinario’},
+{c:‘N04.9’,d:‘Síndrome nefrótico no especificado’,s:‘Genitourinario’},
 
-  // ── GINECOLÓGICO / OBSTÉTRICO ──────────────────────────────────
-  {c:'N94.6',d:'Dismenorrea no especificada',s:'Ginecológico/Obstétrico'},
-  {c:'N94.3',d:'Síndrome de tensión premenstrual',s:'Ginecológico/Obstétrico'},
-  {c:'N92.0',d:'Menstruación excesiva y frecuente con ciclo regular',s:'Ginecológico/Obstétrico'},
-  {c:'N92.6',d:'Menstruación irregular no especificada',s:'Ginecológico/Obstétrico'},
-  {c:'N91.2',d:'Amenorrea no especificada',s:'Ginecológico/Obstétrico'},
-  {c:'N76.0',d:'Vaginitis aguda',s:'Ginecológico/Obstétrico'},
-  {c:'N72',d:'Enfermedad inflamatoria del cuello del útero (cervicitis)',s:'Ginecológico/Obstétrico'},
-  {c:'N80.0',d:'Endometriosis del útero',s:'Ginecológico/Obstétrico'},
-  {c:'N83.2',d:'Quiste ovárico no especificado',s:'Ginecológico/Obstétrico'},
-  {c:'Z34.0',d:'Supervisión de embarazo normal primigesta',s:'Ginecológico/Obstétrico'},
-  {c:'Z34.9',d:'Supervisión de embarazo normal no especificado',s:'Ginecológico/Obstétrico'},
-  {c:'O21.0',d:'Hiperemesis gravídica leve',s:'Ginecológico/Obstétrico'},
-  {c:'O13',d:'Hipertensión gestacional',s:'Ginecológico/Obstétrico'},
-  {c:'O24.4',d:'Diabetes mellitus que se origina en el embarazo',s:'Ginecológico/Obstétrico'},
-  {c:'N60.1',d:'Mastopatía fibroquística difusa',s:'Ginecológico/Obstétrico'},
-  {c:'Z30.0',d:'Asesoramiento general sobre anticoncepción',s:'Ginecológico/Obstétrico'},
-  {c:'N95.1',d:'Menopausia y climaterio femenino',s:'Ginecológico/Obstétrico'},
-  {c:'B37.3',d:'Candidiasis de la vulva y de la vagina',s:'Ginecológico/Obstétrico'},
-  {c:'A59.0',d:'Tricomoniasis urogenital',s:'Ginecológico/Obstétrico'},
-  {c:'N41.1',d:'Enfermedad inflamatoria pélvica crónica',s:'Ginecológico/Obstétrico'},
+// ── GINECOLÓGICO / OBSTÉTRICO ──────────────────────────────────
+{c:‘N94.6’,d:‘Dismenorrea no especificada’,s:‘Ginecológico/Obstétrico’},
+{c:‘N94.3’,d:‘Síndrome de tensión premenstrual’,s:‘Ginecológico/Obstétrico’},
+{c:‘N92.0’,d:‘Menstruación excesiva y frecuente con ciclo regular’,s:‘Ginecológico/Obstétrico’},
+{c:‘N92.6’,d:‘Menstruación irregular no especificada’,s:‘Ginecológico/Obstétrico’},
+{c:‘N91.2’,d:‘Amenorrea no especificada’,s:‘Ginecológico/Obstétrico’},
+{c:‘N76.0’,d:‘Vaginitis aguda’,s:‘Ginecológico/Obstétrico’},
+{c:‘N72’,d:‘Enfermedad inflamatoria del cuello del útero (cervicitis)’,s:‘Ginecológico/Obstétrico’},
+{c:‘N80.0’,d:‘Endometriosis del útero’,s:‘Ginecológico/Obstétrico’},
+{c:‘N83.2’,d:‘Quiste ovárico no especificado’,s:‘Ginecológico/Obstétrico’},
+{c:‘Z34.0’,d:‘Supervisión de embarazo normal primigesta’,s:‘Ginecológico/Obstétrico’},
+{c:‘Z34.9’,d:‘Supervisión de embarazo normal no especificado’,s:‘Ginecológico/Obstétrico’},
+{c:‘O21.0’,d:‘Hiperemesis gravídica leve’,s:‘Ginecológico/Obstétrico’},
+{c:‘O13’,d:‘Hipertensión gestacional’,s:‘Ginecológico/Obstétrico’},
+{c:‘O24.4’,d:‘Diabetes mellitus que se origina en el embarazo’,s:‘Ginecológico/Obstétrico’},
+{c:‘N60.1’,d:‘Mastopatía fibroquística difusa’,s:‘Ginecológico/Obstétrico’},
+{c:‘Z30.0’,d:‘Asesoramiento general sobre anticoncepción’,s:‘Ginecológico/Obstétrico’},
+{c:‘N95.1’,d:‘Menopausia y climaterio femenino’,s:‘Ginecológico/Obstétrico’},
+{c:‘B37.3’,d:‘Candidiasis de la vulva y de la vagina’,s:‘Ginecológico/Obstétrico’},
+{c:‘A59.0’,d:‘Tricomoniasis urogenital’,s:‘Ginecológico/Obstétrico’},
+{c:‘N41.1’,d:‘Enfermedad inflamatoria pélvica crónica’,s:‘Ginecológico/Obstétrico’},
 
-  // ── OFTALMOLÓGICO ─────────────────────────────────────────────
-  {c:'H52.1',d:'Miopía',s:'Oftalmológico'},
-  {c:'H52.0',d:'Hipermetropía',s:'Oftalmológico'},
-  {c:'H52.2',d:'Astigmatismo',s:'Oftalmológico'},
-  {c:'H40.9',d:'Glaucoma no especificado',s:'Oftalmológico'},
-  {c:'H26.9',d:'Catarata no especificada',s:'Oftalmológico'},
-  {c:'H10.9',d:'Conjuntivitis no especificada',s:'Oftalmológico'},
-  {c:'H10.1',d:'Conjuntivitis atópica aguda',s:'Oftalmológico'},
-  {c:'H11.3',d:'Hemorragia conjuntival',s:'Oftalmológico'},
-  {c:'H57.1',d:'Alteraciones del ojo, no especificadas (dolor ocular)',s:'Oftalmológico'},
-  {c:'H53.1',d:'Alteraciones visuales subjetivas',s:'Oftalmológico'},
-  {c:'H04.1',d:'Otros trastornos de la glándula lagrimal (ojo seco)',s:'Oftalmológico'},
-  {c:'H00.0',d:'Orzuelo y otras inflamaciones profundas del párpado',s:'Oftalmológico'},
-  {c:'T15.9',d:'Cuerpo extraño en parte externa del ojo no especificada',s:'Oftalmológico'},
-  {c:'H36.0',d:'Retinopatía diabética',s:'Oftalmológico'},
-  {c:'H35.3',d:'Degeneración macular',s:'Oftalmológico'},
+// ── OFTALMOLÓGICO ─────────────────────────────────────────────
+{c:‘H52.1’,d:‘Miopía’,s:‘Oftalmológico’},
+{c:‘H52.0’,d:‘Hipermetropía’,s:‘Oftalmológico’},
+{c:‘H52.2’,d:‘Astigmatismo’,s:‘Oftalmológico’},
+{c:‘H40.9’,d:‘Glaucoma no especificado’,s:‘Oftalmológico’},
+{c:‘H26.9’,d:‘Catarata no especificada’,s:‘Oftalmológico’},
+{c:‘H10.9’,d:‘Conjuntivitis no especificada’,s:‘Oftalmológico’},
+{c:‘H10.1’,d:‘Conjuntivitis atópica aguda’,s:‘Oftalmológico’},
+{c:‘H11.3’,d:‘Hemorragia conjuntival’,s:‘Oftalmológico’},
+{c:‘H57.1’,d:‘Alteraciones del ojo, no especificadas (dolor ocular)’,s:‘Oftalmológico’},
+{c:‘H53.1’,d:‘Alteraciones visuales subjetivas’,s:‘Oftalmológico’},
+{c:‘H04.1’,d:‘Otros trastornos de la glándula lagrimal (ojo seco)’,s:‘Oftalmológico’},
+{c:‘H00.0’,d:‘Orzuelo y otras inflamaciones profundas del párpado’,s:‘Oftalmológico’},
+{c:‘T15.9’,d:‘Cuerpo extraño en parte externa del ojo no especificada’,s:‘Oftalmológico’},
+{c:‘H36.0’,d:‘Retinopatía diabética’,s:‘Oftalmológico’},
+{c:‘H35.3’,d:‘Degeneración macular’,s:‘Oftalmológico’},
 
-  // ── AUDITIVO ──────────────────────────────────────────────────
-  {c:'H91.9',d:'Pérdida de audición no especificada',s:'Auditivo'},
-  {c:'H83.3',d:'Efectos del ruido en el oído interno (hipoacusia por ruido)',s:'Auditivo'},
-  {c:'H72.9',d:'Perforación de la membrana timpánica no especificada',s:'Auditivo'},
-  {c:'H65.9',d:'Otitis media no supurativa no especificada',s:'Auditivo'},
-  {c:'H66.9',d:'Otitis media no especificada',s:'Auditivo'},
-  {c:'H60.9',d:'Otitis externa no especificada',s:'Auditivo'},
-  {c:'H61.2',d:'Tapón de cerumen (cerumen impactado)',s:'Auditivo'},
-  {c:'H93.1',d:'Tinnitus',s:'Auditivo'},
-  {c:'H81.0',d:'Enfermedad de Ménière',s:'Auditivo'},
-  {c:'H90.2',d:'Hipoacusia conductiva bilateral',s:'Auditivo'},
-  {c:'H90.6',d:'Hipoacusia mixta bilateral',s:'Auditivo'},
-  {c:'J34.0',d:'Absceso y furúnculo de la nariz',s:'Auditivo'},
-  {c:'J34.2',d:'Desviación del tabique nasal',s:'Auditivo'},
+// ── AUDITIVO ──────────────────────────────────────────────────
+{c:‘H91.9’,d:‘Pérdida de audición no especificada’,s:‘Auditivo’},
+{c:‘H83.3’,d:‘Efectos del ruido en el oído interno (hipoacusia por ruido)’,s:‘Auditivo’},
+{c:‘H72.9’,d:‘Perforación de la membrana timpánica no especificada’,s:‘Auditivo’},
+{c:‘H65.9’,d:‘Otitis media no supurativa no especificada’,s:‘Auditivo’},
+{c:‘H66.9’,d:‘Otitis media no especificada’,s:‘Auditivo’},
+{c:‘H60.9’,d:‘Otitis externa no especificada’,s:‘Auditivo’},
+{c:‘H61.2’,d:‘Tapón de cerumen (cerumen impactado)’,s:‘Auditivo’},
+{c:‘H93.1’,d:‘Tinnitus’,s:‘Auditivo’},
+{c:‘H81.0’,d:‘Enfermedad de Ménière’,s:‘Auditivo’},
+{c:‘H90.2’,d:‘Hipoacusia conductiva bilateral’,s:‘Auditivo’},
+{c:‘H90.6’,d:‘Hipoacusia mixta bilateral’,s:‘Auditivo’},
+{c:‘J34.0’,d:‘Absceso y furúnculo de la nariz’,s:‘Auditivo’},
+{c:‘J34.2’,d:‘Desviación del tabique nasal’,s:‘Auditivo’},
 
-  // ── INFECCIOSO ────────────────────────────────────────────────
-  {c:'A90',d:'Dengue (fiebre hemorrágica)',s:'Infeccioso'},
-  {c:'A97.9',d:'Dengue sin signos de alarma',s:'Infeccioso'},
-  {c:'A08.0',d:'Enteritis por rotavirus',s:'Infeccioso'},
-  {c:'A01.0',d:'Fiebre tifoidea',s:'Infeccioso'},
-  {c:'B19.2',d:'Hepatitis C viral no especificada',s:'Infeccioso'},
-  {c:'B34.9',d:'Infección viral de tipo no especificado',s:'Infeccioso'},
-  {c:'J10.1',d:'Influenza con otras manifestaciones respiratorias (influenza estacional)',s:'Infeccioso'},
-  {c:'J11.1',d:'Influenza con otras manifestaciones respiratorias, virus no identificado',s:'Infeccioso'},
-  {c:'A09',d:'Gastroenteritis infecciosa',s:'Infeccioso'},
-  {c:'L01.0',d:'Impétigo',s:'Infeccioso'},
-  {c:'B00.9',d:'Infección por herpes simple no especificada',s:'Infeccioso'},
-  {c:'A56.0',d:'Infección clamidial del tracto genitourinario inferior',s:'Infeccioso'},
-  {c:'Z22.9',d:'Portador de enfermedad infecciosa no especificada',s:'Infeccioso'},
-  {c:'T78.1',d:'Otras reacciones adversas a alimentos (intoxicación alimentaria)',s:'Infeccioso'},
-  {c:'R50.9',d:'Fiebre no especificada',s:'Infeccioso'},
-  {c:'B49',d:'Micosis no especificada',s:'Infeccioso'},
-  {c:'A63.0',d:'Condiloma acuminado',s:'Infeccioso'},
-  {c:'Z11.5',d:'Examen para otras enfermedades virales (incluye VIH)',s:'Infeccioso'},
+// ── INFECCIOSO ────────────────────────────────────────────────
+{c:‘A90’,d:‘Dengue (fiebre hemorrágica)’,s:‘Infeccioso’},
+{c:‘A97.9’,d:‘Dengue sin signos de alarma’,s:‘Infeccioso’},
+{c:‘A08.0’,d:‘Enteritis por rotavirus’,s:‘Infeccioso’},
+{c:‘A01.0’,d:‘Fiebre tifoidea’,s:‘Infeccioso’},
+{c:‘B19.2’,d:‘Hepatitis C viral no especificada’,s:‘Infeccioso’},
+{c:‘B34.9’,d:‘Infección viral de tipo no especificado’,s:‘Infeccioso’},
+{c:‘J10.1’,d:‘Influenza con otras manifestaciones respiratorias (influenza estacional)’,s:‘Infeccioso’},
+{c:‘J11.1’,d:‘Influenza con otras manifestaciones respiratorias, virus no identificado’,s:‘Infeccioso’},
+{c:‘A09’,d:‘Gastroenteritis infecciosa’,s:‘Infeccioso’},
+{c:‘L01.0’,d:‘Impétigo’,s:‘Infeccioso’},
+{c:‘B00.9’,d:‘Infección por herpes simple no especificada’,s:‘Infeccioso’},
+{c:‘A56.0’,d:‘Infección clamidial del tracto genitourinario inferior’,s:‘Infeccioso’},
+{c:‘Z22.9’,d:‘Portador de enfermedad infecciosa no especificada’,s:‘Infeccioso’},
+{c:‘T78.1’,d:‘Otras reacciones adversas a alimentos (intoxicación alimentaria)’,s:‘Infeccioso’},
+{c:‘R50.9’,d:‘Fiebre no especificada’,s:‘Infeccioso’},
+{c:‘B49’,d:‘Micosis no especificada’,s:‘Infeccioso’},
+{c:‘A63.0’,d:‘Condiloma acuminado’,s:‘Infeccioso’},
+{c:‘Z11.5’,d:‘Examen para otras enfermedades virales (incluye VIH)’,s:‘Infeccioso’},
 
-  // ── GENERAL / SÍNTOMAS COMUNES SO ─────────────────────────────
-  {c:'R73.0',d:'Prueba de glucosa anormal (prediabetes / hiperglucemia)',s:'Endocrino/Metabólico'},
-  {c:'Z00.0',d:'Examen médico general (chequeo de salud)',s:'Preventivo'},
-  {c:'Z10.0',d:'Examen de salud ocupacional',s:'Preventivo'},
-  {c:'Z13.6',d:'Examen especial de detección de enfermedades cardiovasculares',s:'Preventivo'},
-  {c:'Z23',d:'Necesidad de inmunización contra enfermedad bacteriana única',s:'Preventivo'},
-  {c:'Z27',d:'Necesidad de inmunización combinada',s:'Preventivo'},
-  {c:'R53',d:'Malestar y fatiga',s:'General'},
-  {c:'R68.8',d:'Otros síntomas y signos generales especificados',s:'General'},
-  {c:'R73.9',d:'Hiperglucemia no especificada',s:'General'},
-  {c:'D50.9',d:'Anemia por deficiencia de hierro no especificada',s:'General'},
-  {c:'D64.9',d:'Anemia no especificada',s:'General'},
-  {c:'Z57.0',d:'Exposición al ruido ocupacional',s:'Riesgo Ocupacional'},
-  {c:'Z57.5',d:'Exposición a contaminantes químicos tóxicos en el trabajo',s:'Riesgo Ocupacional'},
-  {c:'Z57.1',d:'Exposición a la radiación en el trabajo',s:'Riesgo Ocupacional'},
-  {c:'Z57.7',d:'Exposición a calor y frío extremos en el trabajo',s:'Riesgo Ocupacional'},
-  {c:'Z57.6',d:'Exposición a radiación solar extrema',s:'Riesgo Ocupacional'},
+// ── GENERAL / SÍNTOMAS COMUNES SO ─────────────────────────────
+{c:‘R73.0’,d:‘Prueba de glucosa anormal (prediabetes / hiperglucemia)’,s:‘Endocrino/Metabólico’},
+{c:‘Z00.0’,d:‘Examen médico general (chequeo de salud)’,s:‘Preventivo’},
+{c:‘Z10.0’,d:‘Examen de salud ocupacional’,s:‘Preventivo’},
+{c:‘Z13.6’,d:‘Examen especial de detección de enfermedades cardiovasculares’,s:‘Preventivo’},
+{c:‘Z23’,d:‘Necesidad de inmunización contra enfermedad bacteriana única’,s:‘Preventivo’},
+{c:‘Z27’,d:‘Necesidad de inmunización combinada’,s:‘Preventivo’},
+{c:‘R53’,d:‘Malestar y fatiga’,s:‘General’},
+{c:‘R68.8’,d:‘Otros síntomas y signos generales especificados’,s:‘General’},
+{c:‘R73.9’,d:‘Hiperglucemia no especificada’,s:‘General’},
+{c:‘D50.9’,d:‘Anemia por deficiencia de hierro no especificada’,s:‘General’},
+{c:‘D64.9’,d:‘Anemia no especificada’,s:‘General’},
+{c:‘Z57.0’,d:‘Exposición al ruido ocupacional’,s:‘Riesgo Ocupacional’},
+{c:‘Z57.5’,d:‘Exposición a contaminantes químicos tóxicos en el trabajo’,s:‘Riesgo Ocupacional’},
+{c:‘Z57.1’,d:‘Exposición a la radiación en el trabajo’,s:‘Riesgo Ocupacional’},
+{c:‘Z57.7’,d:‘Exposición a calor y frío extremos en el trabajo’,s:‘Riesgo Ocupacional’},
+{c:‘Z57.6’,d:‘Exposición a radiación solar extrema’,s:‘Riesgo Ocupacional’},
 ];
 
 // Mapa sistema → aparatos afectados (para UI y Sheets)
 const CIE10_SISTEMA_APARATO = {
-  'Musculoesquelético': 'Musculoesquelético',
-  'Traumatología':      'Musculoesquelético',
-  'Cardiovascular':     'Cardiovascular',
-  'Respiratorio':       'Respiratorio',
-  'Digestivo':          'Digestivo',
-  'Endocrino/Metabólico': 'Endocrino',
-  'Neurológico':        'Neurológico',
-  'Psiquiátrico/Mental': 'Psiquiátrico',
-  'Dermatológico':      'Dermatológico',
-  'Genitourinario':     'Genitourinario',
-  'Ginecológico/Obstétrico': 'Ginecológico',
-  'Oftalmológico':      'Oftalmológico',
-  'Auditivo':           'Auditivo',
-  'Infeccioso':         'General',
-  'Preventivo':         'General',
-  'Riesgo Ocupacional': 'General',
-  'General':            'General',
+‘Musculoesquelético’: ‘Musculoesquelético’,
+‘Traumatología’:      ‘Musculoesquelético’,
+‘Cardiovascular’:     ‘Cardiovascular’,
+‘Respiratorio’:       ‘Respiratorio’,
+‘Digestivo’:          ‘Digestivo’,
+‘Endocrino/Metabólico’: ‘Endocrino’,
+‘Neurológico’:        ‘Neurológico’,
+‘Psiquiátrico/Mental’: ‘Psiquiátrico’,
+‘Dermatológico’:      ‘Dermatológico’,
+‘Genitourinario’:     ‘Genitourinario’,
+‘Ginecológico/Obstétrico’: ‘Ginecológico’,
+‘Oftalmológico’:      ‘Oftalmológico’,
+‘Auditivo’:           ‘Auditivo’,
+‘Infeccioso’:         ‘General’,
+‘Preventivo’:         ‘General’,
+‘Riesgo Ocupacional’: ‘General’,
+‘General’:            ‘General’,
 };
 
 // ── Búsqueda ──────────────────────────────────────────────────────────
 function buscarCIE10(q, maxResultados = 8) {
-  if(!q || q.length < 2) return [];
-  const lc = q.toLowerCase().trim();
-  const exactos = CIE10.filter(x => x.c.toLowerCase().startsWith(lc));
-  const parciales = CIE10.filter(x =>
-    !x.c.toLowerCase().startsWith(lc) &&
-    (x.d.toLowerCase().includes(lc) || x.c.toLowerCase().includes(lc))
-  );
-  return [...exactos, ...parciales].slice(0, maxResultados);
+if(!q || q.length < 2) return [];
+const lc = q.toLowerCase().trim();
+const exactos = CIE10.filter(x => x.c.toLowerCase().startsWith(lc));
+const parciales = CIE10.filter(x =>
+!x.c.toLowerCase().startsWith(lc) &&
+(x.d.toLowerCase().includes(lc) || x.c.toLowerCase().includes(lc))
+);
+return […exactos, …parciales].slice(0, maxResultados);
 }
 
 // ── Selector CIE-10 UI (inyectar donde se necesite) ─────────────────
 function initCIE10Selector(inputId, onSelect) {
-  const input = document.getElementById(inputId);
-  if(!input) return;
-  // Crear dropdown
-  let drop = document.getElementById(inputId + '-cie10-drop');
-  if(!drop){
-    drop = document.createElement('div');
-    drop.id = inputId + '-cie10-drop';
-    drop.className = 'cie10-drop';
-    drop.style.cssText = 'position:absolute;top:calc(100% + 3px);left:0;right:0;background:#fff;border:1.5px solid #E2E8F0;border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:200;max-height:260px;overflow-y:auto;display:none';
-    input.parentElement.style.position='relative';
-    input.parentElement.appendChild(drop);
-  }
-  input.addEventListener('input', () => {
-    const resultados = buscarCIE10(input.value);
-    if(!resultados.length){ drop.style.display='none'; return; }
-    drop.innerHTML = resultados.map(r =>
-      `<div class="cie10-item" data-code="${r.c}" data-desc="${r.d}" data-sis="${r.s}"
-        style="padding:9px 13px;cursor:pointer;border-bottom:1px solid #F1F5F9;font-size:12px;transition:.1s"
-        onmouseover="this.style.background='#F0FDF4'" onmouseout="this.style.background=''"
-        onclick="selCIE10Item(this,'${inputId}')">
-        <span style="font-family:monospace;font-weight:700;color:#0D9488;font-size:11px">${r.c}</span>
-        <span style="color:#0F172A;margin-left:6px">${r.d}</span>
-        <span style="float:right;font-size:10px;color:#94A3B8;background:#F1F5F9;padding:1px 6px;border-radius:5px;margin-top:1px">${r.s}</span>
-      </div>`
-    ).join('');
-    drop.style.display='block';
-  });
-  input.addEventListener('blur', () => setTimeout(()=>drop.style.display='none', 200));
-  input._cie10OnSelect = onSelect;
+const input = document.getElementById(inputId);
+if(!input) return;
+// Crear dropdown
+let drop = document.getElementById(inputId + ‘-cie10-drop’);
+if(!drop){
+drop = document.createElement(‘div’);
+drop.id = inputId + ‘-cie10-drop’;
+drop.className = ‘cie10-drop’;
+drop.style.cssText = ‘position:absolute;top:calc(100% + 3px);left:0;right:0;background:#fff;border:1.5px solid #E2E8F0;border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:200;max-height:260px;overflow-y:auto;display:none’;
+input.parentElement.style.position=‘relative’;
+input.parentElement.appendChild(drop);
+}
+input.addEventListener(‘input’, () => {
+const resultados = buscarCIE10(input.value);
+if(!resultados.length){ drop.style.display=‘none’; return; }
+drop.innerHTML = resultados.map(r =>
+`<div class="cie10-item" data-code="${r.c}" data-desc="${r.d}" data-sis="${r.s}" style="padding:9px 13px;cursor:pointer;border-bottom:1px solid #F1F5F9;font-size:12px;transition:.1s" onmouseover="this.style.background='#F0FDF4'" onmouseout="this.style.background=''" onclick="selCIE10Item(this,'${inputId}')"> <span style="font-family:monospace;font-weight:700;color:#0D9488;font-size:11px">${r.c}</span> <span style="color:#0F172A;margin-left:6px">${r.d}</span> <span style="float:right;font-size:10px;color:#94A3B8;background:#F1F5F9;padding:1px 6px;border-radius:5px;margin-top:1px">${r.s}</span> </div>`
+).join(’’);
+drop.style.display=‘block’;
+});
+input.addEventListener(‘blur’, () => setTimeout(()=>drop.style.display=‘none’, 200));
+input._cie10OnSelect = onSelect;
 }
 
 function selCIE10Item(el, inputId) {
-  const code = el.dataset.code;
-  const desc = el.dataset.desc;
-  const sis  = el.dataset.sis;
-  const input = document.getElementById(inputId);
-  if(input) input.value = code + ' — ' + desc;
-  const drop = document.getElementById(inputId + '-cie10-drop');
-  if(drop) drop.style.display='none';
-  if(input && input._cie10OnSelect) input._cie10OnSelect(code, desc, sis);
+const code = el.dataset.code;
+const desc = el.dataset.desc;
+const sis  = el.dataset.sis;
+const input = document.getElementById(inputId);
+if(input) input.value = code + ’ — ’ + desc;
+const drop = document.getElementById(inputId + ‘-cie10-drop’);
+if(drop) drop.style.display=‘none’;
+if(input && input._cie10OnSelect) input._cie10OnSelect(code, desc, sis);
 }
 
-
-window.addEventListener('unhandledrejection',e=>{console.warn('[ENF]',e.reason);});
+window.addEventListener(‘unhandledrejection’,e=>{console.warn(’[ENF]’,e.reason);});
 </script>
+
 </body>
 </html>
