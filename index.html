@@ -1096,48 +1096,85 @@ function selEmp(noEmp){
   document.getElementById('emp-drop').classList.remove('show');
   document.getElementById('qa-box').style.display='none';
   // Render emp card
-  const card=document.getElementById('emp-card');
-  card.innerHTML=`<div class="emp-card">
-    <div class="ec-name">${e.nombre} <span class="ec-tag">No. ${e.noEmp}</span></div>
-    <div class="ec-grid">
-      <div class="ec-field"><label>NSS</label><div>${e.nss||'—'}</div></div>
-      <div class="ec-field"><label>Departamento</label><div>${e.depto||'—'}</div></div>
-      <div class="ec-field"><label>Puesto</label><div>${e.puesto||'—'}</div></div>
-      <div class="ec-field"><label>Planta</label><div>${e.planta||'—'}</div></div>
-      <div class="ec-field"><label>Turno</label><div>${e.turno||'—'}</div></div>
-      <div class="ec-field"><label>Género</label><div>${e.genero||'—'}</div></div>
-    </div>
-  </div>`;
-  card.style.display='block';
-  mostrarAnt(noEmp);
-  document.getElementById('fc').style.display='block';
-  setTimeout(()=>{
-    initCIE10Selector('f-cie10-input', (code, desc, sis) => {
-      document.getElementById('f-cie10').value = code;
-      document.getElementById('f-sistema-cie').value = sis;
-      const dxEl = document.getElementById('f-dx');
-      if(dxEl && !dxEl.value) dxEl.value = desc;
-      // Auto-set sistema
-      const sisEl = document.getElementById('f-sis');
-      if(sisEl) {
-        const map = {
-          'Musculoesquelético':'musculo','Traumatología':'musculo',
-          'Cardiovascular':'cardiovascular','Respiratorio':'respiratorio',
-          'Digestivo':'digestivo','Neurológico':'neurologico',
-          'Dermatológico':'dermato','Genitourinario':'genitourinario',
-          'Endocrino/Metabólico':'endocrino','Psiquiátrico/Mental':'psiquiatrico',
-          'Oftalmológico':'oftalmo','Auditivo':'auditivo',
-          'Ginecológico/Obstétrico':'gineco','Infeccioso':'otro'
-        };
-        const val = map[sis];
-        if(val) sisEl.value = val;
-      }
-    });
-  }, 100);
-  // Cargar datos de otras apps desde GAS
-  cargarAntDesdeGAS(noEmp);
-}
+ function renderExpEnf(emp, data){
+  const exp = data.expediente || {};
+  const res = data.resumen || {};
+  const timeline = data.timeline || [];
+  const card = document.getElementById('exp-emp-card');
 
+  if(emp && card){
+    card.innerHTML = `
+      <div class="emp-card">
+        <div class="ec-name">${emp.nombre} <span class="ec-tag">No. ${emp.noEmp}</span></div>
+        <div class="ec-grid">
+          <div class="ec-field"><label>Planta</label><div>${emp.planta || '—'}</div></div>
+          <div class="ec-field"><label>Turno</label><div>${emp.turno || '—'}</div></div>
+          <div class="ec-field"><label>Depto</label><div>${emp.depto || '—'}</div></div>
+          <div class="ec-field"><label>NSS</label><div>${emp.nss || '—'}</div></div>
+        </div>
+      </div>`;
+  }
+
+  const alergias = [...new Set([
+    ...(res.alergias || []),
+    ...String(exp.Alergias || '').split(/[,;]+/).map(x => x.trim()).filter(Boolean)
+  ])];
+
+  const cronicos = [...new Set([
+    ...(res.cronicosAntecedentes || []),
+    ...String(exp.AntPatologicos || '').split(/[,;]+/).map(x => x.trim()).filter(Boolean)
+  ])];
+
+  const tratamientos = [...new Set([
+    ...(res.tratamientosActivos || []),
+    ...String(exp.TratamientosActuales || '').split(/[\n;]+/).map(x => x.trim()).filter(Boolean)
+  ])].filter(Boolean);
+
+  const alvEl = document.getElementById('exp-alergias-view');
+  const aliEl = document.getElementById('exp-alergias-input');
+  if(alvEl) alvEl.innerHTML = alergias.length
+    ? alergias.map(a => `<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a}</span>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin alergias registradas</span>';
+  if(aliEl) aliEl.value = alergias.join(', ');
+
+  const crvEl = document.getElementById('exp-cronicos-view');
+  const criEl = document.getElementById('exp-cronicos-input');
+  if(crvEl) crvEl.innerHTML = cronicos.length
+    ? cronicos.map(c => `<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c}</span>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin enfermedades crónicas registradas</span>';
+  if(criEl) criEl.value = cronicos.join(', ');
+
+  const trvEl = document.getElementById('exp-tratamientos-view');
+  const triEl = document.getElementById('exp-tratamientos-input');
+  if(trvEl) trvEl.innerHTML = tratamientos.length
+    ? tratamientos.map(t => `<div style="padding:4px 0;font-size:12px">• ${t}</div>`).join('')
+    : '<span style="color:var(--tx3);font-size:12px">Sin tratamientos registrados</span>';
+  if(triEl) triEl.value = tratamientos.join('; ');
+
+  const hist = document.getElementById('exp-historial');
+  if(hist){
+    if(!timeline.length){
+      hist.innerHTML = '<div class="empty"><div class="empty-i">🕓</div><div>Sin historial clínico disponible</div></div>';
+    }else{
+      hist.innerHTML = timeline.map(ev => `
+        <div class="reg-card" style="border-left:3px solid ${
+          ev.origen === 'Médico' ? 'var(--blue)' :
+          ev.origen === 'Enfermería' ? 'var(--teal)' : 'var(--green)'
+        }">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap">
+            <div>
+              <div style="font-size:10px;color:var(--tx3)">${ev.fecha || '—'} ${ev.hora ? '· ' + ev.hora : ''}</div>
+              <div style="font-size:12px;font-weight:800;color:var(--navy)">${ev.origen || 'Consulta'}</div>
+              <div style="font-size:12px;font-weight:700;margin-top:2px">${ev.titulo || '—'}</div>
+              ${ev.detalle ? `<div style="font-size:11px;color:var(--tx2);margin-top:4px">${ev.detalle}</div>` : ''}
+            </div>
+            <span class="pill pgray">${ev.registradoPor || ev.origen || '—'}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+}
 // ══════════════════════════════════════════════════════
 // ANTECEDENTES
 // ══════════════════════════════════════════════════════
@@ -1784,27 +1821,53 @@ function editarCampoExp(campo){
 
 async function guardarCampoExp(campo){
   const val = document.getElementById('exp-'+campo+'-input').value.trim();
-  const noEmp = _expNoEmp; if(!noEmp) return;
-  const payload = {NoEmp: noEmp};
-  if(campo==='alergias') payload.Alergias = val;
-  if(campo==='cronicos') payload.AntPatologicos = val;
-  if(campo==='tratamientos') payload.TratamientosActuales = val;
+  const noEmp = _expNoEmp;
+  if(!noEmp) return;
+
+  const payload = { NoEmp: noEmp };
+  if(campo === 'alergias') payload.Alergias = val;
+  if(campo === 'cronicos') payload.AntPatologicos = val;
+  if(campo === 'tratamientos') payload.TratamientosActuales = val;
+
   setSyncDot('busy');
-  const r = await gasPost({action:'saveExpediente', exp:payload});
-  setSyncDot(r.ok?'ok':'err');
-  toast(r.ok?'✅ Expediente actualizado':'⚠️ Error al guardar','ok');
-  document.getElementById('exp-'+campo+'-edit').style.display='none';
-  document.getElementById('exp-'+campo+'-view').style.display='block';
-  // Update view
-  if(campo==='alergias'){
-    const el=document.getElementById('exp-alergias-view');
-    if(el) el.innerHTML=val?val.split(/[,;]+/).map(a=>`<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin alergias</span>';
+  const r = await gasPost({ action:'saveExpediente', exp:payload });
+  setSyncDot(r.ok ? 'ok' : 'err');
+  toast(r.ok ? '✅ Expediente actualizado' : '⚠️ Error al guardar', r.ok ? 'ok' : 'err');
+
+  document.getElementById('exp-'+campo+'-edit').style.display = 'none';
+  document.getElementById('exp-'+campo+'-view').style.display = 'block';
+
+  if(campo === 'alergias'){
+    const el = document.getElementById('exp-alergias-view');
+    if(el) el.innerHTML = val
+      ? val.split(/[,;]+/).map(a => `<span style="background:#FEE2E2;color:#991B1B;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">${a.trim()}</span>`).join('')
+      : '<span style="color:var(--tx3);font-size:12px">Sin alergias</span>';
   }
-  if(campo==='cronicos'){
-    const el=document.getElementById('exp-cronicos-view');
-    if(el) el.innerHTML=val?val.split(/[,;]+/).map(c=>`<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join(''):'<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>';
+
+  if(campo === 'cronicos'){
+    const el = document.getElementById('exp-cronicos-view');
+    if(el) el.innerHTML = val
+      ? val.split(/[,;]+/).map(c => `<span style="background:#FEF3C7;color:#92400E;padding:2px 9px;border-radius:8px;font-size:12px;font-weight:600;margin:2px 3px 0 0;display:inline-block">📋 ${c.trim()}</span>`).join('')
+      : '<span style="color:var(--tx3);font-size:12px">Sin crónicas</span>';
   }
+
+  if(campo === 'tratamientos'){
+    const el = document.getElementById('exp-tratamientos-view');
+    if(el) el.innerHTML = val
+      ? val.split(/[\n;]+/).map(t => `<div style="padding:4px 0;font-size:12px">• ${t.trim()}</div>`).join('')
+      : '<span style="color:var(--tx3);font-size:12px">Sin tratamientos</span>';
+  }
+
+  try{
+    const rr = await gasGet({ action:'getExpCompleto', noEmp });
+    if(rr.ok && rr.data){
+      _expData = rr.data;
+      const emp = HC.find(x => String(x.noEmp) === String(noEmp));
+      renderExpEnf(emp, rr.data);
+    }
+  }catch(e){}
 }
+  
 // ══════════════════════════════════════════════════════
 // INCAPACIDADES
 // ══════════════════════════════════════════════════════
@@ -3075,7 +3138,22 @@ function selCIE10Item(el, inputId) {
   if(drop) drop.style.display='none';
   if(input && input._cie10OnSelect) input._cie10OnSelect(code, desc, sis);
 }
+setInterval(() => {
+  try {
+    if (typeof syncRegs === 'function') syncRegs();
+    if (typeof syncEmb === 'function') syncEmb();
+    if (typeof syncHC === 'function') syncHC();
+  } catch(e){}
+}, 45000);
 
+window.addEventListener('focus', () => {
+  try {
+    if (typeof syncRegs === 'function') syncRegs();
+    if (typeof syncEmb === 'function') syncEmb();
+    if (typeof syncHC === 'function') syncHC();
+  } catch(e){}
+});
+  
 
 window.addEventListener('unhandledrejection',e=>{console.warn('[ENF]',e.reason);});
 </script>
