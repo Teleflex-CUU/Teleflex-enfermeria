@@ -26,8 +26,8 @@ function renderCaptura(){
 
 function buildCapFormEnf(emp){
   const al=getAlergias(emp.noEmp);
+  const cr=getCronicos(emp.noEmp);
   return`<div class="card" style="margin-top:10px">
-  ${al?`<div style="background:#FEF9C3;border:1.5px solid #FDE047;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-weight:700;color:#854D0E">⚠️ Alergias: ${al}</div>`:''}
   <div class="g2">
     <div class="fi"><label>Fecha</label><input type="date" id="f-fecha" value="${new Date().toISOString().split('T')[0]}"></div>
     <div class="fi"><label>Hora</label><input type="time" id="f-hora" value="${new Date().toTimeString().slice(0,5)}"></div>
@@ -86,10 +86,10 @@ function buildCapFormEnf(emp){
 }
 
 function buildCapFormMed(emp){
-  const cr=getCronicos(emp.noEmp);
   const al=getAlergias(emp.noEmp);
+  const cr=getCronicos(emp.noEmp);
   return`<div class="card" style="margin-top:10px">
-  ${al?`<div style="background:#FEF9C3;border:1.5px solid #FDE047;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-weight:700;color:#854D0E">⚠️ Alergias: ${al}</div>`:''}
+  ${cr?`<div style="background:#E0F2FE;border:1.5px solid #38BDF8;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-weight:700;color:#075985">🩺 Crónicas: ${cr}</div>`:''}
   <div class="g2">
     <div class="fi"><label>Fecha</label><input type="date" id="f-fecha" value="${new Date().toISOString().split('T')[0]}"></div>
     <div class="fi"><label>Hora</label><input type="time" id="f-hora" value="${new Date().toTimeString().slice(0,5)}"></div>
@@ -166,7 +166,7 @@ function calcIncFin(){
   const fin=document.getElementById('f-inc-fin');
   if(!ini||!dias||!fin||!ini.value||!dias.value) return;
   const d=new Date(ini.value+'T12:00');
-d.setDate(d.getDate()+parseInt(dias.value)-1);
+d.setDate(d.getDate()+parseInt(dias.value));
   fin.value=d.toISOString().split('T')[0];
 }
 
@@ -488,7 +488,7 @@ function renderInc(){
   setK('ki-prol',prolongadas.length);
   setK('ki-tot',lista.length);
   // Render list
-  const el=document.getElementById('inc-list');
+  const el=document.getElementById('inc-lista');
   if(!el)return;
   if(!lista.length){el.innerHTML='<div class="empty"><div class="empty-i">📋</div>Sin incapacidades registradas</div>';return;}
   el.innerHTML=lista.map(r=>{
@@ -654,7 +654,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
 .sec-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--tx3);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bor)}
 
 /* ── KPIs ── */
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:50px}
 .kpi{background:var(--sf);border:1px solid var(--bor);border-radius:var(--r);padding:14px;box-shadow:var(--sh)}
 .kv{font-size:28px;font-weight:800;color:var(--nv);line-height:1;font-family:'JetBrains Mono',monospace}
 .kl{font-size:10px;color:var(--tx3);margin-top:3px;font-weight:600;text-transform:uppercase}
@@ -774,6 +774,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
 /* Incap block */
 .inc-block-visual{background:linear-gradient(135deg,rgba(220,38,38,.05),rgba(220,38,38,.02));border:1.5px solid rgba(220,38,38,.3);border-radius:10px;padding:14px;margin-bottom:12px}
 
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -789,13 +790,24 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
     <h1>Salud Ocupacional</h1>
     <p>Sistema Unificado · Teleflex Chihuahua</p>
     <div id="lerr"></div>
-    <div class="fi">
-      <label>Selecciona tu usuario</label>
-      <select id="login-sel">
-        <option value="">— Cargando usuarios... —</option>
-      </select>
+
+    <!-- Pantalla de carga usuarios -->
+    <div id="login-loading" style="text-align:center;padding:20px 0">
+      <div style="display:inline-block;width:36px;height:36px;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:12px"></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.8);font-weight:600" id="login-loading-msg">Conectando con el servidor...</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px" id="login-loading-sub">Cargando lista de usuarios</div>
     </div>
-    <button class="lbtn" onclick="doLogin()">Entrar →</button>
+
+    <!-- Select (oculto hasta que cargue) -->
+    <div id="login-form" style="display:none">
+      <div class="fi">
+        <label style="color:rgba(255,255,255,.8);font-size:12px;font-weight:600">Selecciona tu usuario</label>
+        <select id="login-sel" style="width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:14px;font-family:inherit;outline:none;backdrop-filter:blur(8px)">
+          <option value="">— Selecciona tu nombre —</option>
+        </select>
+      </div>
+      <button class="lbtn" onclick="doLogin()" style="margin-top:8px">Entrar →</button>
+    </div>
   </div>
 </div>
 
@@ -884,12 +896,93 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
   <div id="cap-form-container"></div>
 </div>
 
+<!-- ═══ PASTILLEO ═══ -->
+<div class="sc" id="sc-pastilleo">
+  <div class="sh2">
+    <div>
+      <h2>💊 Pastilleo</h2>
+      <p style="font-size:12px;color:var(--tx3)">Entrega de medicamento rápida — se registra en la hoja de Consultas de Enfermería</p>
+    </div>
+    <button class="btn btn-gh btn-sm" onclick="go('inicio')">← Historial</button>
+  </div>
+
+  <!-- Buscador de empleado -->
+  <div id="past-emp-header">
+    <div class="card cp">
+      <div class="sec-t" style="margin-bottom:10px">🔍 Buscar trabajador</div>
+      <div class="sw">
+        <span class="si">🔍</span>
+        <input type="text" id="past-q" placeholder="No. empleado o nombre..." oninput="buscarPastilleo(this.value)" autocomplete="off" style="font-size:14px;font-weight:600">
+        <div class="sd" id="past-drop"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alertas (alergias / frecuencia) -->
+  <div id="past-alertas" style="margin-bottom:10px"></div>
+
+  <!-- Formulario rápido (oculto hasta seleccionar empleado) -->
+  <div id="past-form" style="display:none">
+    <div class="card">
+      <!-- Datos del empleado -->
+      <div id="past-emp-card" style="background:var(--sf3);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div>
+          <div id="past-emp-nombre" style="font-weight:800;font-size:14px"></div>
+          <div id="past-emp-meta" style="font-size:11px;color:var(--tx3);margin-top:2px"></div>
+        </div>
+        <button class="btn btn-gh btn-sm" onclick="limpiarPastilleo()">✕ Cambiar</button>
+      </div>
+
+      <!-- Campos del pastilleo -->
+      <div class="g2" style="margin-bottom:10px">
+        <div class="fi">
+          <label>Fecha</label>
+          <input type="date" id="past-fecha" value="">
+        </div>
+        <div class="fi">
+          <label>Turno</label>
+          <select id="past-turno">
+            <option>Matutino</option>
+            <option>Vespertino</option>
+            <option>Tiempo extra</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fi">
+        <label>Motivo / Síntoma</label>
+        <input type="text" id="past-motivo" placeholder="Ej: cefalea, dolor muscular, cólico..." style="font-size:13px">
+      </div>
+
+      <div class="fi">
+        <label>Medicamento entregado</label>
+        <input type="text" id="past-tx" placeholder="Ej: Ibuprofeno 400mg, Paracetamol, Berocca..." style="font-size:13px">
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn" style="background:linear-gradient(135deg,#0F2942,#0D6B5E)" onclick="guardarPastilleo()">💾 Registrar pastilleo</button>
+        <button class="btn btn-gh" onclick="limpiarPastilleo()">🔄 Limpiar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historial del día -->
+  <div class="card cp" style="margin-top:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div class="sec-t" style="margin:0">📋 Pastilleos del día</div>
+      <span id="past-count" style="background:var(--tl);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px">0</span>
+    </div>
+    <div id="past-list"><div class="empty"><div class="empty-i">💊</div>Sin registros hoy</div></div>
+  </div>
+</div>
+
 <!-- ═══ INCAPACIDADES ═══ -->
 <div class="sc" id="sc-inc">
   <div class="sh2">
     <div><h2>Incapacidades</h2></div>
-    <div style="display:flex;gap:8px">
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn btn-gh btn-sm" onclick="syncInc()">🔄 Sync</button>
+      <button class="btn btn-gh btn-sm" onclick="window.print()">🖨️ Imprimir</button>
       <button class="btn btn-sm" style="background:linear-gradient(135deg,#166534,#15803D);color:#fff;font-weight:700" onclick="descargarIncapacidades()">📥 Descargar Excel</button>
       <button class="btn btn-sm" style="background:linear-gradient(135deg,#DC2626,#B91C1C);color:#fff;font-weight:800;font-size:13px;padding:8px 18px" onclick="openModal('mo-inc')">📋 + Nueva incapacidad</button>
     </div>
@@ -905,11 +998,13 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
     <div class="kpi gr"><div class="kv" id="ki-prox">0</div><div class="kl">Próx. 7 días</div></div>
     <div class="kpi" style="border-left:3px solid var(--pu)"><div class="kv" id="ki-prol" style="color:var(--pu)">0</div><div class="kl">Prolongadas +28d</div></div>
   </div>
+
   <!-- Tabs -->
   <div class="tabs">
     <button class="tab on" id="inc-tab-lista" onclick="incTab('lista',this)">📋 Lista</button>
     <button class="tab" id="inc-tab-reporte" onclick="incTab('reporte',this)">📊 Reporte</button>
   </div>
+
   <!-- Panel Lista -->
   <div id="inc-panel-lista">
     <div class="fbar">
@@ -937,11 +1032,11 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
     </div>
     <div id="inc-lista"></div>
   </div>
+
   <!-- Panel Reporte -->
   <div id="inc-panel-reporte" style="display:none">
     <div class="fbar">
-      <select id="inc-r-anio" onchange="renderIncReporte()">
-      </select>
+      <select id="inc-r-anio" onchange="renderIncReporte()"></select>
       <select id="inc-r-per" onchange="onIncPeriodChange()">
         <option value="anio">Por año</option>
         <option value="mes">Por mes</option>
@@ -960,7 +1055,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
         <option>Matutino</option><option>Vespertino</option>
       </select>
     </div>
-    <!-- Reporte KPIs -->
+
     <div class="kpis" style="margin-bottom:14px">
       <div class="kpi rd"><div class="kv" id="rki-total">0</div><div class="kl">Total incap.</div></div>
       <div class="kpi am"><div class="kv" id="rki-dias">0</div><div class="kl">Días totales</div></div>
@@ -968,16 +1063,17 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
       <div class="kpi"><div class="kv" id="rki-general">0</div><div class="kl">Enf. general</div></div>
       <div class="kpi" style="border-left:3px solid #F0ABFC"><div class="kv" id="rki-maternidad" style="color:#A21CAF">0</div><div class="kl">Maternidad</div></div>
     </div>
-    <!-- Gráficas -->
+
     <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px">
       <div class="card cp"><div style="font-size:12px;font-weight:700;color:var(--nv);margin-bottom:10px" id="inc-chart-title">Incapacidades por período</div><div class="cw"><canvas id="inc-ch-main"></canvas></div></div>
       <div class="card cp"><div style="font-size:12px;font-weight:700;color:var(--nv);margin-bottom:10px">Por tipo</div><div class="cw"><canvas id="inc-ch-tipo"></canvas></div></div>
     </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
       <div class="card cp"><div style="font-size:12px;font-weight:700;color:var(--nv);margin-bottom:10px">Por planta</div><div class="cw"><canvas id="inc-ch-planta"></canvas></div></div>
       <div class="card cp"><div style="font-size:12px;font-weight:700;color:var(--nv);margin-bottom:10px">Por turno</div><div class="cw"><canvas id="inc-ch-turno"></canvas></div></div>
     </div>
-    <!-- Top diagnósticos -->
+
     <div class="card cp">
       <div style="font-size:12px;font-weight:700;color:var(--nv);margin-bottom:10px">Top diagnósticos</div>
       <div id="inc-top-dx"></div>
@@ -1324,45 +1420,6 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--sf2);
   </div>
 </div>
 
-
-<!-- Modal Empleado Externo -->
-<div class="ov" id="mo-ext">
-  <div class="mo" style="max-width:460px">
-    <div class="mh"><div class="mt-mo">👤 Empleado externo / visitante</div><button class="mc" onclick="closeModal('mo-ext')">✕</button></div>
-    <div class="mb">
-      <div class="fi"><label>Nombre completo *</label><input type="text" id="ext-nombre" placeholder="Nombre del visitante..." list="ext-nombres-list"><datalist id="ext-nombres-list"></datalist></div>
-      <div class="fi"><label>Empresa / Compañía *</label><input type="text" id="ext-empresa" placeholder="Empresa..." list="ext-empresas-list"><datalist id="ext-empresas-list"></datalist></div>
-      <div class="fi"><label>Motivo de visita</label><input type="text" id="ext-motivo" placeholder="Motivo..."></div>
-    </div>
-    <div class="mf">
-      <button class="btn btn-gh" onclick="closeModal('mo-ext')">Cancelar</button>
-      <button class="btn btn-gold" onclick="registrarExterno()">→ Continuar</button>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!-- Modal Empleado Externo -->
-<div class="ov" id="mo-ext">
-  <div class="mo" style="max-width:460px">
-    <div class="mh"><div class="mt-mo">👤 Empleado externo / visitante</div><button class="mc" onclick="closeModal('mo-ext')">✕</button></div>
-    <div class="mb">
-      <div class="fi"><label>Nombre completo *</label><input type="text" id="ext-nombre" placeholder="Nombre del visitante..." list="ext-nombres-list"><datalist id="ext-nombres-list"></datalist></div>
-      <div class="fi"><label>Empresa / Compañía *</label><input type="text" id="ext-empresa" placeholder="Empresa..." list="ext-empresas-list"><datalist id="ext-empresas-list"></datalist></div>
-      <div class="fi"><label>Motivo de visita</label><input type="text" id="ext-motivo" placeholder="Motivo..."></div>
-    </div>
-    <div class="mf">
-      <button class="btn btn-gh" onclick="closeModal('mo-ext')">Cancelar</button>
-      <button class="btn btn-gold" onclick="registrarExterno()">→ Continuar</button>
-    </div>
-  </div>
-</div>
-
-
-
-
 <div id="toast"></div>
 </div><!-- /app -->
 <script>
@@ -1421,6 +1478,36 @@ async function gasPost(body){try{const ctrl=new AbortController();setTimeout(()=
 // ════════════════════════════════════════════════════════════════
 async function cargarUsuariosLogin(){
   const sel=document.getElementById('login-sel');
+  const loading=document.getElementById('login-loading');
+  const form=document.getElementById('login-form');
+  const msg=document.getElementById('login-loading-msg');
+  const sub=document.getElementById('login-loading-sub');
+
+  // Show loading, hide form
+  if(loading) loading.style.display='block';
+  if(form) form.style.display='none';
+
+  // Animated messages
+  const msgs=[
+    ['Conectando con el servidor...','Cargando lista de usuarios'],
+    ['Verificando configuración...','Un momento por favor'],
+    ['Casi listo...','Preparando el sistema'],
+  ];
+  let mi=0;
+  const msgInterval=setInterval(()=>{
+    mi=(mi+1)%msgs.length;
+    if(msg) msg.textContent=msgs[mi][0];
+    if(sub) sub.textContent=msgs[mi][1];
+  },1400);
+
+  // Try local first (instant)
+  const cached=ld(SK.usr)||[];
+  if(cached.length){
+    clearInterval(msgInterval);
+    if(msg) msg.textContent='Usuarios cargados ✓';
+    if(sub) sub.textContent='Conectando para actualizar...';
+  }
+
   // Intentar desde GAS
   const r=await gasGet({action:'getUsuarios'});
   let users=[];
@@ -1429,7 +1516,18 @@ async function cargarUsuariosLogin(){
   } else {
     users=ld(SK.usr)||[];
   }
-  if(!users.length){sel.innerHTML='<option value="">⚠️ Sin conexión — configura el GAS</option>';return;}
+  clearInterval(msgInterval);
+  if(!users.length){
+    if(loading) loading.style.display='none';
+    if(form) form.style.display='block';
+    sel.innerHTML='<option value="">⚠️ Sin conexión — configura el GAS</option>';
+    return;
+  }
+  // Smooth transition
+  if(msg) msg.textContent='¡Listo! '+users.length+' usuarios cargados';
+  await new Promise(r=>setTimeout(r,500));
+  if(loading) loading.style.display='none';
+  if(form){form.style.display='block';form.style.opacity='0';form.style.transition='opacity .4s';setTimeout(()=>{form.style.opacity='1';},10);}
   sel.innerHTML='<option value="">— Selecciona tu nombre —</option>'+
     users.map(u=>`<option value="${u.user}" data-rol="${u.rol}" data-nombre="${esc(u.nombre)}" data-planta="${u.planta||''}" data-turno="${u.turno||''}">${u.nombre}${u.planta&&u.planta!=='Todas'?' · '+u.planta:''}</option>`).join('');
 }
@@ -1465,6 +1563,7 @@ function initApp(){
     {id:'citas',icon:'📅',label:'Citas',roles:['medico','enfermeria']},
     {id:'dash',icon:'📊',label:'Dashboard',roles:['medico']},
     {id:'usr',icon:'👥',label:'Usuarios',roles:['medico']},
+    {id:'pastilleo',icon:'💊',label:'Pastilleo',roles:['enfermeria']},
     {id:'hc',icon:'📂',label:'Head Count',roles:['medico','enfermeria']},
   ];
   document.getElementById('nav-tabs').innerHTML=allTabs.filter(t=>t.roles.includes(USER.rol)).map(t=>
@@ -1509,6 +1608,7 @@ function go(id){
   if(id==='inc') renderInc();
   if(id==='citas') renderCitas();
   if(id==='dash') renderDash();
+  if(id==='pastilleo'){limpiarPastilleo();renderPastilleoHoy();}
   if(id==='usr') renderUsuarios();
   if(id==='hc'){
     if(HC.length){
@@ -1707,10 +1807,7 @@ function calcEdadHC(emp){
   const fn=String(emp.fechaNacimiento||'');if(!fn)return 35;
   let a=0;if(fn.includes('/'))a=parseInt(fn.split('/').pop());else a=parseInt(fn.split('-')[0]);
   const e=new Date().getFullYear()-a;return(e>10&&e<80)?e:35;
-}
-function calcIMCf(){
-  const p=parseFloat(g('f-peso'))||0,t=parseFloat(g('f-talla'))||0;
-  if(p&&t){const imc=(p/(t/100)**2).toFixed(1);sv2('f-imc',imc);}
+
 }
 function calcFin(iniId,diasId,finId){
   const ini=g(iniId),dias=parseInt(g(diasId))||0;if(!ini||!dias)return;
@@ -2679,13 +2776,171 @@ function abrirVentanaImpresion(titulo,contenido){
 }
 
 
+
+// ════════════════════════════════════════════════════════════════
+// PASTILLEO
+// ════════════════════════════════════════════════════════════════
+
+let _pastEmp = null;
+
+function buscarPastilleo(val){
+  const drop = document.getElementById('past-drop');
+  if(!drop) return;
+  val = (val||'').trim();
+  if(!val||val.length<2){drop.classList.remove('show');return;}
+  if(!HC.length){drop.innerHTML='<div class="si-item" style="color:var(--am)">⚠️ Sin HC — sincroniza primero</div>';drop.classList.add('show');return;}
+  const q = norm(val);
+  const matches = HC.filter(e=>norm(e.noEmp||'').includes(q)||norm(e.nombre||'').includes(q)).slice(0,8);
+  if(!matches.length){drop.classList.remove('show');return;}
+  drop.innerHTML = matches.map(e=>`
+    <div class="si-item" onclick="selPastEmp('${esc(String(e.noEmp))}')">
+      <div class="si-name">${e.nombre}</div>
+      <div class="si-meta">No.${e.noEmp} · ${e.planta||'—'} · ${e.depto||'—'}</div>
+    </div>`).join('');
+  drop.classList.add('show');
+}
+
+function selPastEmp(noEmp){
+  const emp = HC.find(e=>String(e.noEmp)===String(noEmp));
+  if(!emp){toast('Empleado no encontrado','err');return;}
+  _pastEmp = emp;
+
+  // Hide search, show form
+  const drop = document.getElementById('past-drop');
+  if(drop) drop.classList.remove('show');
+  const qEl = document.getElementById('past-q');
+  if(qEl) qEl.value = emp.nombre+' (No.'+emp.noEmp+')';
+
+  // Fill card
+  document.getElementById('past-emp-nombre').textContent = emp.nombre;
+  document.getElementById('past-emp-meta').textContent = `No.${emp.noEmp} · ${emp.planta||'—'} · ${emp.depto||'—'} · ${emp.puesto||'—'}`;
+
+  // Set default date/turno
+  const fechaEl = document.getElementById('past-fecha');
+  if(fechaEl) fechaEl.value = new Date().toISOString().split('T')[0];
+
+  // Show alerts
+  const ca = document.getElementById('past-alertas');
+  if(ca){
+    const al = getAlergias(emp.noEmp);
+    const cr = getCronicos(emp.noEmp);
+    const frec = calcFrecuencia(emp.noEmp);
+    let h = '';
+    if(al) h+=`<div style="background:#FEF9C3;border:1.5px solid #FDE047;border-radius:8px;padding:9px 14px;margin-bottom:6px;font-weight:700;color:#854D0E;font-size:12px">⚠️ Alergias: ${al}</div>`;
+    if(cr) h+=`<div style="background:#E0F2FE;border:1.5px solid #38BDF8;border-radius:8px;padding:9px 14px;margin-bottom:6px;font-weight:700;color:#075985;font-size:12px">🩺 Crónicas: ${cr}</div>`;
+    if(frec>=8) h+=`<div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:8px;padding:9px 14px;margin-bottom:6px;font-size:12px"><strong style="color:#B91C1C">🔴 Alta frecuencia:</strong> ${frec} consultas en 30 días.</div>`;
+    else if(frec>=4) h+=`<div style="background:#FFFBEB;border:1.5px solid #FDE68A;border-radius:8px;padding:9px 14px;margin-bottom:6px;font-size:12px"><strong style="color:#92400E">🟡 Frecuencia moderada:</strong> ${frec} consultas en 30 días.</div>`;
+    ca.innerHTML = h;
+  }
+
+  // Show form
+  const form = document.getElementById('past-form');
+  if(form) form.style.display = 'block';
+
+  // Focus motivo
+  setTimeout(()=>{const m=document.getElementById('past-motivo');if(m)m.focus();},150);
+}
+
+function limpiarPastilleo(){
+  _pastEmp = null;
+  const qEl = document.getElementById('past-q'); if(qEl) qEl.value='';
+  const form = document.getElementById('past-form'); if(form) form.style.display='none';
+  const ca = document.getElementById('past-alertas'); if(ca) ca.innerHTML='';
+  const mot = document.getElementById('past-motivo'); if(mot) mot.value='';
+  const tx = document.getElementById('past-tx'); if(tx) tx.value='';
+  setTimeout(()=>{const q=document.getElementById('past-q');if(q)q.focus();},100);
+}
+
+async function guardarPastilleo(){
+  if(!_pastEmp){toast('Selecciona un trabajador primero','err');return;}
+  const motivo = (document.getElementById('past-motivo')?.value||'').trim();
+  const tx = (document.getElementById('past-tx')?.value||'').trim();
+  if(!motivo){toast('Escribe el motivo / síntoma','err');document.getElementById('past-motivo')?.focus();return;}
+  if(!tx){toast('Escribe el medicamento entregado','err');document.getElementById('past-tx')?.focus();return;}
+
+  const ahora = new Date();
+  const fechaInput = document.getElementById('past-fecha')?.value;
+  const turno = document.getElementById('past-turno')?.value||USER.turno||'Matutino';
+  const folio = 'ENF-'+Date.now().toString().slice(-6);
+
+  const cons = {
+    folio,
+    tipoAtencion:'ENF',
+    tipoCons:'Pastilleo',
+    fecha: ahora.toLocaleDateString('es-MX'),
+    hora: ahora.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}),
+    mes: MESES[ahora.getMonth()],
+    mesNum: ahora.getMonth()+1,
+    anio: ahora.getFullYear(),
+    semana: getWeek(ahora),
+    noEmp: _pastEmp.noEmp,
+    nombre: _pastEmp.nombre,
+    planta: _pastEmp.planta,
+    turno,
+    depto: _pastEmp.depto,
+    puesto: _pastEmp.puesto,
+    nss: _pastEmp.nss,
+    genero: _pastEmp.genero,
+    diagnostico: motivo,
+    plan: tx,
+    motivoConsulta: motivo,
+    seguimiento: 'Alta',
+    incapacidad: 'No',
+    registradoPor: USER.nombre
+  };
+
+  // Save locally
+  CONS.push(cons);
+  sv(SK.cons, CONS);
+
+  // Save to GAS
+  toast('Guardando...','ok');
+  const r = await gasPost({action:'saveConsulta',...cons});
+  if(r.ok){
+    toast('✅ Pastilleo registrado — '+_pastEmp.nombre,'ok');
+  } else {
+    toast('Guardado local — sin conexión','ok');
+  }
+
+  // Update today list
+  renderPastilleoHoy();
+
+  // Clear for next patient
+  limpiarPastilleo();
+}
+
+function renderPastilleoHoy(){
+  const hoy = new Date().toLocaleDateString('es-MX');
+  const lista = CONS.filter(c=>c.tipoCons==='Pastilleo'&&c.fecha===hoy&&c.registradoPor===USER.nombre)
+    .sort((a,b)=>b.folio.localeCompare(a.folio));
+  const el = document.getElementById('past-list');
+  const cnt = document.getElementById('past-count');
+  if(cnt) cnt.textContent = lista.length;
+  if(!el) return;
+  if(!lista.length){el.innerHTML='<div class="empty"><div class="empty-i">💊</div>Sin pastilleos hoy</div>';return;}
+  el.innerHTML = lista.map(c=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-bottom:1px solid var(--bor);font-size:12px">
+      <div>
+        <strong>${c.nombre}</strong>
+        <span style="color:var(--tx3);margin-left:6px">No.${c.noEmp}</span>
+        <div style="color:var(--tx3);font-size:11px;margin-top:2px">
+          ${c.diagnostico||'—'} → <span style="color:var(--tl);font-weight:600">${c.plan||'—'}</span>
+          <span style="margin-left:6px">${c.hora||''}</span>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// Render list when tab opens
+
 document.addEventListener('DOMContentLoaded', () => {
   cargarUsuariosLogin();
   initSimpleSearches();
 });
 if(localStorage.getItem('so_dark')==='1') document.documentElement.classList.add('dark');
 
-  function calcularIMC(){
+
+function calcIMCf(){
   const peso = parseFloat(document.getElementById('f-peso')?.value);
   const talla = parseFloat(document.getElementById('f-talla')?.value);
   const imcInput = document.getElementById('f-imc');
@@ -2703,31 +2958,12 @@ if(localStorage.getItem('so_dark')==='1') document.documentElement.classList.add
     imcInput.value = imc.toFixed(2);
   }
 
-  // 🔥 mover aguja (0 a 40 IMC)
+  // mover aguja
   if(needle){
     let porcentaje = (imc / 40) * 100;
     if(porcentaje > 100) porcentaje = 100;
     needle.style.left = porcentaje + '%';
   }
 }
-  <script>
-function calcularIMC(){
-  const peso = parseFloat(document.getElementById('f-peso')?.value);
-  const talla = parseFloat(document.getElementById('f-talla')?.value);
-  const imcInput = document.getElementById('f-imc');
-
-  if(!peso || !talla || talla === 0){
-    if(imcInput) imcInput.value = '';
-    return;
-  }
-
-  const imc = peso / (talla * talla);
-
-  if(imcInput){
-    imcInput.value = imc.toFixed(2);
-  }
-}
-</script>
-  
 </script>
 </body></html>
